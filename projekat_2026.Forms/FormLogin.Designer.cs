@@ -175,7 +175,6 @@
             // 
             buttonLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonLogIn.Image = Properties.Resources.icons8_login_24;
             buttonLogIn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonLogIn.Location = new System.Drawing.Point(221, 3);
             buttonLogIn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

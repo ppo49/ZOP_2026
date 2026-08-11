@@ -56,7 +56,6 @@
             // buttonDodajOpremu
             // 
             buttonDodajOpremu.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajOpremu.Image = Properties.Resources.icons8_new_file_24;
             buttonDodajOpremu.Location = new System.Drawing.Point(634, 29);
             buttonDodajOpremu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajOpremu.Name = "buttonDodajOpremu";
@@ -152,7 +151,6 @@
             // buttonOpremaAzuriraj
             // 
             buttonOpremaAzuriraj.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOpremaAzuriraj.Image = Properties.Resources.icons8_edit_file_24;
             buttonOpremaAzuriraj.Location = new System.Drawing.Point(634, 29);
             buttonOpremaAzuriraj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonOpremaAzuriraj.Name = "buttonOpremaAzuriraj";

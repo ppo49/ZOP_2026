@@ -280,7 +280,6 @@
             // 
             buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonSacuvaj.Image = Properties.Resources.icons8_save_24;
             buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSacuvaj.Location = new System.Drawing.Point(568, 3);
             buttonSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -307,7 +306,6 @@
             // buttonOcisti
             // 
             buttonOcisti.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOcisti.Image = Properties.Resources.icons8_refresh_24;
             buttonOcisti.Location = new System.Drawing.Point(4, 3);
             buttonOcisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonOcisti.Name = "buttonOcisti";

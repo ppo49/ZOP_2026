@@ -586,7 +586,6 @@
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 26);
@@ -595,7 +594,6 @@
             // toolStripButtonAzurirajObjekat
             // 
             toolStripButtonAzurirajObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonAzurirajObjekat.Image = Properties.Resources.icons8_edit_file_24;
             toolStripButtonAzurirajObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonAzurirajObjekat.Name = "toolStripButtonAzurirajObjekat";
             toolStripButtonAzurirajObjekat.Size = new System.Drawing.Size(23, 26);
@@ -604,7 +602,6 @@
             // toolStripButtonObrisiObjekat
             // 
             toolStripButtonObrisiObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonObrisiObjekat.Image = Properties.Resources.icons8_delete_file_24;
             toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
             toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 26);
@@ -613,7 +610,6 @@
             // toolStripButtonListaPregleda
             // 
             toolStripButtonListaPregleda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonListaPregleda.Image = Properties.Resources.icons8_edit_folder_24;
             toolStripButtonListaPregleda.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonListaPregleda.Name = "toolStripButtonListaPregleda";
             toolStripButtonListaPregleda.Size = new System.Drawing.Size(23, 26);
@@ -622,7 +618,6 @@
             // toolStripButtonPregled
             // 
             toolStripButtonPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPregled.Image = Properties.Resources.icons8_todo_list_24;
             toolStripButtonPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPregled.Name = "toolStripButtonPregled";
             toolStripButtonPregled.Size = new System.Drawing.Size(23, 26);
@@ -631,7 +626,6 @@
             // toolStripButtonPrint
             // 
             toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPrint.Image = Properties.Resources.icons8_print_24;
             toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPrint.Name = "toolStripButtonPrint";
             toolStripButtonPrint.Size = new System.Drawing.Size(23, 26);
@@ -640,7 +634,6 @@
             // toolStripButtonPocetna
             // 
             toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPocetna.Image = Properties.Resources.icons8_login_24;
             toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPocetna.Name = "toolStripButtonPocetna";
             toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -940,7 +933,6 @@
             // 
             buttonDodajKontaktUTabelu.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonDodajKontaktUTabelu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonDodajKontaktUTabelu.Image = Properties.Resources.icons8_login_24;
             buttonDodajKontaktUTabelu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonDodajKontaktUTabelu.Location = new System.Drawing.Point(4, 37);
             buttonDodajKontaktUTabelu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -1003,7 +995,6 @@
             // 
             buttonSistemDodajUTabelu.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonSistemDodajUTabelu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonSistemDodajUTabelu.Image = Properties.Resources.icons8_login_24;
             buttonSistemDodajUTabelu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSistemDodajUTabelu.Location = new System.Drawing.Point(4, 37);
             buttonSistemDodajUTabelu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -1104,7 +1095,6 @@
             // buttonOcisti
             // 
             buttonOcisti.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOcisti.Image = Properties.Resources.icons8_refresh_24;
             buttonOcisti.Location = new System.Drawing.Point(4, 3);
             buttonOcisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonOcisti.Name = "buttonOcisti";
@@ -1116,7 +1106,6 @@
             // 
             buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonSacuvaj.Image = Properties.Resources.icons8_save_24;
             buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSacuvaj.Location = new System.Drawing.Point(1039, 3);
             buttonSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

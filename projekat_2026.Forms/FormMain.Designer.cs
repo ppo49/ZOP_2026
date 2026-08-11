@@ -162,7 +162,6 @@
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
@@ -171,7 +170,6 @@
             // toolStripButtonNovaFirmaObjekat
             // 
             toolStripButtonNovaFirmaObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonNovaFirmaObjekat.Image = Properties.Resources.icons8_new_file_24;
             toolStripButtonNovaFirmaObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonNovaFirmaObjekat.Name = "toolStripButtonNovaFirmaObjekat";
             toolStripButtonNovaFirmaObjekat.Size = new System.Drawing.Size(23, 32);
@@ -181,7 +179,6 @@
             // 
             toolStripButtonAgent.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             toolStripButtonAgent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonAgent.Image = Properties.Resources.icons8_customer_24;
             toolStripButtonAgent.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonAgent.Name = "toolStripButtonAgent";
             toolStripButtonAgent.Size = new System.Drawing.Size(23, 32);
@@ -191,7 +188,6 @@
             // 
             toolStripButtonPodesavanja.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             toolStripButtonPodesavanja.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPodesavanja.Image = Properties.Resources.icons8_settings_24;
             toolStripButtonPodesavanja.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPodesavanja.Name = "toolStripButtonPodesavanja";
             toolStripButtonPodesavanja.Size = new System.Drawing.Size(23, 32);
@@ -306,7 +302,6 @@
             // buttonDodajFirmaObjekat
             // 
             buttonDodajFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajFirmaObjekat.Image = Properties.Resources.icons8_edit_folder_24;
             buttonDodajFirmaObjekat.Location = new System.Drawing.Point(237, 3);
             buttonDodajFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajFirmaObjekat.Name = "buttonDodajFirmaObjekat";
@@ -342,7 +337,6 @@
             // buttonDodajKontakt
             // 
             buttonDodajKontakt.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajKontakt.Image = Properties.Resources.icons8_edit_folder_24;
             buttonDodajKontakt.Location = new System.Drawing.Point(238, 3);
             buttonDodajKontakt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajKontakt.Name = "buttonDodajKontakt";
@@ -394,7 +388,6 @@
             // buttonFirmaObjekatDetalji
             // 
             buttonFirmaObjekatDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonFirmaObjekatDetalji.Image = Properties.Resources.icons8_login_24;
             buttonFirmaObjekatDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonFirmaObjekatDetalji.Location = new System.Drawing.Point(477, 3);
             buttonFirmaObjekatDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -439,7 +432,6 @@
             // buttonSistemiDetalji
             // 
             buttonSistemiDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonSistemiDetalji.Image = Properties.Resources.icons8_login_24;
             buttonSistemiDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSistemiDetalji.Location = new System.Drawing.Point(422, 3);
             buttonSistemiDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -548,7 +540,6 @@
             // buttonOprema
             // 
             buttonOprema.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOprema.Image = Properties.Resources.icons8_login_24;
             buttonOprema.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonOprema.Location = new System.Drawing.Point(4, 3);
             buttonOprema.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -562,7 +553,6 @@
             // buttonNoviPregled
             // 
             buttonNoviPregled.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonNoviPregled.Image = Properties.Resources.icons8_todo_list_24;
             buttonNoviPregled.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonNoviPregled.Location = new System.Drawing.Point(422, 3);
             buttonNoviPregled.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -580,7 +570,7 @@
             tabPageAgent.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tabPageAgent.Name = "tabPageAgent";
             tabPageAgent.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            tabPageAgent.Size = new System.Drawing.Size(1226, 544);
+            tabPageAgent.Size = new System.Drawing.Size(1225, 544);
             tabPageAgent.TabIndex = 2;
             tabPageAgent.Text = "Agent";
             tabPageAgent.UseVisualStyleBackColor = true;
@@ -611,7 +601,7 @@
             tableLayoutPanelAgent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             tableLayoutPanelAgent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             tableLayoutPanelAgent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanelAgent.Size = new System.Drawing.Size(1218, 538);
+            tableLayoutPanelAgent.Size = new System.Drawing.Size(1217, 538);
             tableLayoutPanelAgent.TabIndex = 0;
             // 
             // tableLayoutPanel10
@@ -627,7 +617,7 @@
             tableLayoutPanel10.RowCount = 2;
             tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel10.Size = new System.Drawing.Size(370, 63);
+            tableLayoutPanel10.Size = new System.Drawing.Size(369, 63);
             tableLayoutPanel10.TabIndex = 0;
             // 
             // textBoxAgentUsername
@@ -636,7 +626,7 @@
             textBoxAgentUsername.Location = new System.Drawing.Point(4, 34);
             textBoxAgentUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxAgentUsername.Name = "textBoxAgentUsername";
-            textBoxAgentUsername.Size = new System.Drawing.Size(362, 24);
+            textBoxAgentUsername.Size = new System.Drawing.Size(361, 24);
             textBoxAgentUsername.TabIndex = 13;
             // 
             // labelAgentPassword
@@ -646,7 +636,7 @@
             labelAgentPassword.Location = new System.Drawing.Point(4, 0);
             labelAgentPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelAgentPassword.Name = "labelAgentPassword";
-            labelAgentPassword.Size = new System.Drawing.Size(362, 31);
+            labelAgentPassword.Size = new System.Drawing.Size(361, 31);
             labelAgentPassword.TabIndex = 14;
             labelAgentPassword.Text = "Lozinka";
             labelAgentPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -664,7 +654,7 @@
             tableLayoutPanel11.RowCount = 2;
             tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel11.Size = new System.Drawing.Size(370, 63);
+            tableLayoutPanel11.Size = new System.Drawing.Size(369, 63);
             tableLayoutPanel11.TabIndex = 1;
             // 
             // textBoxAgentImePrzime
@@ -673,7 +663,7 @@
             textBoxAgentImePrzime.Location = new System.Drawing.Point(4, 34);
             textBoxAgentImePrzime.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxAgentImePrzime.Name = "textBoxAgentImePrzime";
-            textBoxAgentImePrzime.Size = new System.Drawing.Size(362, 24);
+            textBoxAgentImePrzime.Size = new System.Drawing.Size(361, 24);
             textBoxAgentImePrzime.TabIndex = 13;
             // 
             // labelAgentImePrezime
@@ -683,7 +673,7 @@
             labelAgentImePrezime.Location = new System.Drawing.Point(4, 0);
             labelAgentImePrezime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelAgentImePrezime.Name = "labelAgentImePrezime";
-            labelAgentImePrezime.Size = new System.Drawing.Size(362, 31);
+            labelAgentImePrezime.Size = new System.Drawing.Size(361, 31);
             labelAgentImePrezime.TabIndex = 14;
             labelAgentImePrezime.Text = "Ime i prezime";
             labelAgentImePrezime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -701,7 +691,7 @@
             tableLayoutPanel12.RowCount = 2;
             tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel12.Size = new System.Drawing.Size(370, 63);
+            tableLayoutPanel12.Size = new System.Drawing.Size(369, 63);
             tableLayoutPanel12.TabIndex = 2;
             // 
             // textBoxAgentSluzbeniEmail
@@ -710,7 +700,7 @@
             textBoxAgentSluzbeniEmail.Location = new System.Drawing.Point(4, 34);
             textBoxAgentSluzbeniEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxAgentSluzbeniEmail.Name = "textBoxAgentSluzbeniEmail";
-            textBoxAgentSluzbeniEmail.Size = new System.Drawing.Size(362, 24);
+            textBoxAgentSluzbeniEmail.Size = new System.Drawing.Size(361, 24);
             textBoxAgentSluzbeniEmail.TabIndex = 13;
             // 
             // labelAgentSluzbeniEmail
@@ -720,7 +710,7 @@
             labelAgentSluzbeniEmail.Location = new System.Drawing.Point(4, 0);
             labelAgentSluzbeniEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelAgentSluzbeniEmail.Name = "labelAgentSluzbeniEmail";
-            labelAgentSluzbeniEmail.Size = new System.Drawing.Size(362, 31);
+            labelAgentSluzbeniEmail.Size = new System.Drawing.Size(361, 31);
             labelAgentSluzbeniEmail.TabIndex = 14;
             labelAgentSluzbeniEmail.Text = "Službeni E-Mail";
             labelAgentSluzbeniEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -739,7 +729,7 @@
             tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanel13.Size = new System.Drawing.Size(370, 63);
+            tableLayoutPanel13.Size = new System.Drawing.Size(369, 63);
             tableLayoutPanel13.TabIndex = 3;
             // 
             // textBoxAgentSluzbeniTelefon
@@ -748,7 +738,7 @@
             textBoxAgentSluzbeniTelefon.Location = new System.Drawing.Point(4, 23);
             textBoxAgentSluzbeniTelefon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxAgentSluzbeniTelefon.Name = "textBoxAgentSluzbeniTelefon";
-            textBoxAgentSluzbeniTelefon.Size = new System.Drawing.Size(362, 24);
+            textBoxAgentSluzbeniTelefon.Size = new System.Drawing.Size(361, 24);
             textBoxAgentSluzbeniTelefon.TabIndex = 13;
             // 
             // labelAgentSluzbenitelefon
@@ -758,7 +748,7 @@
             labelAgentSluzbenitelefon.Location = new System.Drawing.Point(4, 0);
             labelAgentSluzbenitelefon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelAgentSluzbenitelefon.Name = "labelAgentSluzbenitelefon";
-            labelAgentSluzbenitelefon.Size = new System.Drawing.Size(362, 20);
+            labelAgentSluzbenitelefon.Size = new System.Drawing.Size(361, 20);
             labelAgentSluzbenitelefon.TabIndex = 14;
             labelAgentSluzbenitelefon.Text = "Službeni Telefon";
             labelAgentSluzbenitelefon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -776,7 +766,7 @@
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel14.Size = new System.Drawing.Size(370, 52);
+            tableLayoutPanel14.Size = new System.Drawing.Size(369, 52);
             tableLayoutPanel14.TabIndex = 17;
             // 
             // labelStatusAktivnosti
@@ -786,7 +776,7 @@
             labelStatusAktivnosti.Location = new System.Drawing.Point(162, 0);
             labelStatusAktivnosti.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelStatusAktivnosti.Name = "labelStatusAktivnosti";
-            labelStatusAktivnosti.Size = new System.Drawing.Size(204, 52);
+            labelStatusAktivnosti.Size = new System.Drawing.Size(203, 52);
             labelStatusAktivnosti.TabIndex = 17;
             labelStatusAktivnosti.Text = "Status";
             labelStatusAktivnosti.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -816,7 +806,7 @@
             tableLayoutPanel16.RowCount = 2;
             tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel16.Size = new System.Drawing.Size(370, 63);
+            tableLayoutPanel16.Size = new System.Drawing.Size(369, 63);
             tableLayoutPanel16.TabIndex = 19;
             // 
             // textBoxAgentEmail
@@ -825,7 +815,7 @@
             textBoxAgentEmail.Location = new System.Drawing.Point(4, 34);
             textBoxAgentEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxAgentEmail.Name = "textBoxAgentEmail";
-            textBoxAgentEmail.Size = new System.Drawing.Size(362, 24);
+            textBoxAgentEmail.Size = new System.Drawing.Size(361, 24);
             textBoxAgentEmail.TabIndex = 13;
             // 
             // labelEmail
@@ -835,7 +825,7 @@
             labelEmail.Location = new System.Drawing.Point(4, 0);
             labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new System.Drawing.Size(362, 31);
+            labelEmail.Size = new System.Drawing.Size(361, 31);
             labelEmail.TabIndex = 14;
             labelEmail.Text = "E-Mail";
             labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -848,7 +838,7 @@
             tableLayoutPanel7.Controls.Add(labelPreglediAgenta, 0, 0);
             tableLayoutPanel7.Controls.Add(dataGridViewPreglediAgenta, 0, 1);
             tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel7.Location = new System.Drawing.Point(382, 3);
+            tableLayoutPanel7.Location = new System.Drawing.Point(381, 3);
             tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
@@ -886,7 +876,7 @@
             tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel8.Controls.Add(buttonLogOff, 0, 1);
             tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel8.Location = new System.Drawing.Point(1090, 406);
+            tableLayoutPanel8.Location = new System.Drawing.Point(1089, 406);
             tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 2;
@@ -898,7 +888,6 @@
             // buttonLogOff
             // 
             buttonLogOff.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonLogOff.Image = Properties.Resources.icons8_login_24;
             buttonLogOff.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonLogOff.Location = new System.Drawing.Point(4, 89);
             buttonLogOff.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

@@ -136,7 +136,6 @@
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 31);
@@ -145,7 +144,6 @@
             // toolStripButtonAzurirajObjekat
             // 
             toolStripButtonAzurirajObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonAzurirajObjekat.Image = Properties.Resources.icons8_edit_file_24;
             toolStripButtonAzurirajObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonAzurirajObjekat.Name = "toolStripButtonAzurirajObjekat";
             toolStripButtonAzurirajObjekat.Size = new System.Drawing.Size(23, 31);
@@ -154,7 +152,6 @@
             // toolStripButtonObrisiObjekat
             // 
             toolStripButtonObrisiObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonObrisiObjekat.Image = Properties.Resources.icons8_delete_file_24;
             toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
             toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 31);
@@ -163,7 +160,6 @@
             // toolStripButton1
             // 
             toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = Properties.Resources.icons8_todo_list_24;
             toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new System.Drawing.Size(23, 31);
@@ -172,7 +168,6 @@
             // toolStripButtonPrint
             // 
             toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPrint.Image = Properties.Resources.icons8_print_24;
             toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPrint.Name = "toolStripButtonPrint";
             toolStripButtonPrint.Size = new System.Drawing.Size(23, 31);
@@ -181,7 +176,6 @@
             // toolStripButtonPocetna
             // 
             toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPocetna.Image = Properties.Resources.icons8_login_24;
             toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPocetna.Name = "toolStripButtonPocetna";
             toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -561,7 +555,6 @@
             // 
             buttonAzurirajObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonAzurirajObjekat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonAzurirajObjekat.Image = Properties.Resources.icons8_edit_file_24;
             buttonAzurirajObjekat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonAzurirajObjekat.Location = new System.Drawing.Point(57, 18);
             buttonAzurirajObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -607,7 +600,6 @@
             // 
             buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonSacuvaj.Image = Properties.Resources.icons8_save_24;
             buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSacuvaj.Location = new System.Drawing.Point(153, 56);
             buttonSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
