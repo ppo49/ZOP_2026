@@ -1,4 +1,4 @@
-Ôªønamespace projekat_2026
+namespace projekat_2026
 {
     partial class FormFirmaObjekatDetalji
     {
@@ -76,10 +76,10 @@
             listViewObavestenjaUVeziObjekta = new System.Windows.Forms.ListView();
             contextMenuStripSistemi = new System.Windows.Forms.ContextMenuStrip(components);
             obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            a≈æurirajSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aûurirajSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             contextMenuStripAdresar = new System.Windows.Forms.ContextMenuStrip(components);
-            obri≈°iKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            a≈æurirajKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            obriöiKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aûurirajKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tableLayoutPanelFirmaObjekat.SuspendLayout();
             toolStripDetaljiObjekat.SuspendLayout();
             tableLayoutPanelCenterContent.SuspendLayout();
@@ -147,7 +147,7 @@
             toolStripButtonAzurirajObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonAzurirajObjekat.Name = "toolStripButtonAzurirajObjekat";
             toolStripButtonAzurirajObjekat.Size = new System.Drawing.Size(23, 31);
-            toolStripButtonAzurirajObjekat.Text = "A≈æuriraj objekat";
+            toolStripButtonAzurirajObjekat.Text = "Aûuriraj objekat";
             // 
             // toolStripButtonObrisiObjekat
             // 
@@ -155,7 +155,7 @@
             toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
             toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 31);
-            toolStripButtonObrisiObjekat.Text = "Izbri≈°i objekat";
+            toolStripButtonObrisiObjekat.Text = "Izbriöi objekat";
             // 
             // toolStripButton1
             // 
@@ -163,7 +163,7 @@
             toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new System.Drawing.Size(23, 31);
-            toolStripButton1.Text = "Zapoƒçni pregled";
+            toolStripButton1.Text = "ZapoËni pregled";
             // 
             // toolStripButtonPrint
             // 
@@ -180,7 +180,7 @@
             toolStripButtonPocetna.Name = "toolStripButtonPocetna";
             toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
             toolStripButtonPocetna.Size = new System.Drawing.Size(23, 31);
-            toolStripButtonPocetna.Text = "Poƒçetna";
+            toolStripButtonPocetna.Text = "PoËetna";
             // 
             // tableLayoutPanelCenterContent
             // 
@@ -561,7 +561,7 @@
             buttonAzurirajObjekat.Name = "buttonAzurirajObjekat";
             buttonAzurirajObjekat.Size = new System.Drawing.Size(152, 39);
             buttonAzurirajObjekat.TabIndex = 0;
-            buttonAzurirajObjekat.Text = "A≈æuriraj";
+            buttonAzurirajObjekat.Text = "Aûuriraj";
             buttonAzurirajObjekat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonAzurirajObjekat.UseVisualStyleBackColor = true;
             // 
@@ -593,7 +593,7 @@
             buttonPonisti.Name = "buttonPonisti";
             buttonPonisti.Size = new System.Drawing.Size(88, 47);
             buttonPonisti.TabIndex = 0;
-            buttonPonisti.Text = "Poni≈°ti";
+            buttonPonisti.Text = "Poniöti";
             buttonPonisti.UseVisualStyleBackColor = true;
             // 
             // buttonSacuvaj
@@ -606,7 +606,7 @@
             buttonSacuvaj.Name = "buttonSacuvaj";
             buttonSacuvaj.Size = new System.Drawing.Size(112, 47);
             buttonSacuvaj.TabIndex = 1;
-            buttonSacuvaj.Text = "Saƒçuvaj";
+            buttonSacuvaj.Text = "SaËuvaj";
             buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonSacuvaj.UseVisualStyleBackColor = true;
             // 
@@ -703,7 +703,7 @@
             // 
             // contextMenuStripSistemi
             // 
-            contextMenuStripSistemi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiToolStripMenuItem, a≈æurirajSistemToolStripMenuItem });
+            contextMenuStripSistemi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiToolStripMenuItem, aûurirajSistemToolStripMenuItem });
             contextMenuStripSistemi.Name = "contextMenuStripSistemi";
             contextMenuStripSistemi.Size = new System.Drawing.Size(152, 48);
             // 
@@ -711,31 +711,31 @@
             // 
             obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
             obrisiToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            obrisiToolStripMenuItem.Text = "Obri≈°i sistem";
+            obrisiToolStripMenuItem.Text = "Obriöi sistem";
             // 
-            // a≈æurirajSistemToolStripMenuItem
+            // aûurirajSistemToolStripMenuItem
             // 
-            a≈æurirajSistemToolStripMenuItem.Name = "a≈æurirajSistemToolStripMenuItem";
-            a≈æurirajSistemToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            a≈æurirajSistemToolStripMenuItem.Text = "A≈æuriraj sistem";
+            aûurirajSistemToolStripMenuItem.Name = "aûurirajSistemToolStripMenuItem";
+            aûurirajSistemToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            aûurirajSistemToolStripMenuItem.Text = "Aûuriraj sistem";
             // 
             // contextMenuStripAdresar
             // 
-            contextMenuStripAdresar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obri≈°iKontaktToolStripMenuItem, a≈æurirajKontaktToolStripMenuItem });
+            contextMenuStripAdresar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obriöiKontaktToolStripMenuItem, aûurirajKontaktToolStripMenuItem });
             contextMenuStripAdresar.Name = "contextMenuStripAdresar";
             contextMenuStripAdresar.Size = new System.Drawing.Size(158, 48);
             // 
-            // obri≈°iKontaktToolStripMenuItem
+            // obriöiKontaktToolStripMenuItem
             // 
-            obri≈°iKontaktToolStripMenuItem.Name = "obri≈°iKontaktToolStripMenuItem";
-            obri≈°iKontaktToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            obri≈°iKontaktToolStripMenuItem.Text = "Obri≈°i kontakt";
+            obriöiKontaktToolStripMenuItem.Name = "obriöiKontaktToolStripMenuItem";
+            obriöiKontaktToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            obriöiKontaktToolStripMenuItem.Text = "Obriöi kontakt";
             // 
-            // a≈æurirajKontaktToolStripMenuItem
+            // aûurirajKontaktToolStripMenuItem
             // 
-            a≈æurirajKontaktToolStripMenuItem.Name = "a≈æurirajKontaktToolStripMenuItem";
-            a≈æurirajKontaktToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            a≈æurirajKontaktToolStripMenuItem.Text = "A≈æuriraj kontakt";
+            aûurirajKontaktToolStripMenuItem.Name = "aûurirajKontaktToolStripMenuItem";
+            aûurirajKontaktToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            aûurirajKontaktToolStripMenuItem.Text = "Aûuriraj kontakt";
             // 
             // FormFirmaObjekatDetalji
             // 
@@ -822,16 +822,16 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripSistemi;
         private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem a≈æurirajSistemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aûurirajSistemToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAdresar;
-        private System.Windows.Forms.ToolStripMenuItem obri≈°iKontaktToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem a≈æurirajKontaktToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem obriöiKontaktToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aûurirajKontaktToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Button buttonPonisti;
         private System.Windows.Forms.Button buttonSacuvaj;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPocetna;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.Panel panelObavestenja;
         private System.Windows.Forms.ListView listViewObavestenjaUVeziObjekta;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPocetna;
     }
 }

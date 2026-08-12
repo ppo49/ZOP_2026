@@ -1,4 +1,4 @@
-Ôªønamespace projekat_2026
+namespace projekat_2026
 {
     partial class FormSistemDetalji
     {
@@ -286,7 +286,7 @@
             buttonSacuvaj.Name = "buttonSacuvaj";
             buttonSacuvaj.Size = new System.Drawing.Size(124, 43);
             buttonSacuvaj.TabIndex = 7;
-            buttonSacuvaj.Text = "Saƒçuvaj";
+            buttonSacuvaj.Text = "SaËuvaj";
             buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonSacuvaj.UseVisualStyleBackColor = true;
             // 
@@ -300,7 +300,7 @@
             buttonPonisti.Name = "buttonPonisti";
             buttonPonisti.Size = new System.Drawing.Size(119, 43);
             buttonPonisti.TabIndex = 5;
-            buttonPonisti.Text = "Poni≈°ti";
+            buttonPonisti.Text = "Poniöti";
             buttonPonisti.UseVisualStyleBackColor = true;
             // 
             // buttonOcisti

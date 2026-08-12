@@ -1,4 +1,4 @@
-﻿namespace projekat_2026
+namespace projekat_2026
 {
     partial class FormLogin
     {

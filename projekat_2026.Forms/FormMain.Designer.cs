@@ -1,4 +1,4 @@
-Ôªønamespace projekat_2026
+namespace projekat_2026
 {
     partial class FormMain
     {
@@ -33,10 +33,10 @@
             detaljiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             toolStripDetaljiObjekat = new System.Windows.Forms.ToolStrip();
-            toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonNovaFirmaObjekat = new System.Windows.Forms.ToolStripButton();
             toolStripButtonAgent = new System.Windows.Forms.ToolStripButton();
             toolStripButtonPodesavanja = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonNoviPregled = new System.Windows.Forms.ToolStripButton();
             tabControlMain = new System.Windows.Forms.TabControl();
             tabPageDashboard = new System.Windows.Forms.TabPage();
             tableLayoutPanelDashboard = new System.Windows.Forms.TableLayoutPanel();
@@ -152,28 +152,12 @@
             // toolStripDetaljiObjekat
             // 
             toolStripDetaljiObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            toolStripDetaljiObjekat.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonRefresh, toolStripButtonNovaFirmaObjekat, toolStripButtonAgent, toolStripButtonPodesavanja });
+            toolStripDetaljiObjekat.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonAgent, toolStripButtonPodesavanja, toolStripButtonRefresh, toolStripButtonNoviPregled });
             toolStripDetaljiObjekat.Location = new System.Drawing.Point(0, 0);
             toolStripDetaljiObjekat.Name = "toolStripDetaljiObjekat";
             toolStripDetaljiObjekat.Size = new System.Drawing.Size(1241, 35);
             toolStripDetaljiObjekat.TabIndex = 5;
             toolStripDetaljiObjekat.Text = "toolStrip1";
-            // 
-            // toolStripButtonRefresh
-            // 
-            toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
-            toolStripButtonRefresh.Text = "Refresh";
-            // 
-            // toolStripButtonNovaFirmaObjekat
-            // 
-            toolStripButtonNovaFirmaObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonNovaFirmaObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonNovaFirmaObjekat.Name = "toolStripButtonNovaFirmaObjekat";
-            toolStripButtonNovaFirmaObjekat.Size = new System.Drawing.Size(23, 32);
-            toolStripButtonNovaFirmaObjekat.Text = "Nova firma/objekat";
             // 
             // toolStripButtonAgent
             // 
@@ -191,7 +175,23 @@
             toolStripButtonPodesavanja.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPodesavanja.Name = "toolStripButtonPodesavanja";
             toolStripButtonPodesavanja.Size = new System.Drawing.Size(23, 32);
-            toolStripButtonPodesavanja.Text = "Pode≈°avanja";
+            toolStripButtonPodesavanja.Text = "Podeöavanja";
+            // 
+            // toolStripButtonRefresh
+            // 
+            toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonRefresh.Name = "toolStripButtonRefresh";
+            toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
+            toolStripButtonRefresh.Text = "Refresh";
+            // 
+            // toolStripButtonNoviPregled
+            // 
+            toolStripButtonNoviPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonNoviPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonNoviPregled.Name = "toolStripButtonNoviPregled";
+            toolStripButtonNoviPregled.Size = new System.Drawing.Size(23, 32);
+            toolStripButtonNoviPregled.Text = "Novi pregled";
             // 
             // tabControlMain
             // 
@@ -712,7 +712,7 @@
             labelAgentSluzbeniEmail.Name = "labelAgentSluzbeniEmail";
             labelAgentSluzbeniEmail.Size = new System.Drawing.Size(361, 31);
             labelAgentSluzbeniEmail.TabIndex = 14;
-            labelAgentSluzbeniEmail.Text = "Slu≈æbeni E-Mail";
+            labelAgentSluzbeniEmail.Text = "Sluûbeni E-Mail";
             labelAgentSluzbeniEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel13
@@ -750,7 +750,7 @@
             labelAgentSluzbenitelefon.Name = "labelAgentSluzbenitelefon";
             labelAgentSluzbenitelefon.Size = new System.Drawing.Size(361, 20);
             labelAgentSluzbenitelefon.TabIndex = 14;
-            labelAgentSluzbenitelefon.Text = "Slu≈æbeni Telefon";
+            labelAgentSluzbenitelefon.Text = "Sluûbeni Telefon";
             labelAgentSluzbenitelefon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel14
@@ -968,8 +968,6 @@
         private System.Windows.Forms.ToolStripMenuItem detaljiToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.ToolStrip toolStripDetaljiObjekat;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNovaFirmaObjekat;
         private System.Windows.Forms.ToolStripButton toolStripButtonAgent;
         private System.Windows.Forms.ToolStripButton toolStripButtonPodesavanja;
         private System.Windows.Forms.TabControl tabControlMain;
@@ -1025,6 +1023,8 @@
         private System.Windows.Forms.DataGridView dataGridViewPreglediAgenta;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button buttonLogOff;
+        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNoviPregled;
     }
 }
 

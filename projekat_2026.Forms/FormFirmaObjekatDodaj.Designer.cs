@@ -1,4 +1,4 @@
-﻿namespace projekat_2026
+namespace projekat_2026
 {
     partial class FormFirmaObjekatDodaj
     {
@@ -34,10 +34,17 @@
             contextMenuStripTelefon = new System.Windows.Forms.ContextMenuStrip(components);
             obrisiToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             contextMenuStripSistem = new System.Windows.Forms.ContextMenuStrip(components);
-            izbrišiSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            izbri�iSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             contextMenuStripKontakt = new System.Windows.Forms.ContextMenuStrip(components);
-            izbrišiKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            izbri�iKontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tableLayoutPanelFirmaObjekat = new System.Windows.Forms.TableLayoutPanel();
+            toolStripDetaljiObjekat = new System.Windows.Forms.ToolStrip();
+            toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonAzurirajObjekat = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonObrisiObjekat = new System.Windows.Forms.ToolStripButton();
+            toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonPocetna = new System.Windows.Forms.ToolStripButton();
             tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             labelStatus = new System.Windows.Forms.Label();
             comboBoxStatus = new System.Windows.Forms.ComboBox();
@@ -61,14 +68,6 @@
             labelSistem = new System.Windows.Forms.Label();
             comboBoxSistem = new System.Windows.Forms.ComboBox();
             buttonDodajSistem = new System.Windows.Forms.Button();
-            toolStripDetaljiObjekat = new System.Windows.Forms.ToolStrip();
-            toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonAzurirajObjekat = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonObrisiObjekat = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonListaPregleda = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonPregled = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonPocetna = new System.Windows.Forms.ToolStripButton();
             labelPodaci = new System.Windows.Forms.Label();
             labelDatumAktivnosti = new System.Windows.Forms.Label();
             labelSistemi = new System.Windows.Forms.Label();
@@ -113,6 +112,7 @@
             contextMenuStripSistem.SuspendLayout();
             contextMenuStripKontakt.SuspendLayout();
             tableLayoutPanelFirmaObjekat.SuspendLayout();
+            toolStripDetaljiObjekat.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
@@ -120,7 +120,6 @@
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel9.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
-            toolStripDetaljiObjekat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSistemi).BeginInit();
             tableLayoutPanel12.SuspendLayout();
             tableLayoutPanel13.SuspendLayout();
@@ -162,27 +161,27 @@
             // 
             // contextMenuStripSistem
             // 
-            contextMenuStripSistem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { izbrišiSistemToolStripMenuItem });
+            contextMenuStripSistem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { izbri�iSistemToolStripMenuItem });
             contextMenuStripSistem.Name = "contextMenuStripSistem";
             contextMenuStripSistem.Size = new System.Drawing.Size(142, 26);
             // 
-            // izbrišiSistemToolStripMenuItem
+            // izbri�iSistemToolStripMenuItem
             // 
-            izbrišiSistemToolStripMenuItem.Name = "izbrišiSistemToolStripMenuItem";
-            izbrišiSistemToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            izbrišiSistemToolStripMenuItem.Text = "Izbriši sistem";
+            izbri�iSistemToolStripMenuItem.Name = "izbri�iSistemToolStripMenuItem";
+            izbri�iSistemToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            izbri�iSistemToolStripMenuItem.Text = "Izbri�i sistem";
             // 
             // contextMenuStripKontakt
             // 
-            contextMenuStripKontakt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { izbrišiKontaktToolStripMenuItem });
+            contextMenuStripKontakt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { izbri�iKontaktToolStripMenuItem });
             contextMenuStripKontakt.Name = "contextMenuStripKontakt";
             contextMenuStripKontakt.Size = new System.Drawing.Size(148, 26);
             // 
-            // izbrišiKontaktToolStripMenuItem
+            // izbri�iKontaktToolStripMenuItem
             // 
-            izbrišiKontaktToolStripMenuItem.Name = "izbrišiKontaktToolStripMenuItem";
-            izbrišiKontaktToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            izbrišiKontaktToolStripMenuItem.Text = "Izbriši kontakt";
+            izbri�iKontaktToolStripMenuItem.Name = "izbri�iKontaktToolStripMenuItem";
+            izbri�iKontaktToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            izbri�iKontaktToolStripMenuItem.Text = "Izbri�i kontakt";
             // 
             // tableLayoutPanelFirmaObjekat
             // 
@@ -193,6 +192,7 @@
             tableLayoutPanelFirmaObjekat.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.32669F));
             tableLayoutPanelFirmaObjekat.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.30677F));
             tableLayoutPanelFirmaObjekat.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.64143F));
+            tableLayoutPanelFirmaObjekat.Controls.Add(toolStripDetaljiObjekat, 0, 0);
             tableLayoutPanelFirmaObjekat.Controls.Add(tableLayoutPanel7, 5, 2);
             tableLayoutPanelFirmaObjekat.Controls.Add(tableLayoutPanel6, 4, 2);
             tableLayoutPanelFirmaObjekat.Controls.Add(tableLayoutPanel5, 3, 2);
@@ -201,7 +201,6 @@
             tableLayoutPanelFirmaObjekat.Controls.Add(labelAdresar, 0, 7);
             tableLayoutPanelFirmaObjekat.Controls.Add(tableLayoutPanel9, 1, 5);
             tableLayoutPanelFirmaObjekat.Controls.Add(tableLayoutPanel8, 0, 5);
-            tableLayoutPanelFirmaObjekat.Controls.Add(toolStripDetaljiObjekat, 0, 0);
             tableLayoutPanelFirmaObjekat.Controls.Add(labelPodaci, 0, 1);
             tableLayoutPanelFirmaObjekat.Controls.Add(labelDatumAktivnosti, 0, 3);
             tableLayoutPanelFirmaObjekat.Controls.Add(labelSistemi, 0, 4);
@@ -254,6 +253,66 @@
             tableLayoutPanelFirmaObjekat.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             tableLayoutPanelFirmaObjekat.Size = new System.Drawing.Size(1171, 870);
             tableLayoutPanelFirmaObjekat.TabIndex = 4;
+            // 
+            // toolStripDetaljiObjekat
+            // 
+            tableLayoutPanelFirmaObjekat.SetColumnSpan(toolStripDetaljiObjekat, 6);
+            toolStripDetaljiObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
+            toolStripDetaljiObjekat.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonRefresh, toolStripButtonAzurirajObjekat, toolStripButtonObrisiObjekat, toolStripButton1, toolStripButtonPrint, toolStripButtonPocetna });
+            toolStripDetaljiObjekat.Location = new System.Drawing.Point(0, 0);
+            toolStripDetaljiObjekat.Name = "toolStripDetaljiObjekat";
+            toolStripDetaljiObjekat.Size = new System.Drawing.Size(1171, 29);
+            toolStripDetaljiObjekat.TabIndex = 44;
+            toolStripDetaljiObjekat.Text = "toolStrip1";
+            // 
+            // toolStripButtonRefresh
+            // 
+            toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonRefresh.Name = "toolStripButtonRefresh";
+            toolStripButtonRefresh.Size = new System.Drawing.Size(23, 26);
+            toolStripButtonRefresh.Text = "Refresh";
+            // 
+            // toolStripButtonAzurirajObjekat
+            // 
+            toolStripButtonAzurirajObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonAzurirajObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonAzurirajObjekat.Name = "toolStripButtonAzurirajObjekat";
+            toolStripButtonAzurirajObjekat.Size = new System.Drawing.Size(23, 26);
+            toolStripButtonAzurirajObjekat.Text = "A�uriraj objekat";
+            // 
+            // toolStripButtonObrisiObjekat
+            // 
+            toolStripButtonObrisiObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
+            toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 26);
+            toolStripButtonObrisiObjekat.Text = "Izbri�i objekat";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new System.Drawing.Size(23, 26);
+            toolStripButton1.Text = "Zapo�ni pregled";
+            // 
+            // toolStripButtonPrint
+            // 
+            toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonPrint.Name = "toolStripButtonPrint";
+            toolStripButtonPrint.Size = new System.Drawing.Size(23, 26);
+            toolStripButtonPrint.Text = "Print";
+            // 
+            // toolStripButtonPocetna
+            // 
+            toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonPocetna.Name = "toolStripButtonPocetna";
+            toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            toolStripButtonPocetna.Size = new System.Drawing.Size(23, 26);
+            toolStripButtonPocetna.Text = "Po�etna";
             // 
             // tableLayoutPanel7
             // 
@@ -365,7 +424,7 @@
             labelMb.Name = "labelMb";
             labelMb.Size = new System.Drawing.Size(198, 35);
             labelMb.TabIndex = 1;
-            labelMb.Text = "Matični broj";
+            labelMb.Text = "Mati�ni broj";
             labelMb.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // textBoxMb
@@ -571,74 +630,6 @@
             buttonDodajSistem.TabIndex = 3;
             buttonDodajSistem.Text = "+";
             buttonDodajSistem.UseVisualStyleBackColor = true;
-            // 
-            // toolStripDetaljiObjekat
-            // 
-            tableLayoutPanelFirmaObjekat.SetColumnSpan(toolStripDetaljiObjekat, 6);
-            toolStripDetaljiObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            toolStripDetaljiObjekat.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonRefresh, toolStripButtonAzurirajObjekat, toolStripButtonObrisiObjekat, toolStripButtonListaPregleda, toolStripButtonPregled, toolStripButtonPrint, toolStripButtonPocetna });
-            toolStripDetaljiObjekat.Location = new System.Drawing.Point(0, 0);
-            toolStripDetaljiObjekat.Name = "toolStripDetaljiObjekat";
-            toolStripDetaljiObjekat.Size = new System.Drawing.Size(1171, 29);
-            toolStripDetaljiObjekat.TabIndex = 4;
-            toolStripDetaljiObjekat.Text = "toolStrip1";
-            // 
-            // toolStripButtonRefresh
-            // 
-            toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            toolStripButtonRefresh.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonRefresh.Text = "Refresh";
-            // 
-            // toolStripButtonAzurirajObjekat
-            // 
-            toolStripButtonAzurirajObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonAzurirajObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonAzurirajObjekat.Name = "toolStripButtonAzurirajObjekat";
-            toolStripButtonAzurirajObjekat.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonAzurirajObjekat.Text = "Ažuriraj objekat";
-            // 
-            // toolStripButtonObrisiObjekat
-            // 
-            toolStripButtonObrisiObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
-            toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonObrisiObjekat.Text = "Izbriši objekat";
-            // 
-            // toolStripButtonListaPregleda
-            // 
-            toolStripButtonListaPregleda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonListaPregleda.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonListaPregleda.Name = "toolStripButtonListaPregleda";
-            toolStripButtonListaPregleda.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonListaPregleda.Text = "Lista pregleda";
-            // 
-            // toolStripButtonPregled
-            // 
-            toolStripButtonPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonPregled.Name = "toolStripButtonPregled";
-            toolStripButtonPregled.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonPregled.Text = "Započni pregled";
-            // 
-            // toolStripButtonPrint
-            // 
-            toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonPrint.Name = "toolStripButtonPrint";
-            toolStripButtonPrint.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonPrint.Text = "Print";
-            // 
-            // toolStripButtonPocetna
-            // 
-            toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonPocetna.Name = "toolStripButtonPocetna";
-            toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            toolStripButtonPocetna.Size = new System.Drawing.Size(23, 26);
-            toolStripButtonPocetna.Text = "Početna";
             // 
             // labelPodaci
             // 
@@ -1112,7 +1103,7 @@
             buttonSacuvaj.Name = "buttonSacuvaj";
             buttonSacuvaj.Size = new System.Drawing.Size(120, 44);
             buttonSacuvaj.TabIndex = 7;
-            buttonSacuvaj.Text = "Sačuvaj";
+            buttonSacuvaj.Text = "Sa�uvaj";
             buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonSacuvaj.UseVisualStyleBackColor = true;
             // 
@@ -1126,7 +1117,7 @@
             buttonPonisti.Name = "buttonPonisti";
             buttonPonisti.Size = new System.Drawing.Size(119, 44);
             buttonPonisti.TabIndex = 5;
-            buttonPonisti.Text = "Poništi";
+            buttonPonisti.Text = "Poni�ti";
             buttonPonisti.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
@@ -1185,6 +1176,8 @@
             contextMenuStripKontakt.ResumeLayout(false);
             tableLayoutPanelFirmaObjekat.ResumeLayout(false);
             tableLayoutPanelFirmaObjekat.PerformLayout();
+            toolStripDetaljiObjekat.ResumeLayout(false);
+            toolStripDetaljiObjekat.PerformLayout();
             tableLayoutPanel7.ResumeLayout(false);
             tableLayoutPanel7.PerformLayout();
             tableLayoutPanel6.ResumeLayout(false);
@@ -1199,8 +1192,6 @@
             tableLayoutPanel9.PerformLayout();
             tableLayoutPanel8.ResumeLayout(false);
             tableLayoutPanel8.PerformLayout();
-            toolStripDetaljiObjekat.ResumeLayout(false);
-            toolStripDetaljiObjekat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSistemi).EndInit();
             tableLayoutPanel12.ResumeLayout(false);
             tableLayoutPanel12.PerformLayout();
@@ -1230,9 +1221,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTelefon;
         private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripSistem;
-        private System.Windows.Forms.ToolStripMenuItem izbrišiSistemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbri�iSistemToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripKontakt;
-        private System.Windows.Forms.ToolStripMenuItem izbrišiKontaktToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbri�iKontaktToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFirmaObjekat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label labelStatus;
@@ -1257,13 +1248,6 @@
         private System.Windows.Forms.Label labelSistem;
         private System.Windows.Forms.ComboBox comboBoxSistem;
         private System.Windows.Forms.Button buttonDodajSistem;
-        private System.Windows.Forms.ToolStrip toolStripDetaljiObjekat;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAzurirajObjekat;
-        private System.Windows.Forms.ToolStripButton toolStripButtonObrisiObjekat;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPregled;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPocetna;
         private System.Windows.Forms.Label labelPodaci;
         private System.Windows.Forms.Label labelDatumAktivnosti;
         private System.Windows.Forms.Label labelSistemi;
@@ -1303,6 +1287,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label labelImeFirmeObjekat;
         private System.Windows.Forms.TextBox textBoxImeFirmeObjekta;
-        private System.Windows.Forms.ToolStripButton toolStripButtonListaPregleda;
+        private System.Windows.Forms.ToolStrip toolStripDetaljiObjekat;
+        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAzurirajObjekat;
+        private System.Windows.Forms.ToolStripButton toolStripButtonObrisiObjekat;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPocetna;
     }
 }

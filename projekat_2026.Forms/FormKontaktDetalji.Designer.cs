@@ -1,4 +1,4 @@
-Ôªønamespace projekat_2026
+namespace projekat_2026
 {
     partial class FormKontaktDetalji
     {
@@ -310,7 +310,7 @@
             this.buttonPonisti.Name = "buttonPonisti";
             this.buttonPonisti.Size = new System.Drawing.Size(105, 35);
             this.buttonPonisti.TabIndex = 1;
-            this.buttonPonisti.Text = "Poni≈°ti";
+            this.buttonPonisti.Text = "Poniöti";
             this.buttonPonisti.UseVisualStyleBackColor = true;
             // 
             // contextMenuStripObrisiEmail
@@ -378,7 +378,7 @@
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(114, 35);
             this.buttonSacuvaj.TabIndex = 0;
-            this.buttonSacuvaj.Text = "Saƒçuvaj";
+            this.buttonSacuvaj.Text = "SaËuvaj";
             this.buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             // 

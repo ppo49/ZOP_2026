@@ -1,4 +1,4 @@
-﻿namespace projekat_2026
+namespace projekat_2026
 {
     partial class FormOprema
     {
@@ -73,7 +73,7 @@
             labelDodatniTekst.Name = "labelDodatniTekst";
             labelDodatniTekst.Size = new System.Drawing.Size(715, 22);
             labelDodatniTekst.TabIndex = 10;
-            labelDodatniTekst.Text = "*Barcode će se sam generisati";
+            labelDodatniTekst.Text = "*Barcode �e se sam generisati";
             // 
             // textBoxOpremaDodajNapomena
             // 

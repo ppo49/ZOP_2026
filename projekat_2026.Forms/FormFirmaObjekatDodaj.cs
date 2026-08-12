@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +19,8 @@ namespace projekat_2026
 
         private void tableLayoutPanelFirmaObjekat_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            using (Pen pen = new Pen(Color.LightGray,1)){
+            using (Pen pen = new Pen(Color.LightGray, 1))
+            {
 
                 Rectangle rect = e.CellBounds;
 
@@ -28,7 +29,5 @@ namespace projekat_2026
 
             }
         }
-
-
     }
 }
