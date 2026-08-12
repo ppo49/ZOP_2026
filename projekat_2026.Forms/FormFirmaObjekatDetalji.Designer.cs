@@ -176,6 +176,7 @@ namespace projekat_2026
             // toolStripButtonPocetna
             // 
             toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonPocetna.Image = Properties.Resources.icons8_login_24;
             toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPocetna.Name = "toolStripButtonPocetna";
             toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;
