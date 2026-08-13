@@ -28,7 +28,9 @@ namespace projekat_2026
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanelLogin = new System.Windows.Forms.TableLayoutPanel();
+            labelObavestenje = new System.Windows.Forms.Label();
             tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             textBoxLoginEmail = new System.Windows.Forms.TextBox();
             labelLoginEmail = new System.Windows.Forms.Label();
@@ -38,45 +40,62 @@ namespace projekat_2026
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             linkLabelRegistrujSe = new System.Windows.Forms.LinkLabel();
             buttonLogIn = new System.Windows.Forms.Button();
+            errorProviderLogin = new System.Windows.Forms.ErrorProvider(components);
             tableLayoutPanelLogin.SuspendLayout();
             tableLayoutPanel16.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderLogin).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanelLogin
             // 
             tableLayoutPanelLogin.ColumnCount = 1;
-            tableLayoutPanelLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.95238F));
+            tableLayoutPanelLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelLogin.Controls.Add(labelObavestenje, 0, 2);
             tableLayoutPanelLogin.Controls.Add(tableLayoutPanel16, 0, 0);
             tableLayoutPanelLogin.Controls.Add(tableLayoutPanel1, 0, 1);
-            tableLayoutPanelLogin.Controls.Add(tableLayoutPanel2, 0, 2);
+            tableLayoutPanelLogin.Controls.Add(tableLayoutPanel2, 0, 3);
             tableLayoutPanelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelLogin.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanelLogin.Name = "tableLayoutPanelLogin";
-            tableLayoutPanelLogin.RowCount = 3;
-            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            tableLayoutPanelLogin.RowCount = 4;
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            tableLayoutPanelLogin.Size = new System.Drawing.Size(334, 277);
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            tableLayoutPanelLogin.Size = new System.Drawing.Size(287, 220);
             tableLayoutPanelLogin.TabIndex = 0;
+            // 
+            // labelObavestenje
+            // 
+            labelObavestenje.AutoSize = true;
+            labelObavestenje.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelObavestenje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            labelObavestenje.ForeColor = System.Drawing.Color.Red;
+            labelObavestenje.Location = new System.Drawing.Point(4, 134);
+            labelObavestenje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelObavestenje.Name = "labelObavestenje";
+            labelObavestenje.Size = new System.Drawing.Size(279, 38);
+            labelObavestenje.TabIndex = 24;
+            labelObavestenje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel16
             // 
-            tableLayoutPanel16.ColumnCount = 1;
+            tableLayoutPanel16.ColumnCount = 2;
             tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel16.Controls.Add(textBoxLoginEmail, 0, 1);
             tableLayoutPanel16.Controls.Add(labelLoginEmail, 0, 0);
             tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel16.Location = new System.Drawing.Point(4, 3);
             tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel16.Name = "tableLayoutPanel16";
-            tableLayoutPanel16.RowCount = 3;
+            tableLayoutPanel16.RowCount = 2;
             tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanel16.Size = new System.Drawing.Size(326, 109);
+            tableLayoutPanel16.Size = new System.Drawing.Size(279, 61);
             tableLayoutPanel16.TabIndex = 20;
             // 
             // textBoxLoginEmail
@@ -86,8 +105,9 @@ namespace projekat_2026
             textBoxLoginEmail.Location = new System.Drawing.Point(4, 35);
             textBoxLoginEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxLoginEmail.Name = "textBoxLoginEmail";
-            textBoxLoginEmail.Size = new System.Drawing.Size(318, 24);
+            textBoxLoginEmail.Size = new System.Drawing.Size(251, 24);
             textBoxLoginEmail.TabIndex = 13;
+            textBoxLoginEmail.Validating += TextBoxLoginEmail_Validating;
             // 
             // labelLoginEmail
             // 
@@ -97,26 +117,26 @@ namespace projekat_2026
             labelLoginEmail.Location = new System.Drawing.Point(4, 0);
             labelLoginEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelLoginEmail.Name = "labelLoginEmail";
-            labelLoginEmail.Size = new System.Drawing.Size(318, 32);
+            labelLoginEmail.Size = new System.Drawing.Size(251, 32);
             labelLoginEmail.TabIndex = 14;
             labelLoginEmail.Text = "E-Mail";
             labelLoginEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(textBoxLoginPassword, 0, 1);
             tableLayoutPanel1.Controls.Add(labelLoginPassword, 0, 0);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel1.Location = new System.Drawing.Point(4, 118);
+            tableLayoutPanel1.Location = new System.Drawing.Point(4, 70);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(326, 109);
+            tableLayoutPanel1.Size = new System.Drawing.Size(279, 61);
             tableLayoutPanel1.TabIndex = 21;
             // 
             // textBoxLoginPassword
@@ -126,7 +146,7 @@ namespace projekat_2026
             textBoxLoginPassword.Location = new System.Drawing.Point(4, 35);
             textBoxLoginPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxLoginPassword.Name = "textBoxLoginPassword";
-            textBoxLoginPassword.Size = new System.Drawing.Size(318, 24);
+            textBoxLoginPassword.Size = new System.Drawing.Size(251, 24);
             textBoxLoginPassword.TabIndex = 13;
             // 
             // labelLoginPassword
@@ -137,7 +157,7 @@ namespace projekat_2026
             labelLoginPassword.Location = new System.Drawing.Point(4, 0);
             labelLoginPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelLoginPassword.Name = "labelLoginPassword";
-            labelLoginPassword.Size = new System.Drawing.Size(318, 32);
+            labelLoginPassword.Size = new System.Drawing.Size(251, 32);
             labelLoginPassword.TabIndex = 14;
             labelLoginPassword.Text = "Lozinka";
             labelLoginPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,14 +169,13 @@ namespace projekat_2026
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.21429F));
             tableLayoutPanel2.Controls.Add(linkLabelRegistrujSe, 0, 0);
             tableLayoutPanel2.Controls.Add(buttonLogIn, 1, 0);
-            tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel2.Location = new System.Drawing.Point(4, 233);
+            tableLayoutPanel2.Location = new System.Drawing.Point(4, 175);
             tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(326, 41);
-            tableLayoutPanel2.TabIndex = 22;
+            tableLayoutPanel2.Size = new System.Drawing.Size(279, 43);
+            tableLayoutPanel2.TabIndex = 23;
             // 
             // linkLabelRegistrujSe
             // 
@@ -166,7 +185,7 @@ namespace projekat_2026
             linkLabelRegistrujSe.Location = new System.Drawing.Point(4, 0);
             linkLabelRegistrujSe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             linkLabelRegistrujSe.Name = "linkLabelRegistrujSe";
-            linkLabelRegistrujSe.Size = new System.Drawing.Size(209, 41);
+            linkLabelRegistrujSe.Size = new System.Drawing.Size(178, 43);
             linkLabelRegistrujSe.TabIndex = 0;
             linkLabelRegistrujSe.TabStop = true;
             linkLabelRegistrujSe.Text = "*Registruj se";
@@ -175,32 +194,41 @@ namespace projekat_2026
             // 
             buttonLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            buttonLogIn.Image = Properties.Resources.icons8_login_24;
             buttonLogIn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonLogIn.Location = new System.Drawing.Point(221, 3);
+            buttonLogIn.Location = new System.Drawing.Point(190, 3);
             buttonLogIn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonLogIn.Name = "buttonLogIn";
-            buttonLogIn.Size = new System.Drawing.Size(101, 35);
+            buttonLogIn.Size = new System.Drawing.Size(85, 37);
             buttonLogIn.TabIndex = 1;
             buttonLogIn.Text = "Log in";
             buttonLogIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonLogIn.UseVisualStyleBackColor = true;
+            buttonLogIn.Click += buttonLogIn_Click;
+            // 
+            // errorProviderLogin
+            // 
+            errorProviderLogin.ContainerControl = this;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(334, 277);
+            ClientSize = new System.Drawing.Size(287, 220);
             Controls.Add(tableLayoutPanelLogin);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "FormLogin";
             Text = "ZOP Login";
+            FormClosing += FormLogin_FormClosing;
             tableLayoutPanelLogin.ResumeLayout(false);
+            tableLayoutPanelLogin.PerformLayout();
             tableLayoutPanel16.ResumeLayout(false);
             tableLayoutPanel16.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderLogin).EndInit();
             ResumeLayout(false);
 
         }
@@ -214,8 +242,10 @@ namespace projekat_2026
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBoxLoginPassword;
         private System.Windows.Forms.Label labelLoginPassword;
+        private System.Windows.Forms.Label labelObavestenje;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.LinkLabel linkLabelRegistrujSe;
         private System.Windows.Forms.Button buttonLogIn;
+        private System.Windows.Forms.ErrorProvider errorProviderLogin;
     }
 }
