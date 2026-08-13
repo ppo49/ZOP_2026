@@ -13,7 +13,7 @@ public partial class Adresar
 
     public string? Napomena { get; set; }
 
-    public DateTime ReatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
 

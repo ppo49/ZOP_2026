@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 using projekat_2026.Data.Models;
 using System;
@@ -39,16 +38,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Telefon> Telefons { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var connectionString =
-            ConfigurationManager.ConnectionStrings["ProjectDatabase"].ConnectionString;
 
-        optionsBuilder.UseMySql(
-            connectionString,
-            Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.5.62-mysql")
-        );
-    }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -66,13 +57,13 @@ public partial class AppDbContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("id_adresar");
             entity.Property(e => e.Aktivan).HasColumnName("aktivan");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.ImePrezime)
                 .HasMaxLength(200)
                 .HasColumnName("ime_prezime");
             entity.Property(e => e.Napomena)
                 .HasColumnType("text")
                 .HasColumnName("napomena");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
         });
 
@@ -87,13 +78,13 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.IdAgent)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_agent");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.ImePrezime)
                 .HasMaxLength(100)
                 .HasColumnName("ime_prezime");
             entity.Property(e => e.Pwd)
                 .HasMaxLength(255)
                 .HasColumnName("_pwd");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.Role)
                 .HasColumnType("enum('agent','admin')")
                 .HasColumnName("_role");
@@ -156,6 +147,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.BrojZaposlenih)
                 .HasColumnType("int(11)")
                 .HasColumnName("broj_zaposlenih");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.DatumAktivnosti).HasColumnName("datum_aktivnosti");
             entity.Property(e => e.Grad)
                 .HasMaxLength(100)
@@ -169,7 +161,6 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Pib)
                 .HasMaxLength(20)
                 .HasColumnName("pib");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
             entity.HasMany(d => d.IdAdresars).WithMany(p => p.IdFirmaObjekats)
@@ -240,13 +231,13 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.IdBarcode)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_barcode");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.IdObjekatSistemVeznaTabela)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_objekat_sistem_vezna_tabela");
             entity.Property(e => e.Napomena)
                 .HasMaxLength(100)
                 .HasColumnName("napomena");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
             entity.HasOne(d => d.IdObjekatSistemVeznaTabelaNavigation).WithMany(p => p.Opremas)
@@ -267,6 +258,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.IdPregledLog)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_pregled_log");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.DatumPregleda).HasColumnName("datum_pregleda");
             entity.Property(e => e.IdAgent)
                 .HasColumnType("int(11)")
@@ -277,7 +269,6 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Napomena)
                 .HasColumnType("text")
                 .HasColumnName("napomena");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
             entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.PregledLogs)
@@ -299,6 +290,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.IdSistem)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_sistem");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.Napomena)
                 .HasColumnType("text")
                 .HasColumnName("napomena");
@@ -308,7 +300,6 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Periodika)
                 .HasColumnType("int(11)")
                 .HasColumnName("periodika");
-            entity.Property(e => e.ReatedAt).HasColumnName("reated_at");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
         });
 

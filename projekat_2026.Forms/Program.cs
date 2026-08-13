@@ -1,8 +1,8 @@
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using projekat_2026.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace projekat_2026
 {
@@ -16,7 +16,18 @@ namespace projekat_2026
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+
+            // Build config and connection string
+            var config = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var connString = config.GetConnectionString("ProjectDatabase");
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseMySql(connString, ServerVersion.Parse("5.5.62-mysql"));
+
+            Application.Run(new FormLogin(optionsBuilder.Options));
         }
     }
 }
