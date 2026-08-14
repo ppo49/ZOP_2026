@@ -78,7 +78,6 @@ namespace projekat_2026
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
@@ -87,7 +86,6 @@ namespace projekat_2026
             // toolStripButtonAzurirajPregled
             // 
             toolStripButtonAzurirajPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonAzurirajPregled.Image = Properties.Resources.icons8_edit_folder_24;
             toolStripButtonAzurirajPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonAzurirajPregled.Name = "toolStripButtonAzurirajPregled";
             toolStripButtonAzurirajPregled.Size = new System.Drawing.Size(23, 32);
@@ -96,7 +94,6 @@ namespace projekat_2026
             // toolStripButtonObrisiObjekat
             // 
             toolStripButtonObrisiObjekat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonObrisiObjekat.Image = Properties.Resources.icons8_delete_file_24;
             toolStripButtonObrisiObjekat.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonObrisiObjekat.Name = "toolStripButtonObrisiObjekat";
             toolStripButtonObrisiObjekat.Size = new System.Drawing.Size(23, 32);
@@ -105,7 +102,6 @@ namespace projekat_2026
             // toolStripButtonPrint
             // 
             toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPrint.Image = Properties.Resources.icons8_print_24;
             toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPrint.Name = "toolStripButtonPrint";
             toolStripButtonPrint.Size = new System.Drawing.Size(23, 32);
@@ -114,7 +110,6 @@ namespace projekat_2026
             // toolStripButtonPocetna
             // 
             toolStripButtonPocetna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonPocetna.Image = Properties.Resources.icons8_login_24;
             toolStripButtonPocetna.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonPocetna.Name = "toolStripButtonPocetna";
             toolStripButtonPocetna.RightToLeft = System.Windows.Forms.RightToLeft.No;

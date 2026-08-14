@@ -28,382 +28,397 @@ namespace projekat_2026
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.tableLayoutPanelCenterContent = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBoxTelefon = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelNapomena = new System.Windows.Forms.Label();
-            this.textBoxNapomena = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelImePrezime = new System.Windows.Forms.Label();
-            this.textBoxImePrezime = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTelefon = new System.Windows.Forms.Label();
-            this.textBoxTelefon = new System.Windows.Forms.TextBox();
-            this.listBoxEmail = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanelKontrole = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonPonisti = new System.Windows.Forms.Button();
-            this.contextMenuStripObrisiEmail = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripObrisiTelefon = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.obrisiToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonOcisti = new System.Windows.Forms.Button();
-            this.buttonEmailDodaj = new System.Windows.Forms.Button();
-            this.buttontelefonDodaj = new System.Windows.Forms.Button();
-            this.buttonSacuvaj = new System.Windows.Forms.Button();
-            this.tableLayoutPanelCenterContent.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanelKontrole.SuspendLayout();
-            this.contextMenuStripObrisiEmail.SuspendLayout();
-            this.contextMenuStripObrisiTelefon.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            tableLayoutPanelCenterContent = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            buttonOcisti = new System.Windows.Forms.Button();
+            listBoxTelefon = new System.Windows.Forms.ListBox();
+            tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            labelNapomena = new System.Windows.Forms.Label();
+            textBoxNapomena = new System.Windows.Forms.TextBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            labelImePrezime = new System.Windows.Forms.Label();
+            textBoxImePrezime = new System.Windows.Forms.TextBox();
+            tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            labelEmail = new System.Windows.Forms.Label();
+            textBoxEmail = new System.Windows.Forms.TextBox();
+            buttonEmailDodaj = new System.Windows.Forms.Button();
+            tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            labelTelefon = new System.Windows.Forms.Label();
+            textBoxTelefon = new System.Windows.Forms.TextBox();
+            buttontelefonDodaj = new System.Windows.Forms.Button();
+            listBoxEmail = new System.Windows.Forms.ListBox();
+            tableLayoutPanelKontrole = new System.Windows.Forms.TableLayoutPanel();
+            buttonSacuvaj = new System.Windows.Forms.Button();
+            buttonPonisti = new System.Windows.Forms.Button();
+            contextMenuStripObrisiEmail = new System.Windows.Forms.ContextMenuStrip(components);
+            obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            contextMenuStripObrisiTelefon = new System.Windows.Forms.ContextMenuStrip(components);
+            obrisiToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            tableLayoutPanelCenterContent.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanelKontrole.SuspendLayout();
+            contextMenuStripObrisiEmail.SuspendLayout();
+            contextMenuStripObrisiTelefon.SuspendLayout();
+            SuspendLayout();
             // 
             // tableLayoutPanelCenterContent
             // 
-            this.tableLayoutPanelCenterContent.ColumnCount = 2;
-            this.tableLayoutPanelCenterContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCenterContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanel5, 0, 5);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.listBoxTelefon, 1, 4);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanel3, 1, 2);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.listBoxEmail, 0, 4);
-            this.tableLayoutPanelCenterContent.Controls.Add(this.tableLayoutPanelKontrole, 1, 5);
-            this.tableLayoutPanelCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelCenterContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tableLayoutPanelCenterContent.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelCenterContent.Name = "tableLayoutPanelCenterContent";
-            this.tableLayoutPanelCenterContent.RowCount = 7;
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelCenterContent.Size = new System.Drawing.Size(726, 398);
-            this.tableLayoutPanelCenterContent.TabIndex = 0;
+            tableLayoutPanelCenterContent.ColumnCount = 2;
+            tableLayoutPanelCenterContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelCenterContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanel5, 0, 5);
+            tableLayoutPanelCenterContent.Controls.Add(listBoxTelefon, 1, 4);
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanel4, 1, 0);
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanel2, 0, 2);
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanel3, 1, 2);
+            tableLayoutPanelCenterContent.Controls.Add(listBoxEmail, 0, 4);
+            tableLayoutPanelCenterContent.Controls.Add(tableLayoutPanelKontrole, 1, 5);
+            tableLayoutPanelCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelCenterContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            tableLayoutPanelCenterContent.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelCenterContent.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelCenterContent.Name = "tableLayoutPanelCenterContent";
+            tableLayoutPanelCenterContent.RowCount = 7;
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            tableLayoutPanelCenterContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelCenterContent.Size = new System.Drawing.Size(847, 459);
+            tableLayoutPanelCenterContent.TabIndex = 0;
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 309F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonOcisti, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 333);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(357, 41);
-            this.tableLayoutPanel5.TabIndex = 9;
-            // 
-            // listBoxTelefon
-            // 
-            this.listBoxTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxTelefon.FormattingEnabled = true;
-            this.listBoxTelefon.ItemHeight = 18;
-            this.listBoxTelefon.Location = new System.Drawing.Point(366, 199);
-            this.listBoxTelefon.Name = "listBoxTelefon";
-            this.listBoxTelefon.Size = new System.Drawing.Size(357, 121);
-            this.listBoxTelefon.TabIndex = 7;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.labelNapomena, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBoxNapomena, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(366, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(357, 67);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
-            // labelNapomena
-            // 
-            this.labelNapomena.AutoSize = true;
-            this.labelNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNapomena.Location = new System.Drawing.Point(3, 0);
-            this.labelNapomena.Name = "labelNapomena";
-            this.labelNapomena.Size = new System.Drawing.Size(351, 30);
-            this.labelNapomena.TabIndex = 1;
-            this.labelNapomena.Text = "Napomena";
-            this.labelNapomena.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // textBoxNapomena
-            // 
-            this.textBoxNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxNapomena.Location = new System.Drawing.Point(3, 33);
-            this.textBoxNapomena.Multiline = true;
-            this.textBoxNapomena.Name = "textBoxNapomena";
-            this.textBoxNapomena.Size = new System.Drawing.Size(351, 31);
-            this.textBoxNapomena.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.labelImePrezime, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxImePrezime, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 67);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // labelImePrezime
-            // 
-            this.labelImePrezime.AutoSize = true;
-            this.labelImePrezime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelImePrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelImePrezime.Location = new System.Drawing.Point(3, 0);
-            this.labelImePrezime.Name = "labelImePrezime";
-            this.labelImePrezime.Size = new System.Drawing.Size(351, 30);
-            this.labelImePrezime.TabIndex = 1;
-            this.labelImePrezime.Text = "Ime i prezime";
-            this.labelImePrezime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // textBoxImePrezime
-            // 
-            this.textBoxImePrezime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxImePrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxImePrezime.Location = new System.Drawing.Point(3, 33);
-            this.textBoxImePrezime.Multiline = true;
-            this.textBoxImePrezime.Name = "textBoxImePrezime";
-            this.textBoxImePrezime.Size = new System.Drawing.Size(351, 31);
-            this.textBoxImePrezime.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.Controls.Add(this.labelEmail, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxEmail, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.buttonEmailDodaj, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 101);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(357, 67);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // labelEmail
-            // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelEmail.Location = new System.Drawing.Point(3, 0);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(296, 30);
-            this.labelEmail.TabIndex = 1;
-            this.labelEmail.Text = "Dodaj E-Mail";
-            this.labelEmail.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxEmail.Location = new System.Drawing.Point(3, 33);
-            this.textBoxEmail.Multiline = true;
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(296, 31);
-            this.textBoxEmail.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel3.Controls.Add(this.labelTelefon, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBoxTelefon, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.buttontelefonDodaj, 1, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(366, 101);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(357, 67);
-            this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // labelTelefon
-            // 
-            this.labelTelefon.AutoSize = true;
-            this.labelTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTelefon.Location = new System.Drawing.Point(3, 0);
-            this.labelTelefon.Name = "labelTelefon";
-            this.labelTelefon.Size = new System.Drawing.Size(296, 30);
-            this.labelTelefon.TabIndex = 1;
-            this.labelTelefon.Text = "Dodaj telefon";
-            this.labelTelefon.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // textBoxTelefon
-            // 
-            this.textBoxTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxTelefon.Location = new System.Drawing.Point(3, 33);
-            this.textBoxTelefon.Multiline = true;
-            this.textBoxTelefon.Name = "textBoxTelefon";
-            this.textBoxTelefon.Size = new System.Drawing.Size(296, 31);
-            this.textBoxTelefon.TabIndex = 1;
-            // 
-            // listBoxEmail
-            // 
-            this.listBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxEmail.FormattingEnabled = true;
-            this.listBoxEmail.ItemHeight = 18;
-            this.listBoxEmail.Location = new System.Drawing.Point(3, 199);
-            this.listBoxEmail.Name = "listBoxEmail";
-            this.listBoxEmail.Size = new System.Drawing.Size(357, 121);
-            this.listBoxEmail.TabIndex = 6;
-            // 
-            // tableLayoutPanelKontrole
-            // 
-            this.tableLayoutPanelKontrole.ColumnCount = 3;
-            this.tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
-            this.tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
-            this.tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanelKontrole.Controls.Add(this.buttonSacuvaj, 2, 0);
-            this.tableLayoutPanelKontrole.Controls.Add(this.buttonPonisti, 1, 0);
-            this.tableLayoutPanelKontrole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelKontrole.Location = new System.Drawing.Point(366, 333);
-            this.tableLayoutPanelKontrole.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.tableLayoutPanelKontrole.Name = "tableLayoutPanelKontrole";
-            this.tableLayoutPanelKontrole.RowCount = 1;
-            this.tableLayoutPanelKontrole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelKontrole.Size = new System.Drawing.Size(357, 41);
-            this.tableLayoutPanelKontrole.TabIndex = 8;
-            // 
-            // buttonPonisti
-            // 
-            this.buttonPonisti.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPonisti.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonPonisti.Location = new System.Drawing.Point(136, 3);
-            this.buttonPonisti.Name = "buttonPonisti";
-            this.buttonPonisti.Size = new System.Drawing.Size(105, 35);
-            this.buttonPonisti.TabIndex = 1;
-            this.buttonPonisti.Text = "Poništi";
-            this.buttonPonisti.UseVisualStyleBackColor = true;
-            // 
-            // contextMenuStripObrisiEmail
-            // 
-            this.contextMenuStripObrisiEmail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.obrisiToolStripMenuItem});
-            this.contextMenuStripObrisiEmail.Name = "contextMenuStripObrisiEmail";
-            this.contextMenuStripObrisiEmail.Size = new System.Drawing.Size(106, 26);
-            // 
-            // obrisiToolStripMenuItem
-            // 
-            this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.obrisiToolStripMenuItem.Text = "Obrisi";
-            // 
-            // contextMenuStripObrisiTelefon
-            // 
-            this.contextMenuStripObrisiTelefon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.obrisiToolStripMenuItem1});
-            this.contextMenuStripObrisiTelefon.Name = "contextMenuStripObrisiTelefon";
-            this.contextMenuStripObrisiTelefon.Size = new System.Drawing.Size(106, 26);
-            // 
-            // obrisiToolStripMenuItem1
-            // 
-            this.obrisiToolStripMenuItem1.Name = "obrisiToolStripMenuItem1";
-            this.obrisiToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
-            this.obrisiToolStripMenuItem1.Text = "Obrisi";
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            tableLayoutPanel5.Controls.Add(buttonOcisti, 0, 0);
+            tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel5.Location = new System.Drawing.Point(4, 385);
+            tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 12, 4, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new System.Drawing.Size(415, 47);
+            tableLayoutPanel5.TabIndex = 9;
             // 
             // buttonOcisti
             // 
-            this.buttonOcisti.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonOcisti.Image = global::projekat_2026.Properties.Resources.icons8_refresh_24;
-            this.buttonOcisti.Location = new System.Drawing.Point(3, 3);
-            this.buttonOcisti.Name = "buttonOcisti";
-            this.buttonOcisti.Size = new System.Drawing.Size(42, 35);
-            this.buttonOcisti.TabIndex = 2;
-            this.buttonOcisti.UseVisualStyleBackColor = true;
+            buttonOcisti.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonOcisti.Location = new System.Drawing.Point(4, 3);
+            buttonOcisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonOcisti.Name = "buttonOcisti";
+            buttonOcisti.Size = new System.Drawing.Size(48, 41);
+            buttonOcisti.TabIndex = 2;
+            buttonOcisti.UseVisualStyleBackColor = true;
+            // 
+            // listBoxTelefon
+            // 
+            listBoxTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxTelefon.FormattingEnabled = true;
+            listBoxTelefon.ItemHeight = 18;
+            listBoxTelefon.Location = new System.Drawing.Point(427, 229);
+            listBoxTelefon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBoxTelefon.Name = "listBoxTelefon";
+            listBoxTelefon.Size = new System.Drawing.Size(416, 141);
+            listBoxTelefon.TabIndex = 7;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(labelNapomena, 0, 0);
+            tableLayoutPanel4.Controls.Add(textBoxNapomena, 0, 1);
+            tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel4.Location = new System.Drawing.Point(427, 3);
+            tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel4.Size = new System.Drawing.Size(416, 78);
+            tableLayoutPanel4.TabIndex = 5;
+            // 
+            // labelNapomena
+            // 
+            labelNapomena.AutoSize = true;
+            labelNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            labelNapomena.Location = new System.Drawing.Point(4, 0);
+            labelNapomena.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelNapomena.Name = "labelNapomena";
+            labelNapomena.Size = new System.Drawing.Size(408, 35);
+            labelNapomena.TabIndex = 1;
+            labelNapomena.Text = "Napomena";
+            labelNapomena.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // textBoxNapomena
+            // 
+            textBoxNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxNapomena.Location = new System.Drawing.Point(4, 38);
+            textBoxNapomena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxNapomena.Multiline = true;
+            textBoxNapomena.Name = "textBoxNapomena";
+            textBoxNapomena.Size = new System.Drawing.Size(408, 37);
+            textBoxNapomena.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(labelImePrezime, 0, 0);
+            tableLayoutPanel1.Controls.Add(textBoxImePrezime, 0, 1);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(415, 78);
+            tableLayoutPanel1.TabIndex = 1;
+            // 
+            // labelImePrezime
+            // 
+            labelImePrezime.AutoSize = true;
+            labelImePrezime.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelImePrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            labelImePrezime.Location = new System.Drawing.Point(4, 0);
+            labelImePrezime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelImePrezime.Name = "labelImePrezime";
+            labelImePrezime.Size = new System.Drawing.Size(407, 35);
+            labelImePrezime.TabIndex = 1;
+            labelImePrezime.Text = "Ime i prezime";
+            labelImePrezime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // textBoxImePrezime
+            // 
+            textBoxImePrezime.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxImePrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxImePrezime.Location = new System.Drawing.Point(4, 38);
+            textBoxImePrezime.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxImePrezime.Multiline = true;
+            textBoxImePrezime.Name = "textBoxImePrezime";
+            textBoxImePrezime.Size = new System.Drawing.Size(407, 37);
+            textBoxImePrezime.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            tableLayoutPanel2.Controls.Add(labelEmail, 0, 0);
+            tableLayoutPanel2.Controls.Add(textBoxEmail, 0, 1);
+            tableLayoutPanel2.Controls.Add(buttonEmailDodaj, 1, 1);
+            tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel2.Location = new System.Drawing.Point(4, 116);
+            tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(415, 78);
+            tableLayoutPanel2.TabIndex = 2;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            labelEmail.Location = new System.Drawing.Point(4, 0);
+            labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new System.Drawing.Size(343, 35);
+            labelEmail.TabIndex = 1;
+            labelEmail.Text = "Dodaj E-Mail";
+            labelEmail.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxEmail.Location = new System.Drawing.Point(4, 38);
+            textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxEmail.Multiline = true;
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new System.Drawing.Size(343, 37);
+            textBoxEmail.TabIndex = 1;
             // 
             // buttonEmailDodaj
             // 
-            this.buttonEmailDodaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEmailDodaj.Image = global::projekat_2026.Properties.Resources.icons8_login_24;
-            this.buttonEmailDodaj.Location = new System.Drawing.Point(305, 33);
-            this.buttonEmailDodaj.Name = "buttonEmailDodaj";
-            this.buttonEmailDodaj.Size = new System.Drawing.Size(49, 31);
-            this.buttonEmailDodaj.TabIndex = 3;
-            this.buttonEmailDodaj.UseVisualStyleBackColor = true;
+            buttonEmailDodaj.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonEmailDodaj.Location = new System.Drawing.Point(355, 38);
+            buttonEmailDodaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonEmailDodaj.Name = "buttonEmailDodaj";
+            buttonEmailDodaj.Size = new System.Drawing.Size(56, 37);
+            buttonEmailDodaj.TabIndex = 3;
+            buttonEmailDodaj.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            tableLayoutPanel3.Controls.Add(labelTelefon, 0, 0);
+            tableLayoutPanel3.Controls.Add(textBoxTelefon, 0, 1);
+            tableLayoutPanel3.Controls.Add(buttontelefonDodaj, 1, 1);
+            tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel3.Location = new System.Drawing.Point(427, 116);
+            tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel3.Size = new System.Drawing.Size(416, 78);
+            tableLayoutPanel3.TabIndex = 4;
+            // 
+            // labelTelefon
+            // 
+            labelTelefon.AutoSize = true;
+            labelTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            labelTelefon.Location = new System.Drawing.Point(4, 0);
+            labelTelefon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelTelefon.Name = "labelTelefon";
+            labelTelefon.Size = new System.Drawing.Size(344, 35);
+            labelTelefon.TabIndex = 1;
+            labelTelefon.Text = "Dodaj telefon";
+            labelTelefon.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // textBoxTelefon
+            // 
+            textBoxTelefon.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxTelefon.Location = new System.Drawing.Point(4, 38);
+            textBoxTelefon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxTelefon.Multiline = true;
+            textBoxTelefon.Name = "textBoxTelefon";
+            textBoxTelefon.Size = new System.Drawing.Size(344, 37);
+            textBoxTelefon.TabIndex = 1;
             // 
             // buttontelefonDodaj
             // 
-            this.buttontelefonDodaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttontelefonDodaj.Image = global::projekat_2026.Properties.Resources.icons8_login_24;
-            this.buttontelefonDodaj.Location = new System.Drawing.Point(305, 33);
-            this.buttontelefonDodaj.Name = "buttontelefonDodaj";
-            this.buttontelefonDodaj.Size = new System.Drawing.Size(49, 31);
-            this.buttontelefonDodaj.TabIndex = 3;
-            this.buttontelefonDodaj.UseVisualStyleBackColor = true;
+            buttontelefonDodaj.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttontelefonDodaj.Location = new System.Drawing.Point(356, 38);
+            buttontelefonDodaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttontelefonDodaj.Name = "buttontelefonDodaj";
+            buttontelefonDodaj.Size = new System.Drawing.Size(56, 37);
+            buttontelefonDodaj.TabIndex = 3;
+            buttontelefonDodaj.UseVisualStyleBackColor = true;
+            // 
+            // listBoxEmail
+            // 
+            listBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxEmail.FormattingEnabled = true;
+            listBoxEmail.ItemHeight = 18;
+            listBoxEmail.Location = new System.Drawing.Point(4, 229);
+            listBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBoxEmail.Name = "listBoxEmail";
+            listBoxEmail.Size = new System.Drawing.Size(415, 141);
+            listBoxEmail.TabIndex = 6;
+            // 
+            // tableLayoutPanelKontrole
+            // 
+            tableLayoutPanelKontrole.ColumnCount = 3;
+            tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            tableLayoutPanelKontrole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            tableLayoutPanelKontrole.Controls.Add(buttonSacuvaj, 2, 0);
+            tableLayoutPanelKontrole.Controls.Add(buttonPonisti, 1, 0);
+            tableLayoutPanelKontrole.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelKontrole.Location = new System.Drawing.Point(427, 385);
+            tableLayoutPanelKontrole.Margin = new System.Windows.Forms.Padding(4, 12, 4, 3);
+            tableLayoutPanelKontrole.Name = "tableLayoutPanelKontrole";
+            tableLayoutPanelKontrole.RowCount = 1;
+            tableLayoutPanelKontrole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelKontrole.Size = new System.Drawing.Size(416, 47);
+            tableLayoutPanelKontrole.TabIndex = 8;
             // 
             // buttonSacuvaj
             // 
-            this.buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSacuvaj.Image = global::projekat_2026.Properties.Resources.icons8_save_24;
-            this.buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSacuvaj.Location = new System.Drawing.Point(247, 3);
-            this.buttonSacuvaj.Name = "buttonSacuvaj";
-            this.buttonSacuvaj.Size = new System.Drawing.Size(114, 35);
-            this.buttonSacuvaj.TabIndex = 0;
-            this.buttonSacuvaj.Text = "Saèuvaj";
-            this.buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSacuvaj.UseVisualStyleBackColor = true;
+            buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonSacuvaj.Location = new System.Drawing.Point(289, 3);
+            buttonSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonSacuvaj.Name = "buttonSacuvaj";
+            buttonSacuvaj.Size = new System.Drawing.Size(132, 41);
+            buttonSacuvaj.TabIndex = 0;
+            buttonSacuvaj.Text = "Saèuvaj";
+            buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonSacuvaj.UseVisualStyleBackColor = true;
+            // 
+            // buttonPonisti
+            // 
+            buttonPonisti.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonPonisti.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonPonisti.Location = new System.Drawing.Point(159, 3);
+            buttonPonisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonPonisti.Name = "buttonPonisti";
+            buttonPonisti.Size = new System.Drawing.Size(122, 41);
+            buttonPonisti.TabIndex = 1;
+            buttonPonisti.Text = "Poništi";
+            buttonPonisti.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStripObrisiEmail
+            // 
+            contextMenuStripObrisiEmail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiToolStripMenuItem });
+            contextMenuStripObrisiEmail.Name = "contextMenuStripObrisiEmail";
+            contextMenuStripObrisiEmail.Size = new System.Drawing.Size(106, 26);
+            // 
+            // obrisiToolStripMenuItem
+            // 
+            obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
+            obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            obrisiToolStripMenuItem.Text = "Obrisi";
+            // 
+            // contextMenuStripObrisiTelefon
+            // 
+            contextMenuStripObrisiTelefon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiToolStripMenuItem1 });
+            contextMenuStripObrisiTelefon.Name = "contextMenuStripObrisiTelefon";
+            contextMenuStripObrisiTelefon.Size = new System.Drawing.Size(106, 26);
+            // 
+            // obrisiToolStripMenuItem1
+            // 
+            obrisiToolStripMenuItem1.Name = "obrisiToolStripMenuItem1";
+            obrisiToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
+            obrisiToolStripMenuItem1.Text = "Obrisi";
             // 
             // FormKontaktDetalji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 398);
-            this.Controls.Add(this.tableLayoutPanelCenterContent);
-            this.Name = "FormKontaktDetalji";
-            this.Text = "Kontakt";
-            this.tableLayoutPanelCenterContent.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanelKontrole.ResumeLayout(false);
-            this.contextMenuStripObrisiEmail.ResumeLayout(false);
-            this.contextMenuStripObrisiTelefon.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(847, 459);
+            Controls.Add(tableLayoutPanelCenterContent);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FormKontaktDetalji";
+            Text = "Kontakt";
+            tableLayoutPanelCenterContent.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
+            tableLayoutPanelKontrole.ResumeLayout(false);
+            contextMenuStripObrisiEmail.ResumeLayout(false);
+            contextMenuStripObrisiTelefon.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 

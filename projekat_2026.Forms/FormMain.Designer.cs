@@ -36,6 +36,7 @@ namespace projekat_2026
             toolStripButtonPodesavanja = new System.Windows.Forms.ToolStripButton();
             toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             toolStripButtonNoviPregled = new System.Windows.Forms.ToolStripButton();
+            toolStripButtondodajFirmu = new System.Windows.Forms.ToolStripButton();
             tabControlMain = new System.Windows.Forms.TabControl();
             tabPageDashboard = new System.Windows.Forms.TabPage();
             tableLayoutPanelDashboard = new System.Windows.Forms.TableLayoutPanel();
@@ -86,7 +87,6 @@ namespace projekat_2026
             tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             buttonLogOff = new System.Windows.Forms.Button();
             listViewObavestenja = new System.Windows.Forms.ListView();
-            toolStripButtondodajFirmu = new System.Windows.Forms.ToolStripButton();
             contextMenuStripAdresarDetalji.SuspendLayout();
             tableLayoutPanelMain.SuspendLayout();
             toolStripDetaljiObjekat.SuspendLayout();
@@ -168,7 +168,6 @@ namespace projekat_2026
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
@@ -177,11 +176,18 @@ namespace projekat_2026
             // toolStripButtonNoviPregled
             // 
             toolStripButtonNoviPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonNoviPregled.Image = Properties.Resources.icons8_todo_list_24;
             toolStripButtonNoviPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonNoviPregled.Name = "toolStripButtonNoviPregled";
             toolStripButtonNoviPregled.Size = new System.Drawing.Size(23, 32);
             toolStripButtonNoviPregled.Text = "Novi pregled";
+            // 
+            // toolStripButtondodajFirmu
+            // 
+            toolStripButtondodajFirmu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtondodajFirmu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtondodajFirmu.Name = "toolStripButtondodajFirmu";
+            toolStripButtondodajFirmu.Size = new System.Drawing.Size(23, 32);
+            toolStripButtondodajFirmu.Text = "Nova firma/objekat";
             // 
             // tabControlMain
             // 
@@ -292,13 +298,13 @@ namespace projekat_2026
             // buttonDodajFirmaObjekat
             // 
             buttonDodajFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajFirmaObjekat.Image = Properties.Resources.icons8_edit_folder_24;
             buttonDodajFirmaObjekat.Location = new System.Drawing.Point(216, 3);
             buttonDodajFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajFirmaObjekat.Name = "buttonDodajFirmaObjekat";
             buttonDodajFirmaObjekat.Size = new System.Drawing.Size(55, 42);
             buttonDodajFirmaObjekat.TabIndex = 1;
             buttonDodajFirmaObjekat.UseVisualStyleBackColor = true;
+            buttonDodajFirmaObjekat.Click += buttonDodajFirmaObjekat_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -328,7 +334,6 @@ namespace projekat_2026
             // buttonDodajKontakt
             // 
             buttonDodajKontakt.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajKontakt.Image = Properties.Resources.icons8_edit_folder_24;
             buttonDodajKontakt.Location = new System.Drawing.Point(170, 3);
             buttonDodajKontakt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajKontakt.Name = "buttonDodajKontakt";
@@ -380,7 +385,6 @@ namespace projekat_2026
             // buttonFirmaObjekatDetalji
             // 
             buttonFirmaObjekatDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonFirmaObjekatDetalji.Image = Properties.Resources.icons8_login_24;
             buttonFirmaObjekatDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonFirmaObjekatDetalji.Location = new System.Drawing.Point(482, 3);
             buttonFirmaObjekatDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -425,7 +429,6 @@ namespace projekat_2026
             // buttonSistemiDetalji
             // 
             buttonSistemiDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonSistemiDetalji.Image = Properties.Resources.icons8_login_24;
             buttonSistemiDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSistemiDetalji.Location = new System.Drawing.Point(427, 3);
             buttonSistemiDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -534,7 +537,6 @@ namespace projekat_2026
             // buttonOprema
             // 
             buttonOprema.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOprema.Image = Properties.Resources.icons8_login_24;
             buttonOprema.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonOprema.Location = new System.Drawing.Point(4, 3);
             buttonOprema.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -548,7 +550,6 @@ namespace projekat_2026
             // buttonNoviPregled
             // 
             buttonNoviPregled.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonNoviPregled.Image = Properties.Resources.icons8_todo_list_24;
             buttonNoviPregled.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonNoviPregled.Location = new System.Drawing.Point(427, 3);
             buttonNoviPregled.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -865,15 +866,6 @@ namespace projekat_2026
             listViewObavestenja.Size = new System.Drawing.Size(1149, 67);
             listViewObavestenja.TabIndex = 7;
             listViewObavestenja.UseCompatibleStateImageBehavior = false;
-            // 
-            // toolStripButtondodajFirmu
-            // 
-            toolStripButtondodajFirmu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtondodajFirmu.Image = Properties.Resources.icons8_edit_folder_24;
-            toolStripButtondodajFirmu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtondodajFirmu.Name = "toolStripButtondodajFirmu";
-            toolStripButtondodajFirmu.Size = new System.Drawing.Size(23, 32);
-            toolStripButtondodajFirmu.Text = "Nova firma/objekat";
             // 
             // FormMain
             // 

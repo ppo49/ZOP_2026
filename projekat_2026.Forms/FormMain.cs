@@ -57,5 +57,11 @@ namespace projekat_2026
         {
             Application.Exit();
         }
+
+        private void buttonDodajFirmaObjekat_Click(object sender, EventArgs e)
+        {
+            FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
+            formFirmaObjekatDodaj.ShowDialog();
+        }
     }
 }
