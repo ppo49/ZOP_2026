@@ -23,6 +23,19 @@ namespace projekat_2026.Core
             return db.Sistems.ToList();
         }
 
+        public List<Sistem> GetNameAndId()
+        {
+            using var db = new AppDbContext(_dbOptions);
+            return db.Sistems
+                .AsNoTracking()
+                .Select(s => new Sistem
+                {
+                    IdSistem = s.IdSistem,
+                    Naziv = s.Naziv
+                })
+                .ToList();
+        }
+
         public Sistem? GetById(int id)
         {
             using var db = new AppDbContext(_dbOptions);

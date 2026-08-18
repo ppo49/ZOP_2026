@@ -168,6 +168,7 @@ namespace projekat_2026
             // toolStripButtonRefresh
             // 
             toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonRefresh.Image = Properties.Resources.icons8_refresh_24;
             toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             toolStripButtonRefresh.Size = new System.Drawing.Size(23, 32);
@@ -176,6 +177,7 @@ namespace projekat_2026
             // toolStripButtonNoviPregled
             // 
             toolStripButtonNoviPregled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonNoviPregled.Image = Properties.Resources.icons8_add_list_24;
             toolStripButtonNoviPregled.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonNoviPregled.Name = "toolStripButtonNoviPregled";
             toolStripButtonNoviPregled.Size = new System.Drawing.Size(23, 32);
@@ -184,10 +186,12 @@ namespace projekat_2026
             // toolStripButtondodajFirmu
             // 
             toolStripButtondodajFirmu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtondodajFirmu.Image = Properties.Resources.icons8_add_new_24;
             toolStripButtondodajFirmu.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtondodajFirmu.Name = "toolStripButtondodajFirmu";
             toolStripButtondodajFirmu.Size = new System.Drawing.Size(23, 32);
             toolStripButtondodajFirmu.Text = "Nova firma/objekat";
+            toolStripButtondodajFirmu.Click += toolStripButtondodajFirmu_Click;
             // 
             // tabControlMain
             // 
@@ -298,6 +302,7 @@ namespace projekat_2026
             // buttonDodajFirmaObjekat
             // 
             buttonDodajFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonDodajFirmaObjekat.Image = Properties.Resources.icons8_add_new_24;
             buttonDodajFirmaObjekat.Location = new System.Drawing.Point(216, 3);
             buttonDodajFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajFirmaObjekat.Name = "buttonDodajFirmaObjekat";
@@ -334,6 +339,7 @@ namespace projekat_2026
             // buttonDodajKontakt
             // 
             buttonDodajKontakt.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonDodajKontakt.Image = Properties.Resources.icons8_add_new_24;
             buttonDodajKontakt.Location = new System.Drawing.Point(170, 3);
             buttonDodajKontakt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajKontakt.Name = "buttonDodajKontakt";
@@ -385,6 +391,7 @@ namespace projekat_2026
             // buttonFirmaObjekatDetalji
             // 
             buttonFirmaObjekatDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonFirmaObjekatDetalji.Image = Properties.Resources.icons8_login_24;
             buttonFirmaObjekatDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonFirmaObjekatDetalji.Location = new System.Drawing.Point(482, 3);
             buttonFirmaObjekatDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -429,6 +436,7 @@ namespace projekat_2026
             // buttonSistemiDetalji
             // 
             buttonSistemiDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonSistemiDetalji.Image = Properties.Resources.icons8_login_24;
             buttonSistemiDetalji.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonSistemiDetalji.Location = new System.Drawing.Point(427, 3);
             buttonSistemiDetalji.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -537,6 +545,7 @@ namespace projekat_2026
             // buttonOprema
             // 
             buttonOprema.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonOprema.Image = Properties.Resources.icons8_tasks_24;
             buttonOprema.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonOprema.Location = new System.Drawing.Point(4, 3);
             buttonOprema.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -550,6 +559,7 @@ namespace projekat_2026
             // buttonNoviPregled
             // 
             buttonNoviPregled.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonNoviPregled.Image = Properties.Resources.icons8_add_new_24;
             buttonNoviPregled.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             buttonNoviPregled.Location = new System.Drawing.Point(427, 3);
             buttonNoviPregled.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

@@ -63,5 +63,11 @@ namespace projekat_2026
             FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
             formFirmaObjekatDodaj.ShowDialog();
         }
+
+        private void toolStripButtondodajFirmu_Click(object sender, EventArgs e)
+        {
+            FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
+            formFirmaObjekatDodaj.ShowDialog();
+        }
     }
 }

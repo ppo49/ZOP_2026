@@ -123,6 +123,16 @@ namespace projekat_2026.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_easy_to_find_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-easy-to-find-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_edit_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-edit-24", resourceCulture);
@@ -216,6 +226,16 @@ namespace projekat_2026.Properties {
         internal static System.Drawing.Bitmap icons8_stop_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-stop-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_tasks_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-tasks-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
