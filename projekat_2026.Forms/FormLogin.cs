@@ -67,7 +67,7 @@ namespace projekat_2026
                 return;
             }
 
-            if (!EmailRegex.IsMatch(pwdInput))
+            if (!PwdRegex.IsMatch(pwdInput))
             {
                 errorProviderLogin.SetError(textBoxLoginPassword, "Unesite validnu lozinku.");
             }
@@ -110,10 +110,13 @@ namespace projekat_2026
                     labelObavestenje.Text = "Pogrešan e-mail ili lozinka.";
                     return;
                 }
+
                 FormMain formMain = new FormMain(_dbOptions, agent);
-                formMain.ShowDialog();
-                this.Hide();
+
                 formMain.FormClosed += (s, args) => this.Close();
+
+                this.Hide();
+                formMain.Show();
             }
             catch (Exception ex)
             {

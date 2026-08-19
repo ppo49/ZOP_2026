@@ -52,5 +52,42 @@ namespace projekat_2026.Core
                 db.SaveChanges();
             }
         }
+
+
+        public async Task<bool> SaveComplete(FirmaObjekat firma, List<Adresar> adresari, List<ObjekatSistemVeznaTabela> sistemi)
+        {
+            using var db = new AppDbContext(_dbOptions);
+            using var transaction = await db.Database.BeginTransactionAsync();
+            try
+            {
+                db.FirmaObjekats.Add(firma);
+                foreach (var adresar in adresari)
+                {
+                    if (adresar.IdAdresar > 0)
+                    {
+                        db.Adresars.Attach(adresar);
+                        adresar.IdFirmaObjekats.Add(firma);
+                    }
+                    else
+                    {
+                        db.Adresars.Add(adresar);
+                    }
+                }
+                if (sistemi.Any())
+                    db.ObjekatSistemVeznaTabelas.AddRange(sistemi);
+
+                await db.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return true;
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw; // let the form decide how to show the error
+            }
+        }
+
+
+
     }
 }

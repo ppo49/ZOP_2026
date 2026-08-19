@@ -44,7 +44,6 @@ namespace projekat_2026
             labelFirmaObjekat = new System.Windows.Forms.Label();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             textBoxFrimaOjekatFilter = new System.Windows.Forms.TextBox();
-            buttonDodajFirmaObjekat = new System.Windows.Forms.Button();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             textBoxAdresarFilter = new System.Windows.Forms.TextBox();
             buttonDodajKontakt = new System.Windows.Forms.Button();
@@ -87,6 +86,7 @@ namespace projekat_2026
             tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             buttonLogOff = new System.Windows.Forms.Button();
             listViewObavestenja = new System.Windows.Forms.ListView();
+            buttonDodajFirmaObjekat = new System.Windows.Forms.Button();
             contextMenuStripAdresarDetalji.SuspendLayout();
             tableLayoutPanelMain.SuspendLayout();
             toolStripDetaljiObjekat.SuspendLayout();
@@ -299,18 +299,6 @@ namespace projekat_2026
             textBoxFrimaOjekatFilter.Size = new System.Drawing.Size(204, 24);
             textBoxFrimaOjekatFilter.TabIndex = 0;
             // 
-            // buttonDodajFirmaObjekat
-            // 
-            buttonDodajFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonDodajFirmaObjekat.Image = Properties.Resources.icons8_add_new_24;
-            buttonDodajFirmaObjekat.Location = new System.Drawing.Point(216, 3);
-            buttonDodajFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            buttonDodajFirmaObjekat.Name = "buttonDodajFirmaObjekat";
-            buttonDodajFirmaObjekat.Size = new System.Drawing.Size(55, 42);
-            buttonDodajFirmaObjekat.TabIndex = 1;
-            buttonDodajFirmaObjekat.UseVisualStyleBackColor = true;
-            buttonDodajFirmaObjekat.Click += buttonDodajFirmaObjekat_Click;
-            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
@@ -457,6 +445,7 @@ namespace projekat_2026
             tableLayoutPanelDashboard.SetRowSpan(dataGridViewFirmaObjekat, 2);
             dataGridViewFirmaObjekat.Size = new System.Drawing.Size(275, 380);
             dataGridViewFirmaObjekat.TabIndex = 12;
+            dataGridViewFirmaObjekat.CellClick += dataGridViewFirmaObjekat_CellClick;
             // 
             // dataGridViewAdresar
             // 
@@ -623,6 +612,7 @@ namespace projekat_2026
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel14.Size = new System.Drawing.Size(340, 32);
             tableLayoutPanel14.TabIndex = 25;
             // 
@@ -877,6 +867,18 @@ namespace projekat_2026
             listViewObavestenja.TabIndex = 7;
             listViewObavestenja.UseCompatibleStateImageBehavior = false;
             // 
+            // buttonDodajFirmaObjekat
+            // 
+            buttonDodajFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonDodajFirmaObjekat.Image = Properties.Resources.icons8_add_new_24;
+            buttonDodajFirmaObjekat.Location = new System.Drawing.Point(216, 3);
+            buttonDodajFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonDodajFirmaObjekat.Name = "buttonDodajFirmaObjekat";
+            buttonDodajFirmaObjekat.Size = new System.Drawing.Size(55, 42);
+            buttonDodajFirmaObjekat.TabIndex = 1;
+            buttonDodajFirmaObjekat.UseVisualStyleBackColor = true;
+            buttonDodajFirmaObjekat.Click += buttonDodajFirmaObjekat_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -944,7 +946,6 @@ namespace projekat_2026
         private System.Windows.Forms.Label labelFirmaObjekat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBoxFrimaOjekatFilter;
-        private System.Windows.Forms.Button buttonDodajFirmaObjekat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBoxAdresarFilter;
         private System.Windows.Forms.Button buttonDodajKontakt;
@@ -990,6 +991,7 @@ namespace projekat_2026
         private System.Windows.Forms.TextBox textBoxAgentSluzbeniEmail;
         private System.Windows.Forms.Label labelAgentSluzbeniEmail;
         private System.Windows.Forms.ToolStripButton toolStripButtondodajFirmu;
+        private System.Windows.Forms.Button buttonDodajFirmaObjekat;
     }
 }
 

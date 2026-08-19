@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using projekat_2026.Data.Models;
+using projekat_2026.Core;
 
 
 namespace projekat_2026
@@ -20,11 +21,17 @@ namespace projekat_2026
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly Agent _loggedInAgent;
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
+
+        private int? _selectedFirmaObjekatId;
+
+        private readonly FirmaObjekatService firmaObjekatService;
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
             InitializeComponent();
             _dbOptions = dbOptions;
             _loggedInAgent = loggedInAgent;
+
+            firmaObjekatService = new FirmaObjekatService(dbOptions);
 
             this.Text = $"ZOP, {_loggedInAgent.ImePrezime}";
 
@@ -41,17 +48,41 @@ namespace projekat_2026
             labelAgentRole.Text = $"Role: {_loggedInAgent.Role.ToString()}";
             labelAgentStatusAktivnosti.Text = $"Status Aktivnosti: {_loggedInAgent.StatusAktivnosti.ToString()}";
 
+
+            SetupdataGridViewFirmaObjekat();
+
+        }
+
+
+
+        private void SetupdataGridViewFirmaObjekat()
+        {
+            var firme = firmaObjekatService.GetAll().Select(
+                f => new
+                {
+                    f.IdFirmaObjekat, //0
+                    f.ImeFirmeObjekat, //1
+                    f.Adresa, //2
+                    f.Grad, //3
+                    f.Pib, //4
+                    f.Mb, //5
+                    f.BrojZaposlenih, //6
+                    Status = f.Aktivan == true ? "Aktivan" : "Neaktivan" //7
+                })
+                .ToList();
+            dataGridViewFirmaObjekat.DataSource = firme;
             dataGridViewFirmaObjekat.RowHeadersVisible = false;
             dataGridViewFirmaObjekat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewFirmaObjekat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewFirmaObjekat.Columns["IdFirmaObjekat"].Visible = false;
+            dataGridViewFirmaObjekat.Columns["Adresa"].Visible = false;
+            dataGridViewFirmaObjekat.Columns["Grad"].Visible = false;
+            dataGridViewFirmaObjekat.Columns["Pib"].Visible = false;
+            dataGridViewFirmaObjekat.Columns["Mb"].Visible = false;
+            dataGridViewFirmaObjekat.Columns["BrojZaposlenih"].Visible = false;
         }
 
-
-
-
-        private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -68,6 +99,21 @@ namespace projekat_2026
         {
             FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
             formFirmaObjekatDodaj.ShowDialog();
+        }
+
+        private void dataGridViewFirmaObjekat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+           
+
+            DataGridViewRow row =  dataGridViewFirmaObjekat.Rows[e.RowIndex];
+
+            int IdFirmaObjekat = (int)row.Cells["IdFirmaObjekat"].Value;
+            var firma = firmaObjekatService.GetById(IdFirmaObjekat);
+            if (firma == null) return;
+
+            textBoxObjekatfirmaIme.Text = firma.ImeFirmeObjekat.ToString();
+
         }
     }
 }

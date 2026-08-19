@@ -86,6 +86,7 @@ namespace projekat_2026
             buttonRefresh3 = new System.Windows.Forms.Button();
             buttonPreskoci = new System.Windows.Forms.Button();
             buttonSledeci2 = new System.Windows.Forms.Button();
+            buttonNazad1 = new System.Windows.Forms.Button();
             tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
             label33 = new System.Windows.Forms.Label();
             textBoxKontaktNapomena = new System.Windows.Forms.TextBox();
@@ -113,6 +114,7 @@ namespace projekat_2026
             buttonRefresh2 = new System.Windows.Forms.Button();
             buttonPreskociSacuvaj = new System.Windows.Forms.Button();
             buttonSacuvaj = new System.Windows.Forms.Button();
+            buttonNazad2 = new System.Windows.Forms.Button();
             contextMenuStripIzbrisi.SuspendLayout();
             tabControlDodajFirmuObjekat.SuspendLayout();
             tabPageOsnovniPodaci.SuspendLayout();
@@ -261,9 +263,8 @@ namespace projekat_2026
             textBoxGrad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxGrad.Location = new System.Drawing.Point(4, 32);
             textBoxGrad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxGrad.Multiline = true;
             textBoxGrad.Name = "textBoxGrad";
-            textBoxGrad.Size = new System.Drawing.Size(176, 29);
+            textBoxGrad.Size = new System.Drawing.Size(176, 24);
             textBoxGrad.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -344,9 +345,8 @@ namespace projekat_2026
             textBoxAdresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxAdresa.Location = new System.Drawing.Point(4, 32);
             textBoxAdresa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxAdresa.Multiline = true;
             textBoxAdresa.Name = "textBoxAdresa";
-            textBoxAdresa.Size = new System.Drawing.Size(176, 29);
+            textBoxAdresa.Size = new System.Drawing.Size(176, 24);
             textBoxAdresa.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -385,9 +385,8 @@ namespace projekat_2026
             textBoxMb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxMb.Location = new System.Drawing.Point(4, 32);
             textBoxMb.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxMb.Multiline = true;
             textBoxMb.Name = "textBoxMb";
-            textBoxMb.Size = new System.Drawing.Size(147, 29);
+            textBoxMb.Size = new System.Drawing.Size(147, 24);
             textBoxMb.TabIndex = 1;
             textBoxMb.KeyPress += keyPressFunction;
             // 
@@ -427,9 +426,8 @@ namespace projekat_2026
             textBoxPib.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxPib.Location = new System.Drawing.Point(4, 32);
             textBoxPib.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxPib.Multiline = true;
             textBoxPib.Name = "textBoxPib";
-            textBoxPib.Size = new System.Drawing.Size(166, 29);
+            textBoxPib.Size = new System.Drawing.Size(166, 24);
             textBoxPib.TabIndex = 1;
             textBoxPib.KeyPress += keyPressFunction;
             // 
@@ -631,9 +629,8 @@ namespace projekat_2026
             textBoxImeFirmeObjekta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxImeFirmeObjekta.Location = new System.Drawing.Point(4, 32);
             textBoxImeFirmeObjekta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxImeFirmeObjekta.Multiline = true;
             textBoxImeFirmeObjekta.Name = "textBoxImeFirmeObjekta";
-            textBoxImeFirmeObjekta.Size = new System.Drawing.Size(188, 29);
+            textBoxImeFirmeObjekta.Size = new System.Drawing.Size(188, 24);
             textBoxImeFirmeObjekta.TabIndex = 1;
             // 
             // tabPageAdresar
@@ -746,9 +743,8 @@ namespace projekat_2026
             textBoxTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxTelefon.Location = new System.Drawing.Point(4, 32);
             textBoxTelefon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxTelefon.Multiline = true;
             textBoxTelefon.Name = "textBoxTelefon";
-            textBoxTelefon.Size = new System.Drawing.Size(272, 29);
+            textBoxTelefon.Size = new System.Drawing.Size(272, 24);
             textBoxTelefon.TabIndex = 4;
             // 
             // tableLayoutPanel44
@@ -803,9 +799,8 @@ namespace projekat_2026
             textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxEmail.Location = new System.Drawing.Point(4, 32);
             textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxEmail.Multiline = true;
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new System.Drawing.Size(254, 29);
+            textBoxEmail.Size = new System.Drawing.Size(254, 24);
             textBoxEmail.TabIndex = 4;
             // 
             // tableLayoutPanel43
@@ -844,9 +839,8 @@ namespace projekat_2026
             textBoxKontaktImePrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxKontaktImePrezime.Location = new System.Drawing.Point(4, 32);
             textBoxKontaktImePrezime.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxKontaktImePrezime.Multiline = true;
             textBoxKontaktImePrezime.Name = "textBoxKontaktImePrezime";
-            textBoxKontaktImePrezime.Size = new System.Drawing.Size(192, 29);
+            textBoxKontaktImePrezime.Size = new System.Drawing.Size(192, 24);
             textBoxKontaktImePrezime.TabIndex = 1;
             // 
             // label24
@@ -899,14 +893,16 @@ namespace projekat_2026
             // tableLayoutPanel47
             // 
             tableLayoutPanel47.BackColor = System.Drawing.SystemColors.ControlLight;
-            tableLayoutPanel47.ColumnCount = 4;
+            tableLayoutPanel47.ColumnCount = 5;
             tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             tableLayoutPanel47.Controls.Add(buttonRefresh3, 0, 0);
-            tableLayoutPanel47.Controls.Add(buttonPreskoci, 2, 0);
-            tableLayoutPanel47.Controls.Add(buttonSledeci2, 3, 0);
+            tableLayoutPanel47.Controls.Add(buttonPreskoci, 3, 0);
+            tableLayoutPanel47.Controls.Add(buttonSledeci2, 4, 0);
+            tableLayoutPanel47.Controls.Add(buttonNazad1, 2, 0);
             tableLayoutPanel47.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel47.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanel47.Margin = new System.Windows.Forms.Padding(4, 12, 4, 17);
@@ -955,6 +951,21 @@ namespace projekat_2026
             buttonSledeci2.Text = "Sledeæi";
             buttonSledeci2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonSledeci2.UseVisualStyleBackColor = true;
+            buttonSledeci2.Click += buttonSledeci2_Click;
+            // 
+            // buttonNazad1
+            // 
+            buttonNazad1.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonNazad1.Image = Properties.Resources.icons8_logout_24;
+            buttonNazad1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonNazad1.Location = new System.Drawing.Point(793, 3);
+            buttonNazad1.Name = "buttonNazad1";
+            buttonNazad1.Size = new System.Drawing.Size(108, 38);
+            buttonNazad1.TabIndex = 11;
+            buttonNazad1.Text = "Nazad";
+            buttonNazad1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonNazad1.UseVisualStyleBackColor = true;
+            buttonNazad1.Click += buttonNazad1_Click;
             // 
             // tableLayoutPanel46
             // 
@@ -1179,9 +1190,8 @@ namespace projekat_2026
             textBoxSistemNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             textBoxSistemNapomena.Location = new System.Drawing.Point(4, 32);
             textBoxSistemNapomena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxSistemNapomena.Multiline = true;
             textBoxSistemNapomena.Name = "textBoxSistemNapomena";
-            textBoxSistemNapomena.Size = new System.Drawing.Size(608, 29);
+            textBoxSistemNapomena.Size = new System.Drawing.Size(608, 24);
             textBoxSistemNapomena.TabIndex = 1;
             // 
             // tableLayoutPanel25
@@ -1289,14 +1299,16 @@ namespace projekat_2026
             // tableLayoutPanel30
             // 
             tableLayoutPanel30.BackColor = System.Drawing.SystemColors.ControlLight;
-            tableLayoutPanel30.ColumnCount = 4;
+            tableLayoutPanel30.ColumnCount = 5;
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             tableLayoutPanel30.Controls.Add(buttonRefresh2, 0, 0);
-            tableLayoutPanel30.Controls.Add(buttonPreskociSacuvaj, 2, 0);
-            tableLayoutPanel30.Controls.Add(buttonSacuvaj, 3, 0);
+            tableLayoutPanel30.Controls.Add(buttonPreskociSacuvaj, 3, 0);
+            tableLayoutPanel30.Controls.Add(buttonSacuvaj, 4, 0);
+            tableLayoutPanel30.Controls.Add(buttonNazad2, 2, 0);
             tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel30.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(4, 12, 4, 17);
@@ -1349,6 +1361,20 @@ namespace projekat_2026
             buttonSacuvaj.UseVisualStyleBackColor = true;
             buttonSacuvaj.Click += buttonSacuvaj_Click;
             // 
+            // buttonNazad2
+            // 
+            buttonNazad2.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonNazad2.Image = Properties.Resources.icons8_logout_24;
+            buttonNazad2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonNazad2.Location = new System.Drawing.Point(728, 3);
+            buttonNazad2.Name = "buttonNazad2";
+            buttonNazad2.Size = new System.Drawing.Size(115, 38);
+            buttonNazad2.TabIndex = 12;
+            buttonNazad2.Text = "Nazad";
+            buttonNazad2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonNazad2.UseVisualStyleBackColor = true;
+            buttonNazad2.Click += buttonNazad2_Click;
+            // 
             // FormFirmaObjekatDodaj
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1358,6 +1384,8 @@ namespace projekat_2026
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "FormFirmaObjekatDodaj";
             Text = "FormFirmaObjekatDodaj";
+            FormClosing += FormFirmaObjekatDodaj_FormClosing;
+            Load += FormFirmaObjekatDodaj_Load;
             contextMenuStripIzbrisi.ResumeLayout(false);
             tabControlDodajFirmuObjekat.ResumeLayout(false);
             tabPageOsnovniPodaci.ResumeLayout(false);
@@ -1504,5 +1532,7 @@ namespace projekat_2026
         private System.Windows.Forms.Button buttonSledeci2;
         private System.Windows.Forms.Button buttonPreskociSacuvaj;
         private System.Windows.Forms.Button buttonSacuvaj;
+        private System.Windows.Forms.Button buttonNazad1;
+        private System.Windows.Forms.Button buttonNazad2;
     }
 }

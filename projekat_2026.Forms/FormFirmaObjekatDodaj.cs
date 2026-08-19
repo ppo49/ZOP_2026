@@ -13,39 +13,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace projekat_2026
 {
     public partial class FormFirmaObjekatDodaj : Form
     {
-
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
 
         private readonly FirmaObjekatService firmaObjekatService;
         private readonly SistemService sistemService;
         private readonly DbContextOptions<AppDbContext> _dbOptions;
-        private FirmaObjekat novaFirma;
-        //private ObjekatSistemVeznaTabela noviOSVTSistem;
 
+        private FirmaObjekat novaFirma;
         private List<ObjekatSistemVeznaTabela> listaSistema = new List<ObjekatSistemVeznaTabela>();
         private List<Adresar> listaAdresar = new List<Adresar>();
+
+        private bool _allowTabChange = false;
 
         public FormFirmaObjekatDodaj(DbContextOptions<AppDbContext> dbOptions)
         {
             InitializeComponent();
 
-            tabControlDodajFirmuObjekat.SelectedIndex = 0;
-
             firmaObjekatService = new FirmaObjekatService(dbOptions);
             sistemService = new SistemService(dbOptions);
 
-            dbOptions = _dbOptions;
+            _dbOptions = dbOptions;
 
             labelDatumAktivnosti.Text = $"Datum aktivnosti: {DateOnly.FromDateTime(DateTime.Now)}";
 
             numericUpDownBrZaposlenih.Minimum = 0;
             numericUpDownBrZaposlenih.Maximum = 10000;
-
 
             textBoxPib.MaxLength = 9;
             textBoxMb.MaxLength = 8;
@@ -55,28 +51,23 @@ namespace projekat_2026
             setupDataGridViewSistem();
             setupComboBoxSistem();
             setupDataGridViewAdresar();
-
         }
+
         private void tabControlDodajFirmuObjekat_Selecting(object sender, TabControlCancelEventArgs e)
         {
-
-            if (e.TabPage == tabPageOsnovniPodaci)
+            if (!_allowTabChange)
             {
                 e.Cancel = true;
             }
-
-
-            if (e.TabPage == tabPageSistemi)
-            {
-                e.Cancel = true;
-            }
-
-            if (e.TabPage == tabPageAdresar)
-            {
-                e.Cancel = true;
-            }
-
         }
+
+        private void SwitchToTab(int tabIndex)
+        {
+            _allowTabChange = true;
+            tabControlDodajFirmuObjekat.SelectedIndex = tabIndex;
+            _allowTabChange = false;
+        }
+
         private void buttonOcisti_Click(object sender, EventArgs e)
         {
             classDizajnFormi.clearTabPageContent(tabPageOsnovniPodaci);
@@ -108,6 +99,7 @@ namespace projekat_2026
 
             dataGridViewSistemi.ContextMenuStrip = contextMenuStripIzbrisi;
 
+            dataGridViewSistemi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void setupDataGridViewAdresar()
@@ -133,12 +125,10 @@ namespace projekat_2026
             dataGridViewAdresar.Columns[4].Name = "Napomena";
             dataGridViewAdresar.Columns[4].HeaderText = "Napomena";
 
-
-
             dataGridViewAdresar.ContextMenuStrip = contextMenuStripIzbrisi;
 
+            dataGridViewAdresar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-
 
         private void keyPressFunction(object sender, KeyPressEventArgs e)
         {
@@ -150,27 +140,20 @@ namespace projekat_2026
 
         public void DeleteSelectedRowFromMenuItem(object sender, EventArgs e)
         {
-            // 1. Get the clicked menu item
-            if (sender is ToolStripMenuItem menuItem)
+            if (sender is ToolStripMenuItem menuItem && menuItem.Owner is ContextMenuStrip contextMenu)
             {
-                // 2. Get the ContextMenuStrip hosting the item
-                if (menuItem.Owner is ContextMenuStrip contextMenu)
+                if (contextMenu.SourceControl is DataGridView dgv)
                 {
-                    // 3. Find which DataGridView triggered this specific menu
-                    if (contextMenu.SourceControl is DataGridView dgv)
+                    if (dgv.SelectedRows.Count > 0 && !dgv.SelectedRows[0].IsNewRow)
                     {
-                        // 4. Remove the selected row
-                        if (dgv.SelectedRows.Count > 0 && !dgv.SelectedRows[0].IsNewRow)
-                        {
-                            dgv.Rows.RemoveAt(dgv.SelectedRows[0].Index);
-                        }
+                        dgv.Rows.RemoveAt(dgv.SelectedRows[0].Index);
                     }
-                    else if (contextMenu.SourceControl is ListBox lbx)
+                }
+                else if (contextMenu.SourceControl is ListBox lbx)
+                {
+                    if (lbx.SelectedIndex != -1)
                     {
-                        if (lbx.SelectedIndex != -1)
-                        {
-                            lbx.Items.RemoveAt(lbx.SelectedIndex);
-                        }
+                        lbx.Items.RemoveAt(lbx.SelectedIndex);
                     }
                 }
             }
@@ -178,7 +161,6 @@ namespace projekat_2026
 
         private void buttonSistemDodajUTabelu_Click(object sender, EventArgs e)
         {
-
             if (comboBoxSistemi.SelectedValue == null)
             {
                 MessageBox.Show("Molimo izaberite sistem.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -186,103 +168,89 @@ namespace projekat_2026
             }
 
             int idSistem = (int)comboBoxSistemi.SelectedValue;
-            string nazivSistema = comboBoxSistemi.SelectedValue.ToString();
-            string napomenaSistema = textBoxSistemNapomena.Text.ToString();
-
+            string nazivSistema = comboBoxSistemi.Text;
+            string napomenaSistema = textBoxSistemNapomena.Text;
 
             dataGridViewSistemi.Rows.Add(idSistem, nazivSistema, napomenaSistema);
-
             textBoxSistemNapomena.Clear();
-
         }
 
         private void buttonSledeci1_Click(object sender, EventArgs e)
         {
-            int.TryParse(numericUpDownBrZaposlenih.Value.ToString(), out int brZaposlenih);
-            bool isAktivan = comboBoxStatus.SelectedItem?.ToString() == "Aktivan";
-
-            if
-                (
-                string.IsNullOrWhiteSpace(textBoxImeFirmeObjekta.Text) ||
+            if (string.IsNullOrWhiteSpace(textBoxImeFirmeObjekta.Text) ||
                 string.IsNullOrWhiteSpace(textBoxAdresa.Text) ||
                 string.IsNullOrWhiteSpace(textBoxGrad.Text) ||
                 string.IsNullOrWhiteSpace(textBoxPib.Text) ||
-                string.IsNullOrWhiteSpace(textBoxMb.Text)
-                )
+                string.IsNullOrWhiteSpace(textBoxMb.Text))
             {
                 MessageBox.Show("Molimo vas popunite sva obavezna polja.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            int.TryParse(numericUpDownBrZaposlenih.Value.ToString(), out int brZaposlenih);
+            bool isAktivan = comboBoxStatus.SelectedItem?.ToString() == "Aktivan";
 
             novaFirma = new FirmaObjekat
             {
-                ImeFirmeObjekat = textBoxImeFirmeObjekta.Text.ToString(),
+                ImeFirmeObjekat = textBoxImeFirmeObjekta.Text.Trim(),
                 BrojZaposlenih = brZaposlenih,
-                Adresa = textBoxAdresa.Text.ToString(),
-                Grad = textBoxGrad.Text.ToString(),
-                Pib = textBoxPib.Text.ToString(),
-                Mb = textBoxMb.Text.ToString(),
+                Adresa = textBoxAdresa.Text.Trim(),
+                Grad = textBoxGrad.Text.Trim(),
+                Pib = textBoxPib.Text.Trim(),
+                Mb = textBoxMb.Text.Trim(),
                 Aktivan = isAktivan,
-                DatumAktivnosti = DateOnly.FromDateTime(DateTime.Now), // Returns: 2026-08-14
-                CreatedAt = DateTime.Now.Date,
-                UpdatedAt = DateTime.Now.Date
+                DatumAktivnosti = DateOnly.FromDateTime(DateTime.Now),
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
             };
 
-            tabControlDodajFirmuObjekat.SelectedIndex = 1;
-
+            SwitchToTab(1);
         }
 
         private void buttonPonisti_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Da li ste sigurni da želite da poništite? sve unete informacije æe biti izbrisane.",
+                "Da li ste sigurni da želite da poništite? Sve unete informacije æe biti izbrisane.",
                 "Poništi",
-                MessageBoxButtons.YesNo);
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 this.Close();
             }
-
         }
-
 
         private void buttonSledeci2_Click(object sender, EventArgs e)
         {
-
             if (dataGridViewAdresar.Rows.Count == 0)
             {
-                DialogResult result = MessageBox.Show("Tabela Adresar je prazna. Da li želzte da preskoèite ovaj korak?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Tabela Adresar je prazna. Da li želite da preskoèite ovaj korak?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    listaAdresar.Clear();
-                    textBoxEmail.Clear();
-                    textBoxTelefon.Clear();
-                    textBoxKontaktImePrezime.Clear();
-                    dataGridViewAdresar.ClearSelection();
-                    textBoxTelefon.Clear();
-                    textBoxEmail.Clear();
-
-                    tabControlDodajFirmuObjekat.SelectedIndex = 2;
+                    ResetAdresarInputs();
+                    SwitchToTab(2);
+                    return; // Early exit prevents executing the rest of the method
                 }
+                return;
             }
+
             listaAdresar.Clear();
 
             foreach (DataGridViewRow row in dataGridViewAdresar.Rows)
             {
+                if (row.IsNewRow) continue;
 
                 string imePrezime = row.Cells[1].Value?.ToString() ?? string.Empty;
-                string telefonBroj = row.Cells[2].Value?.ToString() ?? string.Empty;
-                string emailAdresa = row.Cells[3].Value?.ToString() ?? string.Empty;
+                string emailAdresa = row.Cells[2].Value?.ToString() ?? string.Empty; 
+                string telefonBroj = row.Cells[3].Value?.ToString() ?? string.Empty;
                 string napomena = row.Cells[4].Value?.ToString() ?? string.Empty;
 
-                if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int IdAdresar))
+                if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int idAdresar))
                 {
-
                     var noviAdresar = new Adresar
                     {
-                        IdAdresar = IdAdresar,
+                        IdAdresar = idAdresar,
                         ImePrezime = imePrezime,
                         Aktivan = true,
                         Napomena = napomena,
@@ -290,79 +258,77 @@ namespace projekat_2026
                         UpdatedAt = DateTime.Now,
                         Emails = emailAdresa
                             .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                            .Select(e => new Email
-                            {
-                                Email1 = e.Trim()
-                            })
-                            .ToList(), //EF sam dodaje fk na adresar lol
+                            .Select(eStr => new Email { Email1 = eStr.Trim() })
+                            .ToList(),
                         Telefons = telefonBroj
                             .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                            .Select(t => new Telefon
-                            {
-                                Telefon1 = t.Trim()
-                            })
+                            .Select(tStr => new Telefon { Telefon1 = tStr.Trim() })
                             .ToList(),
                         IdFirmaObjekats = new List<FirmaObjekat> { novaFirma }
-
-
                     };
 
                     listaAdresar.Add(noviAdresar);
                 }
             }
 
-
+            SwitchToTab(2);
         }
 
         private void buttonPreskoci_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Da li ste sigurni da želite da preskoèite? sve unete informacije o Kontaktima firme/objekta æe biti izbrisane.",
+                "Da li ste sigurni da želite da preskoèite? Sve unete informacije o Kontaktima biæe izbrisane.",
                 "Preskoèi",
-                MessageBoxButtons.YesNo);
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                listaAdresar.Clear();
-                textBoxEmail.Clear();
-                textBoxTelefon.Clear();
-                textBoxKontaktImePrezime.Clear();
-                dataGridViewAdresar.ClearSelection();
-                textBoxTelefon.Clear();
-                textBoxEmail.Clear();
-
-                tabControlDodajFirmuObjekat.SelectedIndex = 2;
+                ResetAdresarInputs();
+                SwitchToTab(2);
             }
+        }
+
+        private void ResetAdresarInputs()
+        {
+            listaAdresar.Clear();
+            textBoxEmail.Clear();
+            textBoxTelefon.Clear();
+            textBoxKontaktImePrezime.Clear();
+            textBoxKontaktNapomena.Clear();
+            listBoxEmail.Items.Clear();
+            listBoxTelefon.Items.Clear();
+            dataGridViewAdresar.Rows.Clear();
         }
 
         private void buttonDodajEmailUTexBox_Click(object sender, EventArgs e)
         {
-            string _email = textBoxEmail.Text.Trim();
-            if (!classDizajnFormi.isEmail(_email) && !string.IsNullOrEmpty(_email))
+            string email = textBoxEmail.Text.Trim();
+            if (string.IsNullOrEmpty(email)) return;
+
+            if (!classDizajnFormi.isEmail(email))
             {
                 MessageBox.Show("Unesite validan E-mail!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-            {
-                listBoxEmail.Items.Add(_email);
-                textBoxEmail.Clear();
-            }
+
+            listBoxEmail.Items.Add(email);
+            textBoxEmail.Clear();
         }
 
         private void buttonDodajTelefonUTextbox_Click(object sender, EventArgs e)
         {
             string telefon = textBoxTelefon.Text.Trim();
-            if (!classDizajnFormi.isTelefon(telefon) && !string.IsNullOrEmpty(telefon))
+            if (string.IsNullOrEmpty(telefon)) return;
+
+            if (!classDizajnFormi.isTelefon(telefon))
             {
                 MessageBox.Show("Unesite validan Telefon!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-            {
-                listBoxTelefon.Items.Add(telefon);
-                textBoxTelefon.Clear();
-            }
+
+            listBoxTelefon.Items.Add(telefon);
+            textBoxTelefon.Clear();
         }
 
         private void buttonDodajKontaktUTabelu_Click(object sender, EventArgs e)
@@ -378,8 +344,8 @@ namespace projekat_2026
             string listaTelefona = string.Join(", ", listBoxTelefon.Items.Cast<object>());
             string kontaktNapomena = textBoxKontaktNapomena.Text.Trim();
 
+            dataGridViewAdresar.Rows.Add(0, imeIPrezime, listaEmailova, listaTelefona, kontaktNapomena);
 
-            //dataGridViewSistemi.Rows.Add(idSistem, nazivSistema, napomenaSistema);
             textBoxKontaktNapomena.Clear();
             textBoxKontaktImePrezime.Clear();
             listBoxEmail.Items.Clear();
@@ -388,9 +354,9 @@ namespace projekat_2026
 
         private async void buttonSacuvaj_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAdresar.Rows.Count == 0)
+            if (dataGridViewSistemi.Rows.Count == 0) // Fixed: Was checking dataGridViewAdresar
             {
-                DialogResult result = MessageBox.Show("Tabela Sisteni je prazna. Da li želzte da preskoèite ovaj korak?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Tabela Sistemi je prazna. Da li želite da saèuvate bez dodatih sistema?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No)
                 {
                     return;
@@ -404,18 +370,15 @@ namespace projekat_2026
                 {
                     if (row.IsNewRow) continue;
 
-                    //string nazivSistema = row.Cells[1].Value?.ToString() ?? string.Empty;
                     string napomena = row.Cells[2].Value?.ToString() ?? string.Empty;
 
-                    if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int IdSistem))
+                    if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int idSistem))
                     {
-
                         var noviOsvt = new ObjekatSistemVeznaTabela
                         {
-                            IdSistem = IdSistem,
+                            IdSistem = idSistem,
                             Napomena = napomena,
                             IdFirmaObjekatNavigation = novaFirma
-
                         };
 
                         listaSistema.Add(noviOsvt);
@@ -423,72 +386,134 @@ namespace projekat_2026
                 }
             }
 
-            await SacuvajSveUBazuAsync();
+            string pregledPodataka = GenerisiPregledPodataka();
 
+
+            string poruka = $"PREGLED PODATAKA ZA ÈUVANJE:\n\n" +
+                            $"{pregledPodataka}\n\n" +
+                            $"Da li ste sigurni da želite da saèuvate ove podatke u bazu?";
+
+            DialogResult confirm = MessageBox.Show(
+                poruka,
+                "Potvrda èuvanja",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                await SacuvajSveUBazuAsync();
+            }
         }
-
-
-
-
-
-
-
-
-
-
 
         private async Task SacuvajSveUBazuAsync()
         {
-            using var db = new AppDbContext(_dbOptions);
-            using var transaction = await db.Database.BeginTransactionAsync();
-
             try
             {
-                // Add Root Parent (Step 1)
-                db.FirmaObjekats.Add(novaFirma);
-
-                // Add Adresar contacts (Step 2)
-                if (listaAdresar.Any())
-                {
-                    foreach (var adresar in listaAdresar)
-                    {
-                        if (adresar.IdAdresar > 0)
-                        {
-                            // Existing contact: attach and connect to novaFirma
-                            db.Adresars.Attach(adresar);
-                            adresar.IdFirmaObjekats.Add(novaFirma);
-                        }
-                        else
-                        {
-                            // Brand new contact: add entire graph
-                            db.Adresars.Add(adresar);
-                        }
-                    }
-                }
-
-                // Add Systems (Step 3)
-                if (listaSistema.Any())
-                {
-                    db.ObjekatSistemVeznaTabelas.AddRange(listaSistema);
-                }
-
-                // Single SaveChanges handles all primary/foreign key assignments automatically
-                await db.SaveChangesAsync();
-                await transaction.CommitAsync();
-
+                await firmaObjekatService.SaveComplete(novaFirma, listaAdresar, listaSistema);
                 MessageBox.Show("Podaci uspešno saèuvani!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception ex)
             {
-                await transaction.RollbackAsync();
                 MessageBox.Show($"Greška pri èuvanju u bazu: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void FormFirmaObjekatDodaj_Load(object sender, EventArgs e)
+        {
+            SwitchToTab(0);
+        }
+
+        private void FormFirmaObjekatDodaj_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Skip prompt if the form is closing after a successful save
+            if (this.DialogResult == DialogResult.OK)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Da li ste sigurni da želite da napustite formu? Sve nesaèuvane informacije æe biti izbrisane.",
+                "Obaveštenje",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No)
+            {
+                // Cancel the form closing action
+                e.Cancel = true;
+            }
+        }
 
 
+        private string GenerisiPregledPodataka()
+        {
+            var sb = new StringBuilder();
+
+            // 1. Osnovni podaci
+            sb.AppendLine("OSNOVNI PODACI");
+            sb.AppendLine($"Naziv: {(string.IsNullOrWhiteSpace(textBoxImeFirmeObjekta.Text) ? "[Nije uneto]" : textBoxImeFirmeObjekta.Text.Trim())}");
+            sb.AppendLine($"Adresa: {(string.IsNullOrWhiteSpace(textBoxAdresa.Text) ? "[Nije uneto]" : textBoxAdresa.Text.Trim())}");
+            sb.AppendLine($"Grad: {(string.IsNullOrWhiteSpace(textBoxGrad.Text) ? "[Nije uneto]" : textBoxGrad.Text.Trim())}");
+            sb.AppendLine($"PIB: {(string.IsNullOrWhiteSpace(textBoxPib.Text) ? "[Nije uneto]" : textBoxPib.Text.Trim())}");
+            sb.AppendLine($"MB: {(string.IsNullOrWhiteSpace(textBoxMb.Text) ? "[Nije uneto]" : textBoxMb.Text.Trim())}");
+            sb.AppendLine($"Broj zaposlenih: {numericUpDownBrZaposlenih.Value}");
+            sb.AppendLine($"Status: {comboBoxStatus.SelectedItem ?? "Nije izabran"}");
+            sb.AppendLine();
+
+            // 2. Kontakti (Adresar)
+            var kontakti = dataGridViewAdresar.Rows.Cast<DataGridViewRow>()
+                .Where(r => !r.IsNewRow)
+                .ToList();
+
+            sb.AppendLine($"KONTAKTI ({kontakti.Count})");
+            if (kontakti.Any())
+            {
+                foreach (var row in kontakti)
+                {
+                    string ime = row.Cells[1].Value?.ToString() ?? "";
+                    string email = row.Cells[2].Value?.ToString() ?? "";
+                    string tel = row.Cells[3].Value?.ToString() ?? "";
+                    sb.AppendLine($"• {ime} | Email: {email} | Tel: {tel}");
+                }
+            }
+            else
+            {
+                sb.AppendLine("[Nema unetih kontakata]");
+            }
+            sb.AppendLine();
+
+            // 3. Sistemi
+            var sistemi = dataGridViewSistemi.Rows.Cast<DataGridViewRow>()
+                .Where(r => !r.IsNewRow)
+                .ToList();
+
+            sb.AppendLine($"SISTEMI ({sistemi.Count})");
+            if (sistemi.Any())
+            {
+                foreach (var row in sistemi)
+                {
+                    string naziv = row.Cells[1].Value?.ToString() ?? "";
+                    string napomena = row.Cells[2].Value?.ToString() ?? "";
+                    sb.AppendLine($"• {naziv}{(string.IsNullOrEmpty(napomena) ? "" : $" ({napomena})")}");
+                }
+            }
+            else
+            {
+                sb.AppendLine("[Nema unetih sistema]");
+            }
+
+            return sb.ToString();
+        }
+
+        private void buttonNazad1_Click(object sender, EventArgs e)
+        {
+            SwitchToTab(0);
+        }
+
+        private void buttonNazad2_Click(object sender, EventArgs e)
+        {
+            SwitchToTab(1);
+        }
     }
 }
