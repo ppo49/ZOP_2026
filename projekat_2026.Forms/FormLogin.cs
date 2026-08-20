@@ -38,9 +38,9 @@ namespace projekat_2026
             InitializeComponent();
             _dbOptions = dbOptions;
 
-            using var db = new AppDbContext(_dbOptions);
+            /*using var db = new AppDbContext(_dbOptions);
             var agentCount = db.Agents.Count();
-            MessageBox.Show($"Agents in DB: {agentCount}");
+            MessageBox.Show($"Agents in DB: {agentCount}");*/
 
 
             //forma izgled

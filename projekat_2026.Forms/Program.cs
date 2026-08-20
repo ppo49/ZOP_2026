@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using projekat_2026.Core;
 using projekat_2026.Data;
 using projekat_2026.Data.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using projekat_2026.Core;
 
 namespace projekat_2026
 {
@@ -50,6 +52,12 @@ namespace projekat_2026
 
 
             */
+
+            // Program.cs — temporary seeding block, same pattern as the test agent seed
+            using var seedDb = new AppDbContext(optionsBuilder.Options);
+
+            
+
             Application.Run(new FormLogin(optionsBuilder.Options));
         }
     }
