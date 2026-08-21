@@ -223,7 +223,7 @@ namespace projekat_2026
 
         private void buttonSledeci2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAdresar.Rows.Count == 0)
+            if (dataGridViewAdresar.Rows.Count == 0 || (dataGridViewAdresar.Rows.Count == 1 && dataGridViewAdresar.Rows[0].IsNewRow))
             {
                 DialogResult result = MessageBox.Show("Tabela Adresar je prazna. Da li želite da preskoèite ovaj korak?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
@@ -246,11 +246,12 @@ namespace projekat_2026
                 string telefonBroj = row.Cells[3].Value?.ToString() ?? string.Empty;
                 string napomena = row.Cells[4].Value?.ToString() ?? string.Empty;
 
-                if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int idAdresar))
-                {
+                if (string.IsNullOrWhiteSpace(imePrezime)) continue;
+
+
                     var noviAdresar = new Adresar
                     {
-                        IdAdresar = idAdresar,
+                        //IdAdresar = idAdresar,
                         ImePrezime = imePrezime,
                         Aktivan = true,
                         Napomena = napomena,
@@ -268,7 +269,6 @@ namespace projekat_2026
                     };
 
                     listaAdresar.Add(noviAdresar);
-                }
             }
 
             SwitchToTab(2);

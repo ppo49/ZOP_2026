@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using projekat_2026.Core;
 using projekat_2026.Data;
+using projekat_2026.Data.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using projekat_2026.Data.Models;
-using projekat_2026.Core;
-
 
 namespace projekat_2026
 {
@@ -21,15 +21,17 @@ namespace projekat_2026
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly Agent _loggedInAgent;
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
-        
+
 
         private int? _selectedFirmaObjekatId;
+        private int? _selectedStavkaId;
+        private int? _selectedKontaktId;
 
         private readonly FirmaObjekatService firmaObjekatService;
-        //private readonly SistemService sistemService;
+        private readonly SistemService sistemService;
         private readonly ObjekatSistemService objekatSistemService;
         private readonly AdresarService adresarService;
-        
+
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace projekat_2026
             _loggedInAgent = loggedInAgent;
 
             firmaObjekatService = new FirmaObjekatService(dbOptions);
-            //sistemService = new SistemService(dbOptions);
+            sistemService = new SistemService(dbOptions);
             objekatSistemService = new ObjekatSistemService(dbOptions);
             adresarService = new AdresarService(dbOptions);
 
@@ -58,8 +60,42 @@ namespace projekat_2026
 
 
             SetupdataGridViewFirmaObjekat();
+            setupComboBoxSistem();
+
+            //listBoxEmails.DisplayMember = "Email1";
+            //listBoxTelefoni.DisplayMember = "Telefon1";
 
         }
+
+        public void DeleteSelectedRowFromMenuItem(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem menuItem && menuItem.Owner is ContextMenuStrip contextMenu)
+            {
+                if (contextMenu.SourceControl is DataGridView dgv)
+                {
+                    if (dgv.SelectedRows.Count > 0 && !dgv.SelectedRows[0].IsNewRow)
+                    {
+                        dgv.Rows.RemoveAt(dgv.SelectedRows[0].Index);
+                    }
+                }
+                else if (contextMenu.SourceControl is ListBox lbx)
+                {
+                    if (lbx.SelectedIndex != -1)
+                    {
+                        lbx.Items.RemoveAt(lbx.SelectedIndex);
+                    }
+                }
+            }
+        }
+
+        private void setupComboBoxSistem()
+        {
+            comboBoxSistemi.DataSource = sistemService.GetNameAndId();
+            comboBoxSistemi.DisplayMember = "Naziv";
+            comboBoxSistemi.ValueMember = "IdSistem";
+        }
+
+
 
         private void SetupdataGridViewAdresar(int idFirmaObjekat)
         {
@@ -69,10 +105,10 @@ namespace projekat_2026
                     a.IdAdresar,
                     //a.IdFirmaObjekats,
                     ImePrezime = a.ImePrezime,
-                    Emails = string.Join(", ", a.Emails.Select(e=>e.Email1)),
+                    Emails = string.Join(", ", a.Emails.Select(e => e.Email1)),
                     Telefoni = string.Join(", ", a.Telefons.Select(e => e.Telefon1)),
                     a.Napomena,
-                    a.Aktivan,
+                    Status = a.Aktivan,
                     a.CreatedAt,
                     a.UpdatedAt
                 })
@@ -83,7 +119,16 @@ namespace projekat_2026
             dataGridViewAdresar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAdresar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            //ZAVRSI OVO
+
+            dataGridViewAdresar.Columns["IdAdresar"].Visible = false;
+            dataGridViewAdresar.Columns["CreatedAt"].Visible = false;
+            dataGridViewAdresar.Columns["UpdatedAt"].Visible = false;
+
+            dataGridViewAdresar.Columns["ImePrezime"].FillWeight = 25;
+            dataGridViewAdresar.Columns["Emails"].FillWeight = 25;
+            dataGridViewAdresar.Columns["Telefoni"].FillWeight = 25;
+            dataGridViewAdresar.Columns["Napomena"].FillWeight = 15;
+            dataGridViewAdresar.Columns["Status"].FillWeight = 10;
 
         }
 
@@ -95,7 +140,9 @@ namespace projekat_2026
                     o.IdObjekatSistemVeznaTabela,
                     Nazivsistema = o.IdSistemNavigation.Naziv,
                     Periodika = o.IdSistemNavigation.Periodika,
-                    o.Napomena
+                    o.Napomena,
+                    o.IdSistem
+                    // IdFirmaObjekat = o.IdFirmaObjekatNavigation.IdFirmaObjekat
                 })
                 .ToList();
 
@@ -105,6 +152,8 @@ namespace projekat_2026
             dataGridViewSistemi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             dataGridViewSistemi.Columns["IdObjekatSistemVeznaTabela"].Visible = false;
+            dataGridViewSistemi.Columns["IdSistem"].Visible = false;
+            //dataGridViewSistemi.Columns["IdFirmaObjekat"].Visible = false;
 
             dataGridViewSistemi.Columns["NazivSistema"].FillWeight = 40;
             dataGridViewSistemi.Columns["Periodika"].FillWeight = 10;
@@ -181,6 +230,7 @@ namespace projekat_2026
 
 
             SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
+            SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
         }
 
         private void buttonAzurirajObjekat_Click(object sender, EventArgs e)
@@ -215,12 +265,201 @@ namespace projekat_2026
                 firmaObjekatService.Update(firma);
                 MessageBox.Show("Podaci uspešno ažurirani.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SetupdataGridViewFirmaObjekat();
+
+                SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
+                SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void dataGridViewSistemi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewSistemi.Rows[e.RowIndex];
+
+            _selectedStavkaId = (int)row.Cells["IdObjekatSistemVeznaTabela"].Value;
+
+            var stavka = objekatSistemService.GetById(_selectedStavkaId.Value);
+
+            if (stavka == null) return;
+
+            textBoxNapomenaAzuriraj.Text = stavka.Napomena;
+            textBoxSistemNaziv.Text = stavka.IdSistemNavigation.Naziv;
+
+        }
+
+        private void buttonAzurirajStavku_Click(object sender, EventArgs e)
+        {
+            if (_selectedStavkaId == null)
+            {
+                MessageBox.Show("Molimo izaberite sistem.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var stavka = objekatSistemService.GetById(_selectedStavkaId.Value);
+            if (stavka == null) return;
+
+            stavka.Napomena = textBoxNapomenaAzuriraj.Text.Trim();
+            objekatSistemService.Update(stavka);
+
+            MessageBox.Show("Napomena ažurirana!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
+        }
+
+        private void buttonDodajStavku_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_selectedFirmaObjekatId == null)
+                {
+                    MessageBox.Show("Molimo izaberite firmu/objekat.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (comboBoxSistemi.SelectedValue == null)
+                {
+                    MessageBox.Show("Molimo izaberite sistem.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var novaStavka = new ObjekatSistemVeznaTabela
+                {
+                    Napomena = textBoxSistemNapomena.Text.Trim(),
+                    IdSistem = (int)comboBoxSistemi.SelectedValue,
+                    IdFirmaObjekat = _selectedFirmaObjekatId.Value,
+                };
+
+                objekatSistemService.Add(novaStavka);
+
+                MessageBox.Show("Sistem dodat!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxSistemNapomena.Clear();
+                SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void dataGridViewAdresar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewAdresar.Rows[e.RowIndex];
+            _selectedKontaktId = (int)row.Cells["IdAdresar"].Value;
+            var kontakt = adresarService.GetById(_selectedKontaktId.Value);
+
+            if (kontakt == null) return;
+
+            textBoxKontaktImePrezime.Text = kontakt.ImePrezime;
+            textBoxKontaktNapomena.Text = kontakt.Napomena;
+
+
+
+            listBoxEmails.Items.Clear();
+            listBoxEmails.Items.AddRange(kontakt.Emails.Select(e => e.Email1).ToArray());
+
+            listBoxTelefoni.Items.Clear();
+            listBoxTelefoni.Items.AddRange(kontakt.Telefons.Select(t => t.Telefon1).ToArray());
+
+        }
+
+        private void buttonAzurirajKontakt_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (_selectedKontaktId == null)
+                {
+                    MessageBox.Show("Molimo izaberite kontakt.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (string.IsNullOrEmpty(textBoxKontaktImePrezime.Text))
+                {
+                    MessageBox.Show("Molimo popunite polje ime i prezime.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var kontakt = new Adresar
+                {
+                    IdAdresar = _selectedKontaktId.Value,
+                    ImePrezime = textBoxKontaktImePrezime.Text,
+                    Napomena = textBoxKontaktNapomena.Text,
+                    Aktivan = comboBoxAdresarStatus.SelectedItem?.ToString() == "Aktivan"
+                };
+
+                var emailList = listBoxEmails.Items.Cast<object>().Select(i => i.ToString()).ToList();
+                var telefonList = listBoxTelefoni.Items.Cast<object>().Select(i => i.ToString()).ToList();
+
+                adresarService.Update(kontakt, emailList, telefonList);
+                MessageBox.Show("Kontakt azuriran!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void buttonDodajEmailUTexBox_Click(object sender, EventArgs e)
+        {
+            string email = textBoxAdresarEmail.Text.Trim();
+            if (string.IsNullOrEmpty(email)) return;
+
+            if (!classDizajnFormi.isEmail(email))
+            {
+                MessageBox.Show("Unesite validan E-mail!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            listBoxEmails.Items.Add(email);
+            textBoxAdresarEmail.Clear();
+        }
+
+        private void buttonAdresarDodajTelefon_Click(object sender, EventArgs e)
+        {
+            string telefon = textBoxAdresarTelefon.Text.Trim();
+            if (string.IsNullOrEmpty(telefon)) return;
+
+            if (!classDizajnFormi.isTelefon(telefon))
+            {
+                MessageBox.Show("Unesite validan broj telefona", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            listBoxTelefoni.Items.Add(telefon);
+            textBoxAdresarTelefon.Clear();
+        }
+
+        private void buttonFirmaObjekatObrisi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDodajKontakt_Click(object sender, EventArgs e)
+        {
+            if (_selectedFirmaObjekatId == null) return;
+
+            var firma = firmaObjekatService.GetById(_selectedFirmaObjekatId.Value);
+            if (firma == null) return;
+
+            using (var formDetalji = new FormKontaktDetalji(_dbOptions, firma))
+            {
+                if (formDetalji.ShowDialog() == DialogResult.OK)
+                {
+                    // Refresh main DataGridView upon success
+                    SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
+                }
+            }
         }
     }
 }

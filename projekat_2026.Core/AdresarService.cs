@@ -4,8 +4,6 @@ using projekat_2026.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projekat_2026.Core
 {
@@ -18,7 +16,6 @@ namespace projekat_2026.Core
             _dbOptions = dbOptions;
         }
 
-
         public List<Adresar> GetAll()
         {
             using var db = new AppDbContext(_dbOptions);
@@ -28,20 +25,73 @@ namespace projekat_2026.Core
         public Adresar? GetById(int id)
         {
             using var db = new AppDbContext(_dbOptions);
-            return db.Adresars.FirstOrDefault(a => a.IdAdresar == id);
+            return db.Adresars
+                .Include(a => a.Emails)
+                .Include(a => a.Telefons)
+                .FirstOrDefault(a => a.IdAdresar == id);
         }
 
-        public void Add(Adresar adresar)
+        public void Add(Adresar novKontakt, int firmaObjekatId, List<string> emails, List<string> telefons)
         {
             using var db = new AppDbContext(_dbOptions);
-            db.Adresars.Add(adresar);
+
+            var firma = db.FirmaObjekats.FirstOrDefault(f => f.IdFirmaObjekat == firmaObjekatId);
+            if (firma == null) throw new Exception("Firma/Objekat nije pronađen.");
+
+            // Link to target Firma/Objekat
+            novKontakt.IdFirmaObjekats.Add(firma);
+
+            // Create child Email objects
+            novKontakt.Emails = emails
+                .Where(e => !string.IsNullOrWhiteSpace(e))
+                .Select(e => new Email { Email1 = e.Trim() })
+                .ToList();
+
+            // Create child Phone objects
+            novKontakt.Telefons = telefons
+                .Where(t => !string.IsNullOrWhiteSpace(t))
+                .Select(t => new Telefon { Telefon1 = t.Trim() })
+                .ToList();
+
+            db.Adresars.Add(novKontakt);
             db.SaveChanges();
         }
 
-        public void Update(Adresar adresar)
+
+
+
+        // REFACTORED: Replaces old Update method to eliminate duplicate child inserts
+        public void Update(Adresar updatedAdresar, List<string> emails, List<string> telefons)
         {
             using var db = new AppDbContext(_dbOptions);
-            db.Adresars.Update(adresar);
+
+            var existingAdresar = db.Adresars
+                .Include(a => a.Emails)
+                .Include(a => a.Telefons)
+                .FirstOrDefault(a => a.IdAdresar == updatedAdresar.IdAdresar);
+
+            if (existingAdresar == null) return;
+
+            // Update main properties
+            existingAdresar.ImePrezime = updatedAdresar.ImePrezime;
+            existingAdresar.Napomena = updatedAdresar.Napomena;
+            existingAdresar.Aktivan = updatedAdresar.Aktivan;
+
+            // Clear old relationships from DB
+            db.Emails.RemoveRange(existingAdresar.Emails);
+            db.Telefons.RemoveRange(existingAdresar.Telefons);
+
+            // Add new collections
+            existingAdresar.Emails = emails
+                .Where(e => !string.IsNullOrWhiteSpace(e))
+                .Select(e => new Email { Email1 = e.Trim() })
+                .ToList();
+
+            existingAdresar.Telefons = telefons
+                .Where(t => !string.IsNullOrWhiteSpace(t))
+                .Select(t => new Telefon { Telefon1 = t.Trim() })
+                .ToList();
+
             db.SaveChanges();
         }
 
@@ -55,7 +105,6 @@ namespace projekat_2026.Core
                 db.SaveChanges();
             }
         }
-
 
         public List<Telefon> GetTelefonsbyAdresarId(int adresarId)
         {
@@ -84,7 +133,6 @@ namespace projekat_2026.Core
             };
             db.Telefons.Add(noviTelefon);
             db.SaveChanges();
-
         }
 
         public List<Email> GetEmailsbyAdresarId(int adresarId)
@@ -114,7 +162,6 @@ namespace projekat_2026.Core
             };
             db.Emails.Add(noviEmail);
             db.SaveChanges();
-
         }
 
         public List<Adresar> GetAdresarOnlyNameForFirmaObjekat(int firmaObjekatId)
