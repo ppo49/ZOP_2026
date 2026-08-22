@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using projekat_2026.Core;
 using projekat_2026.Data;
 using projekat_2026.Data.Models;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace projekat_2026
@@ -20,6 +22,8 @@ namespace projekat_2026
     {
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly Agent _loggedInAgent;
+        private readonly FirmaObjekat _fairmaObjekat;
+
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
 
 
@@ -31,6 +35,7 @@ namespace projekat_2026
         private readonly SistemService sistemService;
         private readonly ObjekatSistemService objekatSistemService;
         private readonly AdresarService adresarService;
+        private readonly PregledService pregledService;
 
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
@@ -42,6 +47,7 @@ namespace projekat_2026
             sistemService = new SistemService(dbOptions);
             objekatSistemService = new ObjekatSistemService(dbOptions);
             adresarService = new AdresarService(dbOptions);
+            pregledService = new PregledService(dbOptions);
 
             this.Text = $"ZOP, {_loggedInAgent.ImePrezime}";
 
@@ -61,6 +67,8 @@ namespace projekat_2026
 
             SetupdataGridViewFirmaObjekat();
             setupComboBoxSistem();
+            setupCoboBoxAdresarStatus();
+
 
             //listBoxEmails.DisplayMember = "Email1";
             //listBoxTelefoni.DisplayMember = "Telefon1";
@@ -93,9 +101,48 @@ namespace projekat_2026
             comboBoxSistemi.DataSource = sistemService.GetNameAndId();
             comboBoxSistemi.DisplayMember = "Naziv";
             comboBoxSistemi.ValueMember = "IdSistem";
+            comboBoxSistemi.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void setupCoboBoxAdresarStatus()
+        {
+            comboBoxAdresarStatus.Items.Add("Aktivan");
+            comboBoxAdresarStatus.Items.Add("Neaktivan");
+            comboBoxSistemi.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
 
+        private void SetupDatagridViewPregled(int idFirmaObjekat)
+        {
+            var pregledLog = pregledService.GetByFirmaObjekatId(idFirmaObjekat)
+                .Select(p => new
+                {
+                    p.IdFirmaObjekat,
+                    p.IdPregledLog,
+                    p.DatumPregleda,
+                    p.Napomena,
+                    p.IdAgent,
+                    AgentImePrezime = p.IdAgentNavigation.ImePrezime,
+                    CreatedAt = p.CreatedAt.ToShortDateString(),
+                    UpdatedAt = p.UpdatedAt.ToShortDateString(),
+                }).ToList();
+
+            dataGridViewPreglediObjekta.DataSource = pregledLog;
+            dataGridViewPreglediObjekta.RowHeadersVisible = false;
+            dataGridViewPreglediObjekta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewPreglediObjekta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewPreglediObjekta.Columns["IdFirmaObjekat"].Visible = false;
+            dataGridViewPreglediObjekta.Columns["IdPregledLog"].Visible = false;
+            dataGridViewPreglediObjekta.Columns["IdAgent"].Visible = false;
+
+            dataGridViewPreglediObjekta.Columns["DatumPregleda"].FillWeight = 20;
+            dataGridViewPreglediObjekta.Columns["Napomena"].FillWeight = 30;
+            dataGridViewPreglediObjekta.Columns["AgentImePrezime"].FillWeight = 20;
+            dataGridViewPreglediObjekta.Columns["CreatedAt"].FillWeight = 15;
+            dataGridViewPreglediObjekta.Columns["UpdatedAt"].FillWeight = 15;
+
+        }
 
         private void SetupdataGridViewAdresar(int idFirmaObjekat)
         {
@@ -118,6 +165,7 @@ namespace projekat_2026
             dataGridViewAdresar.RowHeadersVisible = false;
             dataGridViewAdresar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAdresar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 
 
             dataGridViewAdresar.Columns["IdAdresar"].Visible = false;
@@ -208,29 +256,38 @@ namespace projekat_2026
 
         private void dataGridViewFirmaObjekat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            try
+            {
+                if (e.RowIndex < 0) return;
 
 
-            DataGridViewRow row = dataGridViewFirmaObjekat.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewFirmaObjekat.Rows[e.RowIndex];
 
-            _selectedFirmaObjekatId = (int)row.Cells["IdFirmaObjekat"].Value;
-            var firma = firmaObjekatService.GetById(_selectedFirmaObjekatId.Value);
-            if (firma == null) return;
+                _selectedFirmaObjekatId = (int)row.Cells["IdFirmaObjekat"].Value;
+                var firma = firmaObjekatService.GetById(_selectedFirmaObjekatId.Value);
+                if (firma == null) return;
 
-            textBoxImeFirmeObjekat.Text = firma.ImeFirmeObjekat;
-            textBoxPib.Text = firma.Pib;
-            textBoxMb.Text = firma.Mb;
-            textBoxAdresaObjekta.Text = firma.Adresa;
-            textBoxGrad.Text = firma.Grad;
-            textBoxDatumAktivnosti.Text = firma.DatumAktivnosti.ToString();
-            numericUpDownBrZaposlenih.Value = firma.BrojZaposlenih;
-            textBoxCreatedAt.Text = firma.CreatedAt.ToString("dd.MM.yyyy HH:mm");
-            textBoxUpdatedAt.Text = firma.UpdatedAt.ToString("dd.MM.yyyy HH:mm");
-            comboBoxStatus.SelectedItem = firma.Aktivan == true ? "Aktivan" : "Neaktivan";
+                textBoxImeFirmeObjekat.Text = firma.ImeFirmeObjekat;
+                textBoxPib.Text = firma.Pib;
+                textBoxMb.Text = firma.Mb;
+                textBoxAdresaObjekta.Text = firma.Adresa;
+                textBoxGrad.Text = firma.Grad;
+                textBoxDatumAktivnosti.Text = firma.DatumAktivnosti.ToString();
+                numericUpDownBrZaposlenih.Value = firma.BrojZaposlenih;
+                textBoxCreatedAt.Text = firma.CreatedAt.ToString("dd.MM.yyyy HH:mm");
+                textBoxUpdatedAt.Text = firma.UpdatedAt.ToString("dd.MM.yyyy HH:mm");
+                comboBoxStatus.SelectedItem = firma.Aktivan == true ? "Aktivan" : "Neaktivan";
 
 
-            SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
-            SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
+                SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
+                SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
+                SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void buttonAzurirajObjekat_Click(object sender, EventArgs e)
@@ -360,7 +417,7 @@ namespace projekat_2026
 
             textBoxKontaktImePrezime.Text = kontakt.ImePrezime;
             textBoxKontaktNapomena.Text = kontakt.Napomena;
-
+            comboBoxAdresarStatus.SelectedValue = kontakt.Aktivan;
 
 
             listBoxEmails.Items.Clear();
@@ -460,6 +517,41 @@ namespace projekat_2026
                     SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
                 }
             }
+        }
+
+        private void toolStripButtonNoviPregled_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewFirmaObjekat.CurrentRow == null)
+            {
+                MessageBox.Show("Izaberite Firma/Objekat za koji se generiše pregled.", "Greska",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //int idFirmaObjekat = (int)dataGridViewFirmaObjekat.CurrentRow.Cells["IdFirmaObjekat"].Value;
+            var firma = firmaObjekatService.GetById(_selectedFirmaObjekatId.Value);
+            if (firma == null) return;
+
+            var formPregled = new FormPregled(_dbOptions, _loggedInAgent, firma);
+            //formPregled.Show();
+
+
+            if (formPregled.ShowDialog() == DialogResult.OK)
+            {
+                SetupDatagridViewPregled(_selectedFirmaObjekatId.Value); 
+            }
+        }
+
+        private void dataGridViewPreglediObjekta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewPreglediObjekta.Rows[e.RowIndex];
+            int idPregledLog = (int)row.Cells["IdPregledLog"].Value;
+
+            using var formPregledLIsta = new FormPregledLista(_dbOptions, idPregledLog);
+            formPregledLIsta.ShowDialog();
+            SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
         }
     }
 }

@@ -28,25 +28,21 @@ namespace projekat_2026
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             tableLayoutPanelPregled = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            buttonOcisti = new System.Windows.Forms.Button();
             buttonSacuvaj = new System.Windows.Forms.Button();
             buttonPonisti = new System.Windows.Forms.Button();
             labelNapomena = new System.Windows.Forms.Label();
             labelSistem = new System.Windows.Forms.Label();
             labelFirmaObjekat = new System.Windows.Forms.Label();
             labelAgent = new System.Windows.Forms.Label();
-            dataGridViewStavkeSistemi = new System.Windows.Forms.DataGridView();
-            ColumnBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ColumnNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ColumnZadovoljava = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            ColumnNapomenaStavke = new System.Windows.Forms.DataGridViewTextBoxColumn();
             textBoxNapomenaCitavogPregleda = new System.Windows.Forms.TextBox();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            dateTimePickerDatumPregleda = new System.Windows.Forms.DateTimePicker();
+            dataGridViewPregledStavke = new System.Windows.Forms.DataGridView();
             tableLayoutPanelPregled.SuspendLayout();
             tableLayoutPanel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewStavkeSistemi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPregledStavke).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanelPregled
@@ -60,9 +56,9 @@ namespace projekat_2026
             tableLayoutPanelPregled.Controls.Add(labelSistem, 0, 1);
             tableLayoutPanelPregled.Controls.Add(labelFirmaObjekat, 1, 0);
             tableLayoutPanelPregled.Controls.Add(labelAgent, 0, 0);
-            tableLayoutPanelPregled.Controls.Add(dataGridViewStavkeSistemi, 0, 2);
             tableLayoutPanelPregled.Controls.Add(textBoxNapomenaCitavogPregleda, 0, 4);
-            tableLayoutPanelPregled.Controls.Add(dateTimePicker1, 2, 0);
+            tableLayoutPanelPregled.Controls.Add(dateTimePickerDatumPregleda, 2, 0);
+            tableLayoutPanelPregled.Controls.Add(dataGridViewPregledStavke, 0, 2);
             tableLayoutPanelPregled.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelPregled.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelPregled.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -70,70 +66,64 @@ namespace projekat_2026
             tableLayoutPanelPregled.RowCount = 6;
             tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
             tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            tableLayoutPanelPregled.Size = new System.Drawing.Size(932, 441);
+            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            tableLayoutPanelPregled.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            tableLayoutPanelPregled.Size = new System.Drawing.Size(860, 397);
             tableLayoutPanelPregled.TabIndex = 0;
             // 
             // tableLayoutPanel17
             // 
             tableLayoutPanel17.BackColor = System.Drawing.SystemColors.ControlLight;
-            tableLayoutPanel17.ColumnCount = 4;
+            tableLayoutPanel17.ColumnCount = 3;
             tableLayoutPanelPregled.SetColumnSpan(tableLayoutPanel17, 3);
-            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            tableLayoutPanel17.Controls.Add(buttonOcisti, 0, 0);
-            tableLayoutPanel17.Controls.Add(buttonSacuvaj, 3, 0);
-            tableLayoutPanel17.Controls.Add(buttonPonisti, 2, 0);
+            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel17.Controls.Add(buttonSacuvaj, 2, 0);
+            tableLayoutPanel17.Controls.Add(buttonPonisti, 1, 0);
             tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel17.Location = new System.Drawing.Point(4, 376);
+            tableLayoutPanel17.Location = new System.Drawing.Point(4, 340);
             tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(4, 3, 4, 17);
             tableLayoutPanel17.Name = "tableLayoutPanel17";
             tableLayoutPanel17.RowCount = 1;
             tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel17.Size = new System.Drawing.Size(924, 48);
+            tableLayoutPanel17.Size = new System.Drawing.Size(852, 40);
             tableLayoutPanel17.TabIndex = 9;
-            // 
-            // buttonOcisti
-            // 
-            buttonOcisti.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonOcisti.Location = new System.Drawing.Point(4, 3);
-            buttonOcisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            buttonOcisti.Name = "buttonOcisti";
-            buttonOcisti.Size = new System.Drawing.Size(54, 42);
-            buttonOcisti.TabIndex = 8;
-            buttonOcisti.UseVisualStyleBackColor = true;
             // 
             // buttonSacuvaj
             // 
             buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            buttonSacuvaj.Image = Properties.Resources.icons8_save_24;
             buttonSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonSacuvaj.Location = new System.Drawing.Point(800, 3);
+            buttonSacuvaj.Location = new System.Drawing.Point(728, 3);
             buttonSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonSacuvaj.Name = "buttonSacuvaj";
-            buttonSacuvaj.Size = new System.Drawing.Size(120, 42);
+            buttonSacuvaj.Size = new System.Drawing.Size(120, 34);
             buttonSacuvaj.TabIndex = 7;
             buttonSacuvaj.Text = "Saèuvaj";
             buttonSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonSacuvaj.UseVisualStyleBackColor = true;
+            buttonSacuvaj.Click += buttonSacuvaj_Click;
             // 
             // buttonPonisti
             // 
             buttonPonisti.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            buttonPonisti.Image = Properties.Resources.icons8_delete2_24;
             buttonPonisti.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonPonisti.Location = new System.Drawing.Point(675, 3);
+            buttonPonisti.Location = new System.Drawing.Point(603, 3);
             buttonPonisti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonPonisti.Name = "buttonPonisti";
-            buttonPonisti.Size = new System.Drawing.Size(117, 42);
+            buttonPonisti.Size = new System.Drawing.Size(117, 34);
             buttonPonisti.TabIndex = 5;
             buttonPonisti.Text = "Poništi";
+            buttonPonisti.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonPonisti.UseVisualStyleBackColor = true;
+            buttonPonisti.Click += buttonPonisti_Click;
             // 
             // labelNapomena
             // 
@@ -142,10 +132,10 @@ namespace projekat_2026
             tableLayoutPanelPregled.SetColumnSpan(labelNapomena, 3);
             labelNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
             labelNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            labelNapomena.Location = new System.Drawing.Point(0, 238);
+            labelNapomena.Location = new System.Drawing.Point(0, 215);
             labelNapomena.Margin = new System.Windows.Forms.Padding(0);
             labelNapomena.Name = "labelNapomena";
-            labelNapomena.Size = new System.Drawing.Size(932, 35);
+            labelNapomena.Size = new System.Drawing.Size(860, 35);
             labelNapomena.TabIndex = 7;
             labelNapomena.Text = "Napomena pregleda";
             labelNapomena.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -160,7 +150,7 @@ namespace projekat_2026
             labelSistem.Location = new System.Drawing.Point(0, 35);
             labelSistem.Margin = new System.Windows.Forms.Padding(0);
             labelSistem.Name = "labelSistem";
-            labelSistem.Size = new System.Drawing.Size(932, 35);
+            labelSistem.Size = new System.Drawing.Size(860, 35);
             labelSistem.TabIndex = 5;
             labelSistem.Text = "Sistemi";
             labelSistem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,10 +160,10 @@ namespace projekat_2026
             labelFirmaObjekat.AutoSize = true;
             labelFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
             labelFirmaObjekat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            labelFirmaObjekat.Location = new System.Drawing.Point(269, 0);
+            labelFirmaObjekat.Location = new System.Drawing.Point(238, 0);
             labelFirmaObjekat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelFirmaObjekat.Name = "labelFirmaObjekat";
-            labelFirmaObjekat.Size = new System.Drawing.Size(342, 35);
+            labelFirmaObjekat.Size = new System.Drawing.Size(301, 35);
             labelFirmaObjekat.TabIndex = 3;
             labelFirmaObjekat.Text = "Firma/objekat:";
             labelFirmaObjekat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -186,82 +176,67 @@ namespace projekat_2026
             labelAgent.Location = new System.Drawing.Point(4, 0);
             labelAgent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelAgent.Name = "labelAgent";
-            labelAgent.Size = new System.Drawing.Size(257, 35);
+            labelAgent.Size = new System.Drawing.Size(226, 35);
             labelAgent.TabIndex = 2;
             labelAgent.Text = "Agent:";
             labelAgent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dataGridViewStavkeSistemi
-            // 
-            dataGridViewStavkeSistemi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewStavkeSistemi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewStavkeSistemi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ColumnBarcode, ColumnNaziv, ColumnZadovoljava, ColumnNapomenaStavke });
-            tableLayoutPanelPregled.SetColumnSpan(dataGridViewStavkeSistemi, 3);
-            dataGridViewStavkeSistemi.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridViewStavkeSistemi.Location = new System.Drawing.Point(4, 73);
-            dataGridViewStavkeSistemi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            dataGridViewStavkeSistemi.Name = "dataGridViewStavkeSistemi";
-            dataGridViewStavkeSistemi.RowHeadersVisible = false;
-            dataGridViewStavkeSistemi.Size = new System.Drawing.Size(924, 162);
-            dataGridViewStavkeSistemi.TabIndex = 6;
-            // 
-            // ColumnBarcode
-            // 
-            ColumnBarcode.HeaderText = "Barcode";
-            ColumnBarcode.Name = "ColumnBarcode";
-            ColumnBarcode.ReadOnly = true;
-            // 
-            // ColumnNaziv
-            // 
-            ColumnNaziv.HeaderText = "Naziv";
-            ColumnNaziv.Name = "ColumnNaziv";
-            ColumnNaziv.ReadOnly = true;
-            // 
-            // ColumnZadovoljava
-            // 
-            ColumnZadovoljava.HeaderText = "Zadovoljava";
-            ColumnZadovoljava.Name = "ColumnZadovoljava";
-            // 
-            // ColumnNapomenaStavke
-            // 
-            ColumnNapomenaStavke.HeaderText = "Napomena stavke";
-            ColumnNapomenaStavke.Name = "ColumnNapomenaStavke";
             // 
             // textBoxNapomenaCitavogPregleda
             // 
             tableLayoutPanelPregled.SetColumnSpan(textBoxNapomenaCitavogPregleda, 3);
             textBoxNapomenaCitavogPregleda.Dock = System.Windows.Forms.DockStyle.Fill;
-            textBoxNapomenaCitavogPregleda.Location = new System.Drawing.Point(4, 276);
+            textBoxNapomenaCitavogPregleda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxNapomenaCitavogPregleda.Location = new System.Drawing.Point(4, 253);
             textBoxNapomenaCitavogPregleda.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxNapomenaCitavogPregleda.Multiline = true;
             textBoxNapomenaCitavogPregleda.Name = "textBoxNapomenaCitavogPregleda";
-            textBoxNapomenaCitavogPregleda.Size = new System.Drawing.Size(924, 94);
+            textBoxNapomenaCitavogPregleda.Size = new System.Drawing.Size(852, 81);
             textBoxNapomenaCitavogPregleda.TabIndex = 8;
             // 
-            // dateTimePicker1
+            // dateTimePickerDatumPregleda
             // 
-            dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            dateTimePicker1.Location = new System.Drawing.Point(619, 3);
-            dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(309, 24);
-            dateTimePicker1.TabIndex = 10;
+            dateTimePickerDatumPregleda.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            dateTimePickerDatumPregleda.Dock = System.Windows.Forms.DockStyle.Fill;
+            dateTimePickerDatumPregleda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            dateTimePickerDatumPregleda.Location = new System.Drawing.Point(547, 3);
+            dateTimePickerDatumPregleda.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dateTimePickerDatumPregleda.Name = "dateTimePickerDatumPregleda";
+            dateTimePickerDatumPregleda.Size = new System.Drawing.Size(309, 24);
+            dateTimePickerDatumPregleda.TabIndex = 10;
+            // 
+            // dataGridViewPregledStavke
+            // 
+            dataGridViewPregledStavke.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewPregledStavke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelPregled.SetColumnSpan(dataGridViewPregledStavke, 3);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewPregledStavke.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewPregledStavke.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewPregledStavke.Location = new System.Drawing.Point(3, 73);
+            dataGridViewPregledStavke.Name = "dataGridViewPregledStavke";
+            dataGridViewPregledStavke.Size = new System.Drawing.Size(854, 139);
+            dataGridViewPregledStavke.TabIndex = 11;
             // 
             // FormPregled
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(932, 441);
+            ClientSize = new System.Drawing.Size(860, 397);
             Controls.Add(tableLayoutPanelPregled);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "FormPregled";
             Text = "FormPregled";
+            FormClosing += FormPregled_FormClosing;
             tableLayoutPanelPregled.ResumeLayout(false);
             tableLayoutPanelPregled.PerformLayout();
             tableLayoutPanel17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewStavkeSistemi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPregledStavke).EndInit();
             ResumeLayout(false);
 
         }
@@ -272,17 +247,12 @@ namespace projekat_2026
         private System.Windows.Forms.Label labelSistem;
         private System.Windows.Forms.Label labelFirmaObjekat;
         private System.Windows.Forms.Label labelAgent;
-        private System.Windows.Forms.DataGridView dataGridViewStavkeSistemi;
         private System.Windows.Forms.Label labelNapomena;
         private System.Windows.Forms.TextBox textBoxNapomenaCitavogPregleda;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.Button buttonOcisti;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonPonisti;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBarcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNaziv;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnZadovoljava;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNapomenaStavke;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDatumPregleda;
+        private System.Windows.Forms.DataGridView dataGridViewPregledStavke;
     }
 }
