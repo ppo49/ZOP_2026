@@ -135,6 +135,8 @@ namespace projekat_2026.Core
             db.SaveChanges();
         }
 
+
+
         public List<Email> GetEmailsbyAdresarId(int adresarId)
         {
             using var db = new AppDbContext(_dbOptions);
@@ -151,6 +153,8 @@ namespace projekat_2026.Core
                 db.SaveChanges();
             }
         }
+
+
 
         public void AddEmailByAdresarId(int adresarId, string email)
         {
@@ -184,5 +188,7 @@ namespace projekat_2026.Core
                 .AsNoTracking()
                 .ToList();
         }
+
+
     }
 }

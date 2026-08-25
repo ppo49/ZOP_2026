@@ -142,6 +142,8 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.Columns["CreatedAt"].FillWeight = 15;
             dataGridViewPreglediObjekta.Columns["UpdatedAt"].FillWeight = 15;
 
+            dataGridViewPreglediObjekta.ContextMenuStrip = contextMenuStripObrisi;
+
         }
 
         private void SetupdataGridViewAdresar(int idFirmaObjekat)
@@ -178,6 +180,8 @@ namespace projekat_2026
             dataGridViewAdresar.Columns["Napomena"].FillWeight = 15;
             dataGridViewAdresar.Columns["Status"].FillWeight = 10;
 
+            dataGridViewAdresar.ContextMenuStrip = contextMenuStripObrisi;
+
         }
 
         private void SetupdataGridViewSistemi(int idFirmaObjekat)
@@ -206,6 +210,8 @@ namespace projekat_2026
             dataGridViewSistemi.Columns["NazivSistema"].FillWeight = 40;
             dataGridViewSistemi.Columns["Periodika"].FillWeight = 10;
             dataGridViewSistemi.Columns["Napomena"].FillWeight = 50;
+
+            dataGridViewSistemi.ContextMenuStrip = contextMenuStripObrisi;
         }
 
         private void SetupdataGridViewFirmaObjekat()
@@ -513,7 +519,6 @@ namespace projekat_2026
             {
                 if (formDetalji.ShowDialog() == DialogResult.OK)
                 {
-                    // Refresh main DataGridView upon success
                     SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
                 }
             }
@@ -538,7 +543,7 @@ namespace projekat_2026
 
             if (formPregled.ShowDialog() == DialogResult.OK)
             {
-                SetupDatagridViewPregled(_selectedFirmaObjekatId.Value); 
+                SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
             }
         }
 
@@ -552,6 +557,100 @@ namespace projekat_2026
             using var formPregledLIsta = new FormPregledLista(_dbOptions, idPregledLog);
             formPregledLIsta.ShowDialog();
             SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+        }
+
+        private void DataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView grid = sender as DataGridView;
+                if (grid == null) return;
+
+                DataGridView.HitTestInfo hit = grid.HitTest(e.X, e.Y);
+
+                if (hit.Type == DataGridViewHitTestType.Cell || hit.Type == DataGridViewHitTestType.RowHeader)
+                {
+                    if (hit.RowIndex >= 0 && hit.RowIndex < grid.Rows.Count && !grid.Rows[hit.RowIndex].IsNewRow)
+                    {
+                        grid.ClearSelection();
+                        grid.Rows[hit.RowIndex].Selected = true;
+
+                        int colIndex = hit.ColumnIndex >= 0 ? hit.ColumnIndex : 0;
+                        grid.CurrentCell = grid.Rows[hit.RowIndex].Cells[colIndex];
+                    }
+                }
+            }
+        }
+
+
+        private void deleteMenuItem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // 1. Get the ContextMenuStrip hosting this menu item
+                ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
+                ContextMenuStrip menu = menuItem?.Owner as ContextMenuStrip;
+
+                // 2. Identify which DataGridView opened the menu
+                DataGridView targetGrid = menu?.SourceControl as DataGridView;
+
+                if (targetGrid == null || targetGrid.CurrentRow == null)
+                    return;
+
+                if (!_selectedFirmaObjekatId.HasValue)
+                {
+                    MessageBox.Show("Nije izabran objekat firme.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Da li sigurno želite da obrišete? Stavka æe trajno biti obrisana.",
+                        "Upozorenje",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.No) return;
+
+                int firmaObjekatId = _selectedFirmaObjekatId.Value;
+
+                // 3. Perform delete actions based on which grid was clicked
+                if (targetGrid == dataGridViewPreglediObjekta)
+                {
+                    var idPregledLog = targetGrid.CurrentRow.Cells["IdPregledLog"].Value;
+                    if (idPregledLog != null && int.TryParse(idPregledLog.ToString(), out int pregledLogId))
+                    {
+                        pregledService.DeletePregled(pregledLogId);
+                        MessageBox.Show("Pregled je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetupDatagridViewPregled(firmaObjekatId);
+                    }
+
+                }
+                else if (targetGrid == dataGridViewAdresar)
+                {
+                    var idAdresar = targetGrid.CurrentRow.Cells["IdAdresar"].Value;
+                    if (idAdresar != null && int.TryParse(idAdresar.ToString(), out int adresarId))
+                    {
+                        adresarService.Delete(adresarId);
+                        MessageBox.Show("Kontakt je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetupdataGridViewAdresar(firmaObjekatId);
+                    }
+                }
+                else if (targetGrid == dataGridViewSistemi)
+                {
+                    var idObjekatSistemVeznaTabela = targetGrid.CurrentRow.Cells["idObjekatSistemVeznaTabela"].Value;
+                    if (idObjekatSistemVeznaTabela != null && int.TryParse(idObjekatSistemVeznaTabela.ToString(), out int ObjekatSistemVeznaTabelaId))
+                    {
+                        objekatSistemService.Delete(ObjekatSistemVeznaTabelaId);
+                        MessageBox.Show("Sistem je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetupdataGridViewSistemi(firmaObjekatId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }

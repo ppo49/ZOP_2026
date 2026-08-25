@@ -29,8 +29,6 @@ namespace projekat_2026
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            contextMenuStripAdresarDetalji = new System.Windows.Forms.ContextMenuStrip(components);
-            detaljiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             toolStripDetaljiObjekat = new System.Windows.Forms.ToolStrip();
             toolStripButtonPodesavanja = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +43,7 @@ namespace projekat_2026
             buttonDodajFirmaObjekat = new System.Windows.Forms.Button();
             dataGridViewFirmaObjekat = new System.Windows.Forms.DataGridView();
             contextMenuStripObrisi = new System.Windows.Forms.ContextMenuStrip(components);
-            obrišiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tabControlDetalji = new System.Windows.Forms.TabControl();
             tabPageDetalji = new System.Windows.Forms.TabPage();
             tableLayoutPanelDetalji = new System.Windows.Forms.TableLayoutPanel();
@@ -125,6 +123,8 @@ namespace projekat_2026
             dataGridViewAdresar = new System.Windows.Forms.DataGridView();
             tableLayoutPanel34 = new System.Windows.Forms.TableLayoutPanel();
             listBoxEmails = new System.Windows.Forms.ListBox();
+            contextMenuStripObrisiIzLb = new System.Windows.Forms.ContextMenuStrip(components);
+            obrisiIzLBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             listBoxTelefoni = new System.Windows.Forms.ListBox();
             tableLayoutPanel43 = new System.Windows.Forms.TableLayoutPanel();
             label30 = new System.Windows.Forms.Label();
@@ -182,7 +182,6 @@ namespace projekat_2026
             tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             buttonLogOff = new System.Windows.Forms.Button();
             listViewObavestenja = new System.Windows.Forms.ListView();
-            contextMenuStripAdresarDetalji.SuspendLayout();
             tableLayoutPanelMain.SuspendLayout();
             toolStripDetaljiObjekat.SuspendLayout();
             tabControlMain.SuspendLayout();
@@ -223,6 +222,7 @@ namespace projekat_2026
             toolStripAdresar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAdresar).BeginInit();
             tableLayoutPanel34.SuspendLayout();
+            contextMenuStripObrisiIzLb.SuspendLayout();
             tableLayoutPanel43.SuspendLayout();
             tableLayoutPanel46.SuspendLayout();
             tableLayoutPanel44.SuspendLayout();
@@ -243,18 +243,6 @@ namespace projekat_2026
             ((System.ComponentModel.ISupportInitialize)dataGridViewPreglediAgenta).BeginInit();
             tableLayoutPanel8.SuspendLayout();
             SuspendLayout();
-            // 
-            // contextMenuStripAdresarDetalji
-            // 
-            contextMenuStripAdresarDetalji.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { detaljiToolStripMenuItem });
-            contextMenuStripAdresarDetalji.Name = "contextMenuStripAdresarDetalji";
-            contextMenuStripAdresarDetalji.Size = new System.Drawing.Size(108, 26);
-            // 
-            // detaljiToolStripMenuItem
-            // 
-            detaljiToolStripMenuItem.Name = "detaljiToolStripMenuItem";
-            detaljiToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            detaljiToolStripMenuItem.Text = "Detalji";
             // 
             // tableLayoutPanelMain
             // 
@@ -428,16 +416,17 @@ namespace projekat_2026
             // 
             // contextMenuStripObrisi
             // 
-            contextMenuStripObrisi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrišiToolStripMenuItem });
+            contextMenuStripObrisi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiToolStripMenuItem });
             contextMenuStripObrisi.Name = "contextMenuStripObrisi";
             contextMenuStripObrisi.Size = new System.Drawing.Size(106, 26);
             // 
-            // obrišiToolStripMenuItem
+            // obrisiToolStripMenuItem
             // 
-            obrišiToolStripMenuItem.Name = "obrišiToolStripMenuItem";
-            obrišiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            obrišiToolStripMenuItem.Text = "Obriši";
-            obrišiToolStripMenuItem.Click += DeleteSelectedRowFromMenuItem;
+            obrisiToolStripMenuItem.Image = Properties.Resources.icons8_delete2_24;
+            obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
+            obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            obrisiToolStripMenuItem.Text = "Obriši";
+            obrisiToolStripMenuItem.Click += deleteMenuItem_Click;
             // 
             // tabControlDetalji
             // 
@@ -959,10 +948,10 @@ namespace projekat_2026
             // tabPagePregledi
             // 
             tabPagePregledi.Controls.Add(tableLayoutPanelPregledLista);
-            tabPagePregledi.Location = new System.Drawing.Point(4, 27);
+            tabPagePregledi.Location = new System.Drawing.Point(4, 24);
             tabPagePregledi.Name = "tabPagePregledi";
             tabPagePregledi.Padding = new System.Windows.Forms.Padding(3);
-            tabPagePregledi.Size = new System.Drawing.Size(861, 403);
+            tabPagePregledi.Size = new System.Drawing.Size(861, 406);
             tabPagePregledi.TabIndex = 1;
             tabPagePregledi.Text = "Pregledi";
             tabPagePregledi.UseVisualStyleBackColor = true;
@@ -982,7 +971,7 @@ namespace projekat_2026
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.74258F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.25743F));
-            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanelPregledLista.TabIndex = 1;
             // 
             // toolStripDetaljiPregled
@@ -1039,17 +1028,18 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.Location = new System.Drawing.Point(4, 38);
             dataGridViewPreglediObjekta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediObjekta.Name = "dataGridViewPreglediObjekta";
-            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 268);
+            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 270);
             dataGridViewPreglediObjekta.TabIndex = 0;
             dataGridViewPreglediObjekta.CellDoubleClick += dataGridViewPreglediObjekta_CellDoubleClick;
+            dataGridViewPreglediObjekta.MouseDown += DataGridView_MouseDown;
             // 
             // listViewObavestenjaZaObjekat
             // 
             listViewObavestenjaZaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 312);
+            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 314);
             listViewObavestenjaZaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 23);
             listViewObavestenjaZaObjekat.Name = "listViewObavestenjaZaObjekat";
-            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 62);
+            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 63);
             listViewObavestenjaZaObjekat.TabIndex = 1;
             listViewObavestenjaZaObjekat.UseCompatibleStateImageBehavior = false;
             // 
@@ -1233,6 +1223,7 @@ namespace projekat_2026
             dataGridViewSistemi.Size = new System.Drawing.Size(847, 180);
             dataGridViewSistemi.TabIndex = 0;
             dataGridViewSistemi.CellClick += dataGridViewSistemi_CellClick;
+            dataGridViewSistemi.MouseDown += DataGridView_MouseDown;
             // 
             // tableLayoutPanel2
             // 
@@ -1452,6 +1443,7 @@ namespace projekat_2026
             dataGridViewAdresar.Size = new System.Drawing.Size(847, 167);
             dataGridViewAdresar.TabIndex = 0;
             dataGridViewAdresar.CellClick += dataGridViewAdresar_CellClick;
+            dataGridViewAdresar.MouseDown += DataGridView_MouseDown;
             // 
             // tableLayoutPanel34
             // 
@@ -1483,6 +1475,7 @@ namespace projekat_2026
             // 
             // listBoxEmails
             // 
+            listBoxEmails.ContextMenuStrip = contextMenuStripObrisiIzLb;
             listBoxEmails.Dock = System.Windows.Forms.DockStyle.Fill;
             listBoxEmails.FormattingEnabled = true;
             listBoxEmails.ItemHeight = 18;
@@ -1492,8 +1485,23 @@ namespace projekat_2026
             listBoxEmails.Size = new System.Drawing.Size(247, 97);
             listBoxEmails.TabIndex = 67;
             // 
+            // contextMenuStripObrisiIzLb
+            // 
+            contextMenuStripObrisiIzLb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { obrisiIzLBToolStripMenuItem });
+            contextMenuStripObrisiIzLb.Name = "contextMenuStripObrisiIzLb";
+            contextMenuStripObrisiIzLb.Size = new System.Drawing.Size(106, 26);
+            // 
+            // obrisiIzLBToolStripMenuItem
+            // 
+            obrisiIzLBToolStripMenuItem.Image = Properties.Resources.icons8_delete2_24;
+            obrisiIzLBToolStripMenuItem.Name = "obrisiIzLBToolStripMenuItem";
+            obrisiIzLBToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            obrisiIzLBToolStripMenuItem.Text = "Obriši";
+            obrisiIzLBToolStripMenuItem.Click += DeleteSelectedRowFromMenuItem;
+            // 
             // listBoxTelefoni
             // 
+            listBoxTelefoni.ContextMenuStrip = contextMenuStripObrisiIzLb;
             listBoxTelefoni.Dock = System.Windows.Forms.DockStyle.Fill;
             listBoxTelefoni.FormattingEnabled = true;
             listBoxTelefoni.ItemHeight = 18;
@@ -1735,6 +1743,7 @@ namespace projekat_2026
             tableLayoutPanel20.SetRowSpan(dataGridViewOprema, 2);
             dataGridViewOprema.Size = new System.Drawing.Size(847, 154);
             dataGridViewOprema.TabIndex = 11;
+            dataGridViewOprema.MouseDown += DataGridView_MouseDown;
             // 
             // tableLayoutPanel21
             // 
@@ -2215,6 +2224,7 @@ namespace projekat_2026
             dataGridViewPreglediAgenta.Name = "dataGridViewPreglediAgenta";
             dataGridViewPreglediAgenta.Size = new System.Drawing.Size(769, 233);
             dataGridViewPreglediAgenta.TabIndex = 16;
+            dataGridViewPreglediAgenta.MouseDown += DataGridView_MouseDown;
             // 
             // tableLayoutPanel8
             // 
@@ -2264,7 +2274,6 @@ namespace projekat_2026
             Name = "FormMain";
             Text = "ZOP - MAIN";
             FormClosing += FormMain_FormClosing;
-            contextMenuStripAdresarDetalji.ResumeLayout(false);
             tableLayoutPanelMain.ResumeLayout(false);
             tableLayoutPanelMain.PerformLayout();
             toolStripDetaljiObjekat.ResumeLayout(false);
@@ -2328,6 +2337,7 @@ namespace projekat_2026
             toolStripAdresar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAdresar).EndInit();
             tableLayoutPanel34.ResumeLayout(false);
+            contextMenuStripObrisiIzLb.ResumeLayout(false);
             tableLayoutPanel43.ResumeLayout(false);
             tableLayoutPanel43.PerformLayout();
             tableLayoutPanel46.ResumeLayout(false);
@@ -2365,8 +2375,6 @@ namespace projekat_2026
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripAdresarDetalji;
-        private System.Windows.Forms.ToolStripMenuItem detaljiToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.ToolStrip toolStripDetaljiObjekat;
         private System.Windows.Forms.ToolStripButton toolStripButtonPodesavanja;
@@ -2505,7 +2513,7 @@ namespace projekat_2026
         private System.Windows.Forms.TextBox textBoxSistemNaziv;
         private System.Windows.Forms.Button buttonAzurirajKontakt;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripObrisi;
-        private System.Windows.Forms.ToolStripMenuItem obrišiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel43;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBoxKontaktImePrezime;
@@ -2518,6 +2526,8 @@ namespace projekat_2026
         private System.Windows.Forms.Button buttonAdresarDodajTelefon;
         private System.Windows.Forms.TextBox textBoxAdresarTelefon;
         private System.Windows.Forms.ComboBox comboBoxAdresarStatus;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripObrisiIzLb;
+        private System.Windows.Forms.ToolStripMenuItem obrisiIzLBToolStripMenuItem;
     }
 }
 
