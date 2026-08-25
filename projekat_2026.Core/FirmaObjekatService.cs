@@ -28,6 +28,16 @@ namespace projekat_2026.Core
             return db.FirmaObjekats.FirstOrDefault(f => f.IdFirmaObjekat == id);
         }
 
+        public string GetNameById(int id)
+        {
+            using var db = new AppDbContext(_dbOptions);
+
+            return db.FirmaObjekats
+                     .Where(f => f.IdFirmaObjekat == id)
+                     .Select(f => f.ImeFirmeObjekat)
+                     .FirstOrDefault() ?? string.Empty;
+        }
+
         public void Add(FirmaObjekat firma)
         {
             using var db = new AppDbContext(_dbOptions);

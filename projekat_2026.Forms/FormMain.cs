@@ -505,6 +505,35 @@ namespace projekat_2026
 
         private void buttonFirmaObjekatObrisi_Click(object sender, EventArgs e)
         {
+            if (!_selectedFirmaObjekatId.HasValue) return;
+
+            int idFirmaObjekat = _selectedFirmaObjekatId.Value;
+
+            string imeFirmeZaBrisanje = firmaObjekatService.GetNameById(idFirmaObjekat);
+
+            using (FormDeleteFO fo = new FormDeleteFO(imeFirmeZaBrisanje))
+            {
+                if (fo.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        firmaObjekatService.Delete(idFirmaObjekat);
+
+                        MessageBox.Show(
+                            "Objekat je uspešno obrisan sa svim povezanim podacima!",
+                            "Uspeh",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        SetupdataGridViewFirmaObjekat();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Greška pri brisanju: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
 
         }
 
@@ -643,6 +672,37 @@ namespace projekat_2026
                         MessageBox.Show("Sistem je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupdataGridViewSistemi(firmaObjekatId);
                     }
+                }
+                else if (targetGrid == dataGridViewFirmaObjekat)
+                {/*
+                    if (!_selectedFirmaObjekatId.HasValue) return;
+
+                    int idFirmaObjekat = _selectedFirmaObjekatId.Value;
+
+                    string imeFirmeZaBrisanje = firmaObjekatService.GetNameById(idFirmaObjekat);
+
+                    using (FormDeleteFO fo = new FormDeleteFO(imeFirmeZaBrisanje))
+                    {
+                        if (fo.ShowDialog() == DialogResult.OK)
+                        {
+                            try
+                            {
+                                firmaObjekatService.Delete(idFirmaObjekat);
+
+                                MessageBox.Show(
+                                    "Objekat je uspešno obrisan sa svim povezanim podacima!",
+                                    "Uspeh",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                                SetupdataGridViewFirmaObjekat();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Greška pri brisanju: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }*/
                 }
             }
             catch (Exception ex)
