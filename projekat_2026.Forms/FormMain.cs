@@ -37,6 +37,7 @@ namespace projekat_2026
         private readonly AdresarService adresarService;
         private readonly PregledService pregledService;
 
+
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
             InitializeComponent();
@@ -250,14 +251,24 @@ namespace projekat_2026
 
         private void buttonDodajFirmaObjekat_Click(object sender, EventArgs e)
         {
-            FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
-            formFirmaObjekatDodaj.ShowDialog();
+            using (FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions))
+            {
+                if (formFirmaObjekatDodaj.ShowDialog() == DialogResult.OK)
+                {
+                    SetupdataGridViewFirmaObjekat();
+                }
+            }
         }
 
         private void toolStripButtondodajFirmu_Click(object sender, EventArgs e)
         {
-            FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions);
-            formFirmaObjekatDodaj.ShowDialog();
+            using (FormFirmaObjekatDodaj formFirmaObjekatDodaj = new FormFirmaObjekatDodaj(_dbOptions))
+            {
+                if (formFirmaObjekatDodaj.ShowDialog() == DialogResult.OK)
+                {
+                    SetupdataGridViewFirmaObjekat();
+                }
+            }
         }
 
         private void dataGridViewFirmaObjekat_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -269,7 +280,11 @@ namespace projekat_2026
 
                 DataGridViewRow row = dataGridViewFirmaObjekat.Rows[e.RowIndex];
 
-                _selectedFirmaObjekatId = (int)row.Cells["IdFirmaObjekat"].Value;
+                if (row.Cells["IdFirmaObjekat"].Value == null ||
+                    !int.TryParse(row.Cells["IdFirmaObjekat"].Value.ToString(), out int selectedId))
+                    return;
+
+                _selectedFirmaObjekatId = selectedId;
                 var firma = firmaObjekatService.GetById(_selectedFirmaObjekatId.Value);
                 if (firma == null) return;
 
@@ -288,6 +303,9 @@ namespace projekat_2026
                 SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
                 SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
                 SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+
+                tabControlDetalji.Visible = true;
+
             }
             catch (Exception ex)
             {
@@ -525,6 +543,7 @@ namespace projekat_2026
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
+                        ClearAndHideDetails();
                         SetupdataGridViewFirmaObjekat();
                     }
                     catch (Exception ex)
@@ -614,18 +633,43 @@ namespace projekat_2026
 
         private void deleteMenuItem_Click(object sender, EventArgs e)
         {
-
             try
             {
-                // 1. Get the ContextMenuStrip hosting this menu item
+                // 1. Identify which DataGridView opened the menu
                 ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
                 ContextMenuStrip menu = menuItem?.Owner as ContextMenuStrip;
-
-                // 2. Identify which DataGridView opened the menu
                 DataGridView targetGrid = menu?.SourceControl as DataGridView;
 
-                if (targetGrid == null || targetGrid.CurrentRow == null)
+                if (targetGrid == null || targetGrid.CurrentRow == null || targetGrid.CurrentRow.IsNewRow)
                     return;
+
+                if (targetGrid == dataGridViewFirmaObjekat)
+                {
+                    var cellValue = targetGrid.CurrentRow.Cells["idFirmaObjekat"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int idFirmaObjekat))
+                    {
+                        string imeFirmeZaBrisanje = firmaObjekatService.GetNameById(idFirmaObjekat);
+
+                        using (FormDeleteFO fo = new FormDeleteFO(imeFirmeZaBrisanje))
+                        {
+                            if (fo.ShowDialog() == DialogResult.OK)
+                            {
+                                firmaObjekatService.Delete(idFirmaObjekat);
+                                _selectedFirmaObjekatId = null;
+
+                                MessageBox.Show(
+                                    "Objekat je uspešno obrisan sa svim povezanim podacima!",
+                                    "Uspeh",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                                ClearAndHideDetails();
+                                SetupdataGridViewFirmaObjekat();
+                            }
+                        }
+                    }
+                    return;
+                }
 
                 if (!_selectedFirmaObjekatId.HasValue)
                 {
@@ -633,30 +677,30 @@ namespace projekat_2026
                     return;
                 }
 
-                DialogResult result = MessageBox.Show("Da li sigurno želite da obrišete? Stavka æe trajno biti obrisana.",
-                        "Upozorenje",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show(
+                    "Da li sigurno želite da obrišete? Stavka æe trajno biti obrisana.",
+                    "Upozorenje",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
 
                 if (result == DialogResult.No) return;
 
                 int firmaObjekatId = _selectedFirmaObjekatId.Value;
 
-                // 3. Perform delete actions based on which grid was clicked
                 if (targetGrid == dataGridViewPreglediObjekta)
                 {
-                    var idPregledLog = targetGrid.CurrentRow.Cells["IdPregledLog"].Value;
-                    if (idPregledLog != null && int.TryParse(idPregledLog.ToString(), out int pregledLogId))
+                    var cellValue = targetGrid.CurrentRow.Cells["IdPregledLog"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int pregledLogId))
                     {
                         pregledService.DeletePregled(pregledLogId);
                         MessageBox.Show("Pregled je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupDatagridViewPregled(firmaObjekatId);
                     }
-
                 }
                 else if (targetGrid == dataGridViewAdresar)
                 {
-                    var idAdresar = targetGrid.CurrentRow.Cells["IdAdresar"].Value;
-                    if (idAdresar != null && int.TryParse(idAdresar.ToString(), out int adresarId))
+                    var cellValue = targetGrid.CurrentRow.Cells["IdAdresar"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int adresarId))
                     {
                         adresarService.Delete(adresarId);
                         MessageBox.Show("Kontakt je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -665,52 +709,50 @@ namespace projekat_2026
                 }
                 else if (targetGrid == dataGridViewSistemi)
                 {
-                    var idObjekatSistemVeznaTabela = targetGrid.CurrentRow.Cells["idObjekatSistemVeznaTabela"].Value;
-                    if (idObjekatSistemVeznaTabela != null && int.TryParse(idObjekatSistemVeznaTabela.ToString(), out int ObjekatSistemVeznaTabelaId))
+                    var cellValue = targetGrid.CurrentRow.Cells["idObjekatSistemVeznaTabela"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int objekatSistemVeznaTabelaId))
                     {
-                        objekatSistemService.Delete(ObjekatSistemVeznaTabelaId);
+                        objekatSistemService.Delete(objekatSistemVeznaTabelaId);
                         MessageBox.Show("Sistem je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupdataGridViewSistemi(firmaObjekatId);
                     }
                 }
-                else if (targetGrid == dataGridViewFirmaObjekat)
-                {/*
-                    if (!_selectedFirmaObjekatId.HasValue) return;
-
-                    int idFirmaObjekat = _selectedFirmaObjekatId.Value;
-
-                    string imeFirmeZaBrisanje = firmaObjekatService.GetNameById(idFirmaObjekat);
-
-                    using (FormDeleteFO fo = new FormDeleteFO(imeFirmeZaBrisanje))
-                    {
-                        if (fo.ShowDialog() == DialogResult.OK)
-                        {
-                            try
-                            {
-                                firmaObjekatService.Delete(idFirmaObjekat);
-
-                                MessageBox.Show(
-                                    "Objekat je uspešno obrisan sa svim povezanim podacima!",
-                                    "Uspeh",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-
-                                SetupdataGridViewFirmaObjekat();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show($"Greška pri brisanju: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }*/
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Greška pri brisanju: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            tabControlDetalji.Visible = false;
+        }
+
+
+        private void ClearAndHideDetails()
+        {
+            _selectedFirmaObjekatId = null;
+
+            // Clear textboxes
+            textBoxImeFirmeObjekat.Clear();
+            textBoxPib.Clear();
+            textBoxMb.Clear();
+            textBoxAdresaObjekta.Clear();
+            textBoxGrad.Clear();
+            textBoxDatumAktivnosti.Clear();
+            textBoxCreatedAt.Clear();
+            textBoxUpdatedAt.Clear();
+            numericUpDownBrZaposlenih.Value = 0;
+            comboBoxStatus.SelectedIndex = -1;
+
+            dataGridViewSistemi.DataSource = null;
+            dataGridViewAdresar.DataSource = null;
+            dataGridViewPreglediObjekta.DataSource = null;
+
+            tabControlDetalji.Visible = false;
+        }
+
+
     }
 }

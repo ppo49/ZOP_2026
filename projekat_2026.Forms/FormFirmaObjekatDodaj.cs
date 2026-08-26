@@ -242,33 +242,33 @@ namespace projekat_2026
                 if (row.IsNewRow) continue;
 
                 string imePrezime = row.Cells[1].Value?.ToString() ?? string.Empty;
-                string emailAdresa = row.Cells[2].Value?.ToString() ?? string.Empty; 
+                string emailAdresa = row.Cells[2].Value?.ToString() ?? string.Empty;
                 string telefonBroj = row.Cells[3].Value?.ToString() ?? string.Empty;
                 string napomena = row.Cells[4].Value?.ToString() ?? string.Empty;
 
                 if (string.IsNullOrWhiteSpace(imePrezime)) continue;
 
 
-                    var noviAdresar = new Adresar
-                    {
-                        //IdAdresar = idAdresar,
-                        ImePrezime = imePrezime,
-                        Aktivan = true,
-                        Napomena = napomena,
-                        CreatedAt = DateTime.Now,
-                        UpdatedAt = DateTime.Now,
-                        Emails = emailAdresa
-                            .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                            .Select(eStr => new Email { Email1 = eStr.Trim() })
-                            .ToList(),
-                        Telefons = telefonBroj
-                            .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                            .Select(tStr => new Telefon { Telefon1 = tStr.Trim() })
-                            .ToList(),
-                        IdFirmaObjekats = new List<FirmaObjekat> { novaFirma }
-                    };
+                var noviAdresar = new Adresar
+                {
+                    //IdAdresar = idAdresar,
+                    ImePrezime = imePrezime,
+                    Aktivan = true,
+                    Napomena = napomena,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    Emails = emailAdresa
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(eStr => new Email { Email1 = eStr.Trim() })
+                        .ToList(),
+                    Telefons = telefonBroj
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(tStr => new Telefon { Telefon1 = tStr.Trim() })
+                        .ToList(),
+                    IdFirmaObjekats = new List<FirmaObjekat> { novaFirma }
+                };
 
-                    listaAdresar.Add(noviAdresar);
+                listaAdresar.Add(noviAdresar);
             }
 
             SwitchToTab(2);
@@ -354,7 +354,7 @@ namespace projekat_2026
 
         private async void buttonSacuvaj_Click(object sender, EventArgs e)
         {
-            if (dataGridViewSistemi.Rows.Count == 0) // Fixed: Was checking dataGridViewAdresar
+            if (dataGridViewSistemi.Rows.Count == 0)
             {
                 DialogResult result = MessageBox.Show("Tabela Sistemi je prazna. Da li želite da saèuvate bez dodatih sistema?", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No)
@@ -408,6 +408,8 @@ namespace projekat_2026
         {
             try
             {
+                buttonSacuvaj.Enabled = false;
+
                 await firmaObjekatService.SaveComplete(novaFirma, listaAdresar, listaSistema);
                 MessageBox.Show("Podaci uspešno saèuvani!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
@@ -514,6 +516,11 @@ namespace projekat_2026
         private void buttonNazad2_Click(object sender, EventArgs e)
         {
             SwitchToTab(1);
+        }
+
+        private void buttonPreskociSacuvaj_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

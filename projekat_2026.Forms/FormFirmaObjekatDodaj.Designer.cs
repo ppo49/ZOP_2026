@@ -112,7 +112,6 @@ namespace projekat_2026
             panel2 = new System.Windows.Forms.Panel();
             tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
             buttonRefresh2 = new System.Windows.Forms.Button();
-            buttonPreskociSacuvaj = new System.Windows.Forms.Button();
             buttonSacuvaj = new System.Windows.Forms.Button();
             buttonNazad2 = new System.Windows.Forms.Button();
             contextMenuStripIzbrisi.SuspendLayout();
@@ -1299,15 +1298,14 @@ namespace projekat_2026
             // tableLayoutPanel30
             // 
             tableLayoutPanel30.BackColor = System.Drawing.SystemColors.ControlLight;
-            tableLayoutPanel30.ColumnCount = 5;
+            tableLayoutPanel30.ColumnCount = 4;
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel30.Controls.Add(buttonRefresh2, 0, 0);
-            tableLayoutPanel30.Controls.Add(buttonPreskociSacuvaj, 3, 0);
-            tableLayoutPanel30.Controls.Add(buttonSacuvaj, 4, 0);
+            tableLayoutPanel30.Controls.Add(buttonSacuvaj, 3, 0);
             tableLayoutPanel30.Controls.Add(buttonNazad2, 2, 0);
             tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel30.Location = new System.Drawing.Point(0, 0);
@@ -1330,21 +1328,6 @@ namespace projekat_2026
             buttonRefresh2.UseVisualStyleBackColor = true;
             buttonRefresh2.Click += buttonOcisti_Click;
             // 
-            // buttonPreskociSacuvaj
-            // 
-            buttonPreskociSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            buttonPreskociSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            buttonPreskociSacuvaj.Image = Properties.Resources.icons8_save_24;
-            buttonPreskociSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonPreskociSacuvaj.Location = new System.Drawing.Point(850, 3);
-            buttonPreskociSacuvaj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            buttonPreskociSacuvaj.Name = "buttonPreskociSacuvaj";
-            buttonPreskociSacuvaj.Size = new System.Drawing.Size(163, 38);
-            buttonPreskociSacuvaj.TabIndex = 9;
-            buttonPreskociSacuvaj.Text = "Preskoèi/Saèuvaj";
-            buttonPreskociSacuvaj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            buttonPreskociSacuvaj.UseVisualStyleBackColor = true;
-            // 
             // buttonSacuvaj
             // 
             buttonSacuvaj.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1366,7 +1349,7 @@ namespace projekat_2026
             buttonNazad2.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonNazad2.Image = Properties.Resources.icons8_logout_24;
             buttonNazad2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonNazad2.Location = new System.Drawing.Point(728, 3);
+            buttonNazad2.Location = new System.Drawing.Point(899, 3);
             buttonNazad2.Name = "buttonNazad2";
             buttonNazad2.Size = new System.Drawing.Size(115, 38);
             buttonNazad2.TabIndex = 12;
@@ -1530,7 +1513,6 @@ namespace projekat_2026
         private System.Windows.Forms.Button buttonDodajKontaktUTabelu;
         private System.Windows.Forms.Button buttonPreskoci;
         private System.Windows.Forms.Button buttonSledeci2;
-        private System.Windows.Forms.Button buttonPreskociSacuvaj;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonNazad1;
         private System.Windows.Forms.Button buttonNazad2;
