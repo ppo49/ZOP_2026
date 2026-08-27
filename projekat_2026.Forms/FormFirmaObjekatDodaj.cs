@@ -417,7 +417,8 @@ namespace projekat_2026
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri èuvanju u bazu: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string detalji = ex.InnerException?.Message ?? ex.Message;
+                MessageBox.Show($"Greška pri èuvanju u bazu: {detalji}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
