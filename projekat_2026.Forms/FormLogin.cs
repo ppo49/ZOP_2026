@@ -111,6 +111,7 @@ namespace projekat_2026
                     return;
                 }
 
+
                 FormMain formMain = new FormMain(_dbOptions, agent);
 
                 formMain.FormClosed += (s, args) => this.Close();

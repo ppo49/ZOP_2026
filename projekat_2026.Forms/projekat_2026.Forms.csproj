@@ -43,4 +43,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+    <ItemGroup>
+		<None Update="Templates\Template_Izvestaj.docx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>	
 </Project>

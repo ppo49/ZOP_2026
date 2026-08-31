@@ -8,7 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace projekat_2026
     {
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly Agent _loggedInAgent;
-        private readonly FirmaObjekat _fairmaObjekat;
+        //private readonly FirmaObjekat _fairmaObjekat;
 
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
 
@@ -30,6 +32,7 @@ namespace projekat_2026
         private int? _selectedFirmaObjekatId;
         private int? _selectedStavkaId;
         private int? _selectedKontaktId;
+        private int? _selectedPregledLogId;
 
         private readonly FirmaObjekatService firmaObjekatService;
         private readonly SistemService sistemService;
@@ -342,10 +345,22 @@ namespace projekat_2026
                 firma.Grad = textBoxGrad.Text.Trim();
                 firma.BrojZaposlenih = (int)numericUpDownBrZaposlenih.Value;
                 firma.Aktivan = comboBoxStatus.SelectedItem?.ToString() == "Aktivan";
+                firma.UpdatedAt = DateTime.Now;
 
                 firmaObjekatService.Update(firma);
                 MessageBox.Show("Podaci uspešno ažurirani.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                SetupdataGridViewFirmaObjekat();
+                //SetupdataGridViewFirmaObjekat();
+
+                foreach (DataGridViewRow row in dataGridViewFirmaObjekat.Rows)
+                {
+                    if (row.Cells["IdFirmaObjekat"].Value != null &&
+                        Convert.ToInt32(row.Cells["IdFirmaObjekat"].Value) == _selectedFirmaObjekatId.Value)
+                    {
+                        row.Selected = true;
+                        //dataGridViewFirmaObjekat.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                }
 
                 SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
                 SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
@@ -753,6 +768,46 @@ namespace projekat_2026
             tabControlDetalji.Visible = false;
         }
 
+        private void toolStripButtonIzvestaj_Click(object sender, EventArgs e)
+        {
+            if (!_selectedPregledLogId.HasValue)
+            {
+                MessageBox.Show("Molimo izaberite pregled iz tabele pre generisanja izveštaja.",
+                                "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            try
+            {
+                string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+                string templatePath = Path.Combine(Path.Combine(Path.Combine(localAppData,"ZOP"),"Templates"), "Template_Izvestaj.docx");
+                string outputFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                var izvestajService = new IzvestajService(_dbOptions, templatePath);
+                string putanja = izvestajService.GenerisiIzvestaj(_selectedPregledLogId.Value, outputFolder);
+
+                MessageBox.Show("Izveštaj saèuvan!","Obaveštenje",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start(new ProcessStartInfo(putanja) { UseShellExecute = true });
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Greška",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void dataGridViewPreglediObjekta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewPreglediObjekta.Rows[e.RowIndex];
+
+            if (row.Cells["IdPregledLog"]?.Value != null &&
+                int.TryParse(row.Cells["IdPregledLog"].Value.ToString(), out int id))
+            {
+                _selectedPregledLogId = id;
+            }
+        }
     }
 }

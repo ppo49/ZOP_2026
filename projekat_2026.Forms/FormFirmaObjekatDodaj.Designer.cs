@@ -680,6 +680,7 @@ namespace projekat_2026
             // 
             // dataGridViewAdresar
             // 
+            dataGridViewAdresar.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewAdresar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel34.SetColumnSpan(dataGridViewAdresar, 5);
             dataGridViewAdresar.ContextMenuStrip = contextMenuStripIzbrisi;
@@ -1110,6 +1111,7 @@ namespace projekat_2026
             // 
             // dataGridViewSistemi
             // 
+            dataGridViewSistemi.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewSistemi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel10.SetColumnSpan(dataGridViewSistemi, 5);
             dataGridViewSistemi.ContextMenuStrip = contextMenuStripIzbrisi;

@@ -81,6 +81,7 @@ namespace projekat_2026
             toolStripButtonAzurirajPregled = new System.Windows.Forms.ToolStripButton();
             toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             toolStripButtonRefreshPreglede = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonIzvestaj = new System.Windows.Forms.ToolStripButton();
             dataGridViewPreglediObjekta = new System.Windows.Forms.DataGridView();
             listViewObavestenjaZaObjekat = new System.Windows.Forms.ListView();
             tabPageSistemi = new System.Windows.Forms.TabPage();
@@ -124,9 +125,6 @@ namespace projekat_2026
             tableLayoutPanel43 = new System.Windows.Forms.TableLayoutPanel();
             label30 = new System.Windows.Forms.Label();
             textBoxKontaktImePrezime = new System.Windows.Forms.TextBox();
-            tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
-            label33 = new System.Windows.Forms.Label();
-            textBoxKontaktNapomena = new System.Windows.Forms.TextBox();
             buttonAzurirajKontakt = new System.Windows.Forms.Button();
             tableLayoutPanel44 = new System.Windows.Forms.TableLayoutPanel();
             buttonDodajEmailUTexBox = new System.Windows.Forms.Button();
@@ -134,6 +132,9 @@ namespace projekat_2026
             tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
             buttonAdresarDodajTelefon = new System.Windows.Forms.Button();
             textBoxAdresarTelefon = new System.Windows.Forms.TextBox();
+            tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
+            label33 = new System.Windows.Forms.Label();
+            textBoxKontaktNapomena = new System.Windows.Forms.TextBox();
             comboBoxAdresarStatus = new System.Windows.Forms.ComboBox();
             tabPageOprema = new System.Windows.Forms.TabPage();
             tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
@@ -223,9 +224,9 @@ namespace projekat_2026
             tableLayoutPanel34.SuspendLayout();
             contextMenuStripObrisiIzLb.SuspendLayout();
             tableLayoutPanel43.SuspendLayout();
-            tableLayoutPanel46.SuspendLayout();
             tableLayoutPanel44.SuspendLayout();
             tableLayoutPanel27.SuspendLayout();
+            tableLayoutPanel46.SuspendLayout();
             tabPageOprema.SuspendLayout();
             tableLayoutPanel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOprema).BeginInit();
@@ -648,9 +649,8 @@ namespace projekat_2026
             // tableLayoutPanel17
             // 
             tableLayoutPanel17.ColumnCount = 2;
-            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.786068F));
-            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.213932F));
-            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.72136F));
+            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.2786427F));
             tableLayoutPanel17.Controls.Add(buttonAzurirajObjekat, 1, 0);
             tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel17.Location = new System.Drawing.Point(644, 3);
@@ -667,13 +667,11 @@ namespace projekat_2026
             buttonAzurirajObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonAzurirajObjekat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             buttonAzurirajObjekat.Image = Properties.Resources.icons8_edit_24;
-            buttonAzurirajObjekat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonAzurirajObjekat.Location = new System.Drawing.Point(92, 3);
+            buttonAzurirajObjekat.Location = new System.Drawing.Point(150, 3);
             buttonAzurirajObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonAzurirajObjekat.Name = "buttonAzurirajObjekat";
-            buttonAzurirajObjekat.Size = new System.Drawing.Size(111, 31);
+            buttonAzurirajObjekat.Size = new System.Drawing.Size(53, 31);
             buttonAzurirajObjekat.TabIndex = 0;
-            buttonAzurirajObjekat.Text = "Ažuriraj";
             buttonAzurirajObjekat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonAzurirajObjekat.UseVisualStyleBackColor = true;
             buttonAzurirajObjekat.Click += buttonAzurirajObjekat_Click;
@@ -792,6 +790,7 @@ namespace projekat_2026
             textBoxCreatedAt.Location = new System.Drawing.Point(4, 36);
             textBoxCreatedAt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxCreatedAt.Name = "textBoxCreatedAt";
+            textBoxCreatedAt.ReadOnly = true;
             textBoxCreatedAt.Size = new System.Drawing.Size(198, 24);
             textBoxCreatedAt.TabIndex = 1;
             // 
@@ -831,15 +830,15 @@ namespace projekat_2026
             textBoxUpdatedAt.Location = new System.Drawing.Point(4, 36);
             textBoxUpdatedAt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxUpdatedAt.Name = "textBoxUpdatedAt";
+            textBoxUpdatedAt.ReadOnly = true;
             textBoxUpdatedAt.Size = new System.Drawing.Size(216, 24);
             textBoxUpdatedAt.TabIndex = 1;
             // 
             // tableLayoutPanel25
             // 
             tableLayoutPanel25.ColumnCount = 2;
-            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.786068F));
-            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.213932F));
-            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.12971F));
+            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.8702946F));
             tableLayoutPanel25.Controls.Add(buttonFirmaObjekatObrisi, 1, 1);
             tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel25.Location = new System.Drawing.Point(644, 323);
@@ -856,13 +855,11 @@ namespace projekat_2026
             buttonFirmaObjekatObrisi.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonFirmaObjekatObrisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             buttonFirmaObjekatObrisi.Image = Properties.Resources.icons8_delete2_24;
-            buttonFirmaObjekatObrisi.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonFirmaObjekatObrisi.Location = new System.Drawing.Point(92, 39);
+            buttonFirmaObjekatObrisi.Location = new System.Drawing.Point(151, 39);
             buttonFirmaObjekatObrisi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonFirmaObjekatObrisi.Name = "buttonFirmaObjekatObrisi";
-            buttonFirmaObjekatObrisi.Size = new System.Drawing.Size(111, 32);
+            buttonFirmaObjekatObrisi.Size = new System.Drawing.Size(52, 32);
             buttonFirmaObjekatObrisi.TabIndex = 1;
-            buttonFirmaObjekatObrisi.Text = "Obriši";
             buttonFirmaObjekatObrisi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonFirmaObjekatObrisi.UseVisualStyleBackColor = true;
             buttonFirmaObjekatObrisi.Click += buttonFirmaObjekatObrisi_Click;
@@ -870,10 +867,10 @@ namespace projekat_2026
             // tabPagePregledi
             // 
             tabPagePregledi.Controls.Add(tableLayoutPanelPregledLista);
-            tabPagePregledi.Location = new System.Drawing.Point(4, 24);
+            tabPagePregledi.Location = new System.Drawing.Point(4, 27);
             tabPagePregledi.Name = "tabPagePregledi";
             tabPagePregledi.Padding = new System.Windows.Forms.Padding(3);
-            tabPagePregledi.Size = new System.Drawing.Size(861, 406);
+            tabPagePregledi.Size = new System.Drawing.Size(861, 403);
             tabPagePregledi.TabIndex = 1;
             tabPagePregledi.Text = "Pregledi";
             tabPagePregledi.UseVisualStyleBackColor = true;
@@ -893,13 +890,13 @@ namespace projekat_2026
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.74258F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.25743F));
-            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 400);
+            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 397);
             tableLayoutPanelPregledLista.TabIndex = 1;
             // 
             // toolStripDetaljiPregled
             // 
             toolStripDetaljiPregled.Dock = System.Windows.Forms.DockStyle.Fill;
-            toolStripDetaljiPregled.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonNoviPregled, toolStripButtonAzurirajPregled, toolStripButtonPrint, toolStripButtonRefreshPreglede });
+            toolStripDetaljiPregled.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonNoviPregled, toolStripButtonAzurirajPregled, toolStripButtonPrint, toolStripButtonRefreshPreglede, toolStripButtonIzvestaj });
             toolStripDetaljiPregled.Location = new System.Drawing.Point(0, 0);
             toolStripDetaljiPregled.Name = "toolStripDetaljiPregled";
             toolStripDetaljiPregled.Size = new System.Drawing.Size(855, 35);
@@ -943,24 +940,36 @@ namespace projekat_2026
             toolStripButtonRefreshPreglede.Size = new System.Drawing.Size(23, 32);
             toolStripButtonRefreshPreglede.Text = "Refresh";
             // 
+            // toolStripButtonIzvestaj
+            // 
+            toolStripButtonIzvestaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonIzvestaj.Image = Properties.Resources.icons8_doc_24;
+            toolStripButtonIzvestaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonIzvestaj.Name = "toolStripButtonIzvestaj";
+            toolStripButtonIzvestaj.Size = new System.Drawing.Size(23, 32);
+            toolStripButtonIzvestaj.Text = "Generiši izveštaj pregleda";
+            toolStripButtonIzvestaj.Click += toolStripButtonIzvestaj_Click;
+            // 
             // dataGridViewPreglediObjekta
             // 
+            dataGridViewPreglediObjekta.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewPreglediObjekta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPreglediObjekta.Dock = System.Windows.Forms.DockStyle.Fill;
             dataGridViewPreglediObjekta.Location = new System.Drawing.Point(4, 38);
             dataGridViewPreglediObjekta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediObjekta.Name = "dataGridViewPreglediObjekta";
-            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 270);
+            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 268);
             dataGridViewPreglediObjekta.TabIndex = 0;
+            dataGridViewPreglediObjekta.CellClick += dataGridViewPreglediObjekta_CellClick;
             dataGridViewPreglediObjekta.CellDoubleClick += dataGridViewPreglediObjekta_CellDoubleClick;
             // 
             // listViewObavestenjaZaObjekat
             // 
             listViewObavestenjaZaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 314);
+            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 312);
             listViewObavestenjaZaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 23);
             listViewObavestenjaZaObjekat.Name = "listViewObavestenjaZaObjekat";
-            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 63);
+            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 62);
             listViewObavestenjaZaObjekat.TabIndex = 1;
             listViewObavestenjaZaObjekat.UseCompatibleStateImageBehavior = false;
             // 
@@ -1009,15 +1018,15 @@ namespace projekat_2026
             labelDodajSistem.Size = new System.Drawing.Size(847, 35);
             labelDodajSistem.TabIndex = 49;
             labelDodajSistem.Text = "Dodaj sistem";
-            labelDodajSistem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelDodajSistem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel26
             // 
             tableLayoutPanel26.ColumnCount = 3;
             tableLayoutPanelSistem.SetColumnSpan(tableLayoutPanel26, 2);
             tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 422F));
-            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 434F));
+            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel26.Controls.Add(label1, 0, 0);
             tableLayoutPanel26.Controls.Add(label2, 1, 0);
@@ -1042,7 +1051,7 @@ namespace projekat_2026
             label1.Location = new System.Drawing.Point(4, 0);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(304, 28);
+            label1.Size = new System.Drawing.Size(354, 28);
             label1.TabIndex = 1;
             label1.Text = "Sistem";
             label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -1052,10 +1061,10 @@ namespace projekat_2026
             label2.AutoSize = true;
             label2.Dock = System.Windows.Forms.DockStyle.Fill;
             label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            label2.Location = new System.Drawing.Point(316, 0);
+            label2.Location = new System.Drawing.Point(366, 0);
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(414, 28);
+            label2.Size = new System.Drawing.Size(426, 28);
             label2.TabIndex = 4;
             label2.Text = "Napomena";
             label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -1064,11 +1073,11 @@ namespace projekat_2026
             // 
             textBoxNapomenaAzuriraj.Dock = System.Windows.Forms.DockStyle.Fill;
             textBoxNapomenaAzuriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            textBoxNapomenaAzuriraj.Location = new System.Drawing.Point(316, 31);
+            textBoxNapomenaAzuriraj.Location = new System.Drawing.Point(366, 31);
             textBoxNapomenaAzuriraj.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxNapomenaAzuriraj.Multiline = true;
             textBoxNapomenaAzuriraj.Name = "textBoxNapomenaAzuriraj";
-            textBoxNapomenaAzuriraj.Size = new System.Drawing.Size(414, 29);
+            textBoxNapomenaAzuriraj.Size = new System.Drawing.Size(426, 29);
             textBoxNapomenaAzuriraj.TabIndex = 5;
             // 
             // buttonAzurirajStavku
@@ -1076,13 +1085,11 @@ namespace projekat_2026
             buttonAzurirajStavku.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonAzurirajStavku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             buttonAzurirajStavku.Image = Properties.Resources.icons8_edit_24;
-            buttonAzurirajStavku.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonAzurirajStavku.Location = new System.Drawing.Point(738, 31);
+            buttonAzurirajStavku.Location = new System.Drawing.Point(800, 31);
             buttonAzurirajStavku.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonAzurirajStavku.Name = "buttonAzurirajStavku";
-            buttonAzurirajStavku.Size = new System.Drawing.Size(105, 29);
+            buttonAzurirajStavku.Size = new System.Drawing.Size(43, 29);
             buttonAzurirajStavku.TabIndex = 11;
-            buttonAzurirajStavku.Text = "Azuriraj";
             buttonAzurirajStavku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonAzurirajStavku.UseVisualStyleBackColor = true;
             buttonAzurirajStavku.Click += buttonAzurirajStavku_Click;
@@ -1093,7 +1100,7 @@ namespace projekat_2026
             textBoxSistemNaziv.Location = new System.Drawing.Point(3, 31);
             textBoxSistemNaziv.Name = "textBoxSistemNaziv";
             textBoxSistemNaziv.ReadOnly = true;
-            textBoxSistemNaziv.Size = new System.Drawing.Size(306, 24);
+            textBoxSistemNaziv.Size = new System.Drawing.Size(356, 24);
             textBoxSistemNaziv.TabIndex = 12;
             // 
             // toolStripSistemi
@@ -1135,6 +1142,7 @@ namespace projekat_2026
             // 
             // dataGridViewSistemi
             // 
+            dataGridViewSistemi.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewSistemi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSistemi.ContextMenuStrip = contextMenuStripObrisi;
             dataGridViewSistemi.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1165,8 +1173,8 @@ namespace projekat_2026
             tableLayoutPanelSistem.SetColumnSpan(tableLayoutPanel2, 2);
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 373F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 435F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             tableLayoutPanel2.Controls.Add(labelImeSistem, 0, 0);
             tableLayoutPanel2.Controls.Add(comboBoxSistemi, 0, 1);
             tableLayoutPanel2.Controls.Add(buttonDodajSistem, 1, 1);
@@ -1227,7 +1235,7 @@ namespace projekat_2026
             labelNapomenaSistema.Location = new System.Drawing.Point(365, 0);
             labelNapomenaSistema.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelNapomenaSistema.Name = "labelNapomenaSistema";
-            labelNapomenaSistema.Size = new System.Drawing.Size(365, 31);
+            labelNapomenaSistema.Size = new System.Drawing.Size(427, 31);
             labelNapomenaSistema.TabIndex = 4;
             labelNapomenaSistema.Text = "Napomena";
             labelNapomenaSistema.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -1240,7 +1248,7 @@ namespace projekat_2026
             textBoxSistemNapomena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBoxSistemNapomena.Multiline = true;
             textBoxSistemNapomena.Name = "textBoxSistemNapomena";
-            textBoxSistemNapomena.Size = new System.Drawing.Size(365, 32);
+            textBoxSistemNapomena.Size = new System.Drawing.Size(427, 32);
             textBoxSistemNapomena.TabIndex = 5;
             // 
             // buttonDodajStavku
@@ -1248,13 +1256,11 @@ namespace projekat_2026
             buttonDodajStavku.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonDodajStavku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             buttonDodajStavku.Image = Properties.Resources.icons8_save_24;
-            buttonDodajStavku.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonDodajStavku.Location = new System.Drawing.Point(738, 34);
+            buttonDodajStavku.Location = new System.Drawing.Point(800, 34);
             buttonDodajStavku.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonDodajStavku.Name = "buttonDodajStavku";
-            buttonDodajStavku.Size = new System.Drawing.Size(105, 32);
+            buttonDodajStavku.Size = new System.Drawing.Size(43, 32);
             buttonDodajStavku.TabIndex = 11;
-            buttonDodajStavku.Text = "Sacuvaj";
             buttonDodajStavku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonDodajStavku.UseVisualStyleBackColor = true;
             buttonDodajStavku.Click += buttonDodajStavku_Click;
@@ -1368,6 +1374,7 @@ namespace projekat_2026
             // 
             // dataGridViewAdresar
             // 
+            dataGridViewAdresar.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewAdresar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanelAdresar.SetColumnSpan(dataGridViewAdresar, 2);
             dataGridViewAdresar.ContextMenuStrip = contextMenuStripObrisi;
@@ -1386,15 +1393,15 @@ namespace projekat_2026
             tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.77922F));
-            tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.84769773F));
-            tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.750885F));
+            tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.1050768F));
+            tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.49350643F));
             tableLayoutPanel34.Controls.Add(listBoxEmails, 0, 0);
             tableLayoutPanel34.Controls.Add(listBoxTelefoni, 1, 0);
             tableLayoutPanel34.Controls.Add(tableLayoutPanel43, 2, 0);
-            tableLayoutPanel34.Controls.Add(tableLayoutPanel46, 3, 0);
             tableLayoutPanel34.Controls.Add(buttonAzurirajKontakt, 4, 2);
             tableLayoutPanel34.Controls.Add(tableLayoutPanel44, 0, 2);
             tableLayoutPanel34.Controls.Add(tableLayoutPanel27, 1, 2);
+            tableLayoutPanel34.Controls.Add(tableLayoutPanel46, 3, 0);
             tableLayoutPanel34.Controls.Add(comboBoxAdresarStatus, 2, 1);
             tableLayoutPanel34.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel34.Location = new System.Drawing.Point(4, 250);
@@ -1485,60 +1492,16 @@ namespace projekat_2026
             textBoxKontaktImePrezime.Size = new System.Drawing.Size(159, 24);
             textBoxKontaktImePrezime.TabIndex = 1;
             // 
-            // tableLayoutPanel46
-            // 
-            tableLayoutPanel46.ColumnCount = 1;
-            tableLayoutPanel34.SetColumnSpan(tableLayoutPanel46, 2);
-            tableLayoutPanel46.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel46.Controls.Add(label33, 0, 0);
-            tableLayoutPanel46.Controls.Add(textBoxKontaktNapomena, 0, 1);
-            tableLayoutPanel46.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel46.Location = new System.Drawing.Point(685, 3);
-            tableLayoutPanel46.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            tableLayoutPanel46.Name = "tableLayoutPanel46";
-            tableLayoutPanel46.RowCount = 2;
-            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
-            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanel46.Size = new System.Drawing.Size(158, 59);
-            tableLayoutPanel46.TabIndex = 50;
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            label33.Location = new System.Drawing.Point(4, 0);
-            label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label33.Name = "label33";
-            label33.Size = new System.Drawing.Size(150, 26);
-            label33.TabIndex = 1;
-            label33.Text = "Napomena";
-            label33.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // textBoxKontaktNapomena
-            // 
-            textBoxKontaktNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
-            textBoxKontaktNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            textBoxKontaktNapomena.Location = new System.Drawing.Point(4, 29);
-            textBoxKontaktNapomena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBoxKontaktNapomena.Multiline = true;
-            textBoxKontaktNapomena.Name = "textBoxKontaktNapomena";
-            textBoxKontaktNapomena.Size = new System.Drawing.Size(150, 27);
-            textBoxKontaktNapomena.TabIndex = 1;
-            // 
             // buttonAzurirajKontakt
             // 
             buttonAzurirajKontakt.Dock = System.Windows.Forms.DockStyle.Fill;
             buttonAzurirajKontakt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             buttonAzurirajKontakt.Image = Properties.Resources.icons8_edit_24;
-            buttonAzurirajKontakt.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            buttonAzurirajKontakt.Location = new System.Drawing.Point(742, 106);
+            buttonAzurirajKontakt.Location = new System.Drawing.Point(795, 106);
             buttonAzurirajKontakt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonAzurirajKontakt.Name = "buttonAzurirajKontakt";
-            buttonAzurirajKontakt.Size = new System.Drawing.Size(101, 38);
+            buttonAzurirajKontakt.Size = new System.Drawing.Size(48, 38);
             buttonAzurirajKontakt.TabIndex = 60;
-            buttonAzurirajKontakt.Text = "Azuriraj";
             buttonAzurirajKontakt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             buttonAzurirajKontakt.UseVisualStyleBackColor = true;
             buttonAzurirajKontakt.Click += buttonAzurirajKontakt_Click;
@@ -1623,6 +1586,48 @@ namespace projekat_2026
             textBoxAdresarTelefon.Size = new System.Drawing.Size(175, 24);
             textBoxAdresarTelefon.TabIndex = 4;
             // 
+            // tableLayoutPanel46
+            // 
+            tableLayoutPanel46.ColumnCount = 1;
+            tableLayoutPanel34.SetColumnSpan(tableLayoutPanel46, 2);
+            tableLayoutPanel46.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel46.Controls.Add(label33, 0, 0);
+            tableLayoutPanel46.Controls.Add(textBoxKontaktNapomena, 0, 1);
+            tableLayoutPanel46.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel46.Location = new System.Drawing.Point(685, 3);
+            tableLayoutPanel46.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel46.Name = "tableLayoutPanel46";
+            tableLayoutPanel46.RowCount = 2;
+            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
+            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
+            tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel46.Size = new System.Drawing.Size(158, 59);
+            tableLayoutPanel46.TabIndex = 50;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            label33.Location = new System.Drawing.Point(4, 0);
+            label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label33.Name = "label33";
+            label33.Size = new System.Drawing.Size(150, 26);
+            label33.TabIndex = 1;
+            label33.Text = "Napomena";
+            label33.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // textBoxKontaktNapomena
+            // 
+            textBoxKontaktNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxKontaktNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
+            textBoxKontaktNapomena.Location = new System.Drawing.Point(4, 29);
+            textBoxKontaktNapomena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxKontaktNapomena.Multiline = true;
+            textBoxKontaktNapomena.Name = "textBoxKontaktNapomena";
+            textBoxKontaktNapomena.Size = new System.Drawing.Size(150, 27);
+            textBoxKontaktNapomena.TabIndex = 1;
+            // 
             // comboBoxAdresarStatus
             // 
             comboBoxAdresarStatus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1669,6 +1674,7 @@ namespace projekat_2026
             // 
             // dataGridViewOprema
             // 
+            dataGridViewOprema.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewOprema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewOprema.Dock = System.Windows.Forms.DockStyle.Fill;
             dataGridViewOprema.Location = new System.Drawing.Point(4, 3);
@@ -1706,12 +1712,13 @@ namespace projekat_2026
             // 
             labelOpremaNapomenaAzuriraj.AutoSize = true;
             labelOpremaNapomenaAzuriraj.BackColor = System.Drawing.SystemColors.ControlLight;
+            tableLayoutPanel21.SetColumnSpan(labelOpremaNapomenaAzuriraj, 2);
             labelOpremaNapomenaAzuriraj.Dock = System.Windows.Forms.DockStyle.Fill;
             labelOpremaNapomenaAzuriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             labelOpremaNapomenaAzuriraj.Location = new System.Drawing.Point(388, 0);
             labelOpremaNapomenaAzuriraj.Margin = new System.Windows.Forms.Padding(0);
             labelOpremaNapomenaAzuriraj.Name = "labelOpremaNapomenaAzuriraj";
-            labelOpremaNapomenaAzuriraj.Size = new System.Drawing.Size(406, 26);
+            labelOpremaNapomenaAzuriraj.Size = new System.Drawing.Size(459, 26);
             labelOpremaNapomenaAzuriraj.TabIndex = 12;
             labelOpremaNapomenaAzuriraj.Text = "Napomena";
             labelOpremaNapomenaAzuriraj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1822,12 +1829,13 @@ namespace projekat_2026
             // 
             labelOpremaNapomena.AutoSize = true;
             labelOpremaNapomena.BackColor = System.Drawing.SystemColors.ControlLight;
+            tableLayoutPanel22.SetColumnSpan(labelOpremaNapomena, 2);
             labelOpremaNapomena.Dock = System.Windows.Forms.DockStyle.Fill;
             labelOpremaNapomena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
             labelOpremaNapomena.Location = new System.Drawing.Point(317, 0);
             labelOpremaNapomena.Margin = new System.Windows.Forms.Padding(0);
             labelOpremaNapomena.Name = "labelOpremaNapomena";
-            labelOpremaNapomena.Size = new System.Drawing.Size(475, 26);
+            labelOpremaNapomena.Size = new System.Drawing.Size(530, 26);
             labelOpremaNapomena.TabIndex = 10;
             labelOpremaNapomena.Text = "Napomena";
             labelOpremaNapomena.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1942,6 +1950,7 @@ namespace projekat_2026
             // 
             // dataGridViewFirmaObjekat
             // 
+            dataGridViewFirmaObjekat.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewFirmaObjekat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewFirmaObjekat.ContextMenuStrip = contextMenuStripObrisi;
             dataGridViewFirmaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2349,12 +2358,12 @@ namespace projekat_2026
             contextMenuStripObrisiIzLb.ResumeLayout(false);
             tableLayoutPanel43.ResumeLayout(false);
             tableLayoutPanel43.PerformLayout();
-            tableLayoutPanel46.ResumeLayout(false);
-            tableLayoutPanel46.PerformLayout();
             tableLayoutPanel44.ResumeLayout(false);
             tableLayoutPanel44.PerformLayout();
             tableLayoutPanel27.ResumeLayout(false);
             tableLayoutPanel27.PerformLayout();
+            tableLayoutPanel46.ResumeLayout(false);
+            tableLayoutPanel46.PerformLayout();
             tabPageOprema.ResumeLayout(false);
             tableLayoutPanel20.ResumeLayout(false);
             tableLayoutPanel20.PerformLayout();
@@ -2541,6 +2550,7 @@ namespace projekat_2026
         private System.Windows.Forms.Button buttonDodajOpremu;
         private System.Windows.Forms.Label labelDodatniTekst;
         private System.Windows.Forms.ToolStrip miniToolStrip;
+        private System.Windows.Forms.ToolStripButton toolStripButtonIzvestaj;
     }
 }
 
