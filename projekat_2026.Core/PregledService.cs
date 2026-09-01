@@ -81,6 +81,16 @@ namespace projekat_2026.Core
                 .ToList();
         }
 
+        public List<PregledLog> GetByAgentId(int idAgent)
+        {
+            using var db = new AppDbContext(_dbOptions);
+            return db.PregledLogs
+                .Include(p => p.IdFirmaObjekatNavigation)
+                .Where(a => a.IdAgent == idAgent)
+                .OrderByDescending(p => p.DatumPregleda)
+                .ToList();
+        }
+
         /*
          var stavke = GetStavkeByPregledId(pregledLogId);
 

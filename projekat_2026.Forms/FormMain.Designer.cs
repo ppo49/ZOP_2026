@@ -2196,7 +2196,7 @@ namespace projekat_2026
             // 
             tableLayoutPanel7.ColumnCount = 1;
             tableLayoutPanelAgent.SetColumnSpan(tableLayoutPanel7, 2);
-            tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel7.Controls.Add(labelPreglediAgenta, 0, 0);
             tableLayoutPanel7.Controls.Add(dataGridViewPreglediAgenta, 0, 1);
             tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2204,10 +2204,10 @@ namespace projekat_2026
             tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
-            tableLayoutPanelAgent.SetRowSpan(tableLayoutPanel7, 4);
-            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.53846F));
-            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.46154F));
-            tableLayoutPanel7.Size = new System.Drawing.Size(777, 270);
+            tableLayoutPanelAgent.SetRowSpan(tableLayoutPanel7, 6);
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 99.99999F));
+            tableLayoutPanel7.Size = new System.Drawing.Size(777, 397);
             tableLayoutPanel7.TabIndex = 21;
             // 
             // labelPreglediAgenta
@@ -2229,7 +2229,7 @@ namespace projekat_2026
             dataGridViewPreglediAgenta.Location = new System.Drawing.Point(4, 34);
             dataGridViewPreglediAgenta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediAgenta.Name = "dataGridViewPreglediAgenta";
-            dataGridViewPreglediAgenta.Size = new System.Drawing.Size(769, 233);
+            dataGridViewPreglediAgenta.Size = new System.Drawing.Size(769, 360);
             dataGridViewPreglediAgenta.TabIndex = 16;
             dataGridViewPreglediAgenta.MouseDown += DataGridView_MouseDown;
             // 

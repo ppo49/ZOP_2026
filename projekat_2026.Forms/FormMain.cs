@@ -25,6 +25,7 @@ namespace projekat_2026
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly Agent _loggedInAgent;
         //private readonly FirmaObjekat _fairmaObjekat;
+        private readonly int idAgent;
 
         private ClassDizajnFormi classDizajnFormi = new ClassDizajnFormi();
 
@@ -73,6 +74,8 @@ namespace projekat_2026
             setupComboBoxSistem();
             setupCoboBoxAdresarStatus();
 
+            idAgent = _loggedInAgent.IdAgent;
+            SetupdataGridViewPreglediAgenta(idAgent);
 
             //listBoxEmails.DisplayMember = "Email1";
             //listBoxTelefoni.DisplayMember = "Telefon1";
@@ -149,6 +152,39 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.ContextMenuStrip = contextMenuStripObrisi;
 
         }
+
+        private void SetupdataGridViewPreglediAgenta(int idAgent)
+        {
+            var pregledi = pregledService.GetByAgentId(idAgent)
+                .Select(p => new {
+                    p.IdAgent,
+                    p.IdFirmaObjekat,
+                    FirmaObjekat = p.IdFirmaObjekatNavigation.ImeFirmeObjekat,
+                    p.DatumPregleda,
+                    p.IdPregledLog,
+                    p.Napomena,
+                    CreatedAt = p.CreatedAt.ToShortDateString(),
+                    UpdatedAt = p.UpdatedAt.ToShortDateString(),
+                }).ToList(); ;
+
+            dataGridViewPreglediAgenta.DataSource = pregledi;
+            dataGridViewPreglediAgenta.RowHeadersVisible = false;
+            dataGridViewPreglediAgenta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewPreglediAgenta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewPreglediAgenta.Columns["IdFirmaObjekat"].Visible = false;
+            dataGridViewPreglediAgenta.Columns["IdPregledLog"].Visible = false;
+            dataGridViewPreglediAgenta.Columns["IdAgent"].Visible = false;
+
+            dataGridViewPreglediAgenta.Columns["DatumPregleda"].FillWeight = 20;
+            dataGridViewPreglediAgenta.Columns["Napomena"].FillWeight = 30;
+            dataGridViewPreglediAgenta.Columns["FirmaObjekat"].FillWeight = 20;
+            dataGridViewPreglediAgenta.Columns["CreatedAt"].FillWeight = 15;
+            dataGridViewPreglediAgenta.Columns["UpdatedAt"].FillWeight = 15;
+
+            dataGridViewPreglediAgenta.ContextMenuStrip = contextMenuStripObrisi;
+        }
+
 
         private void SetupdataGridViewAdresar(int idFirmaObjekat)
         {
@@ -685,6 +721,27 @@ namespace projekat_2026
                     }
                     return;
                 }
+
+                if (targetGrid == dataGridViewPreglediAgenta)
+                {
+                    DialogResult answer = MessageBox.Show(
+                        "Da li sigurno želite da obrišete? Stavka æe trajno biti obrisana.",
+                        "Upozorenje",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (answer == DialogResult.No) return;
+
+                    var cellValue = targetGrid.CurrentRow.Cells["IdPregledLog"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int pregledLogId))
+                    {
+                        pregledService.DeletePregled(pregledLogId);
+                        MessageBox.Show("Pregled je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetupdataGridViewPreglediAgenta(idAgent);
+                    }
+                    return;
+                }
+
 
                 if (!_selectedFirmaObjekatId.HasValue)
                 {
