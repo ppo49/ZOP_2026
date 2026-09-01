@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml;
+﻿
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ namespace projekat_2026.Core
             _templatePath = templatePath;
         }
 
+
+
         public string GenerisiIzvestaj(int idPregledLog, string outputFolder)
         {
             using var db = new AppDbContext(_dbOptions);
@@ -36,7 +39,7 @@ namespace projekat_2026.Core
             if (pregled == null)
                 throw new Exception("Pregled nije pronađen.");
 
-            string danas = DateTime.Now.ToString("ddmmyyHHmm");
+            string danas = DateTime.Now.ToString("ddMMyyHHmm");
             string kod = $"PP{pregled.IdFirmaObjekat}{pregled.IdPregledLog}{pregled.IdAgent}{danas}";
             string outputPath = Path.Combine(outputFolder, $"Izvestaj_{kod}.docx");
 
@@ -59,6 +62,8 @@ namespace projekat_2026.Core
                 var targetRow = body.Descendants<TableRow>()
                     .FirstOrDefault(r => r.InnerText.Contains("{{Stavka}}"));
 
+                //NZM
+
                 if (targetRow != null)
                 {
                     var table = targetRow.Parent as Table;
@@ -80,6 +85,10 @@ namespace projekat_2026.Core
                             ReplacePlaceholder(newRow, "{{Status}}", status);
                             ReplacePlaceholder(newRow, "{{NapomenaStavke}}", napomenaStavke);
 
+                            SetColumnWidths(newRow, new string[] { "3000", "2000", "1500", "2500" });
+
+                            SetRowFontSize(newRow, "20");
+
                             table.AppendChild(newRow);
                         }
 
@@ -93,21 +102,49 @@ namespace projekat_2026.Core
             return outputPath;
         }
 
-        // Robust XML replacement handling split text nodes inside Word XML
+        //JA OVO NEMOM POJMA KAKO RADI NE DIRAJ NISTA, DOK RADI... RADI
+
+        private static void SetRowFontSize(TableRow row, string fontSizeInHalfPoints)
+        {
+            foreach (var run in row.Descendants<Run>())
+            {
+                run.RunProperties ??= new RunProperties();
+                run.RunProperties.FontSize = new FontSize { Val = fontSizeInHalfPoints };
+                run.RunProperties.FontSizeComplexScript = new FontSizeComplexScript { Val = fontSizeInHalfPoints };
+            }
+        }
+
+        private static void SetColumnWidths(TableRow row, string[] widths)
+        {
+            var cells = row.Elements<TableCell>().ToList();
+            for (int i = 0; i < cells.Count && i < widths.Length; i++)
+            {
+                var tcPr = cells[i].TableCellProperties;
+                if (tcPr == null)
+                {
+                    tcPr = new TableCellProperties();
+                    cells[i].AppendChild(tcPr);
+                }
+
+                tcPr.TableCellWidth = new TableCellWidth
+                {
+                    Type = TableWidthUnitValues.Dxa,
+                    Width = widths[i]
+                };
+            }
+        }
+
         private static void ReplacePlaceholder(OpenXmlElement element, string placeholder, string newValue)
         {
-            // First pass: Direct text match within single text elements
             foreach (var text in element.Descendants<Text>().Where(t => t.Text.Contains(placeholder)))
             {
                 text.Text = text.Text.Replace(placeholder, newValue);
             }
 
-            // Second pass: Handle split OpenXML runs within paragraphs or table cells
             foreach (var paragraph in element.Descendants<Paragraph>().Where(p => p.InnerText.Contains(placeholder)))
             {
                 string textContent = paragraph.InnerText.Replace(placeholder, newValue);
 
-                // Keep paragraph formatting properties intact
                 var pPr = paragraph.ParagraphProperties?.CloneNode(true);
                 paragraph.RemoveAllChildren();
 
@@ -120,3 +157,7 @@ namespace projekat_2026.Core
         }
     }
 }
+
+
+
+

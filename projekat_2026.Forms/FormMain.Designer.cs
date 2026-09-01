@@ -867,10 +867,10 @@ namespace projekat_2026
             // tabPagePregledi
             // 
             tabPagePregledi.Controls.Add(tableLayoutPanelPregledLista);
-            tabPagePregledi.Location = new System.Drawing.Point(4, 27);
+            tabPagePregledi.Location = new System.Drawing.Point(4, 24);
             tabPagePregledi.Name = "tabPagePregledi";
             tabPagePregledi.Padding = new System.Windows.Forms.Padding(3);
-            tabPagePregledi.Size = new System.Drawing.Size(861, 403);
+            tabPagePregledi.Size = new System.Drawing.Size(861, 406);
             tabPagePregledi.TabIndex = 1;
             tabPagePregledi.Text = "Pregledi";
             tabPagePregledi.UseVisualStyleBackColor = true;
@@ -890,7 +890,7 @@ namespace projekat_2026
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.74258F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.25743F));
-            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanelPregledLista.TabIndex = 1;
             // 
             // toolStripDetaljiPregled
@@ -958,7 +958,7 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.Location = new System.Drawing.Point(4, 38);
             dataGridViewPreglediObjekta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediObjekta.Name = "dataGridViewPreglediObjekta";
-            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 268);
+            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 270);
             dataGridViewPreglediObjekta.TabIndex = 0;
             dataGridViewPreglediObjekta.CellClick += dataGridViewPreglediObjekta_CellClick;
             dataGridViewPreglediObjekta.CellDoubleClick += dataGridViewPreglediObjekta_CellDoubleClick;
@@ -966,10 +966,10 @@ namespace projekat_2026
             // listViewObavestenjaZaObjekat
             // 
             listViewObavestenjaZaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 312);
+            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 314);
             listViewObavestenjaZaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 23);
             listViewObavestenjaZaObjekat.Name = "listViewObavestenjaZaObjekat";
-            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 62);
+            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 63);
             listViewObavestenjaZaObjekat.TabIndex = 1;
             listViewObavestenjaZaObjekat.UseCompatibleStateImageBehavior = false;
             // 
