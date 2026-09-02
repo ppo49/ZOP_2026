@@ -14,4 +14,8 @@ public partial class Oprema
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    public int IdFirmaObjekat { get; set; }
+
+    public virtual FirmaObjekat IdFirmaObjekatNavigation { get; set; } = null!;
 }

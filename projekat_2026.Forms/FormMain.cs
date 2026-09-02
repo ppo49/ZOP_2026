@@ -35,13 +35,14 @@ namespace projekat_2026
         private int? _selectedKontaktId;
         private int? _selectedPregledLogId;
         private int? _selectedPregledLogFromAgentTabId;
+        private int? _selectedOpremaIdBarcode;
 
         private readonly FirmaObjekatService firmaObjekatService;
         private readonly SistemService sistemService;
         private readonly ObjekatSistemService objekatSistemService;
         private readonly AdresarService adresarService;
         private readonly PregledService pregledService;
-
+        private readonly OpremaService opremaService;
 
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
@@ -54,6 +55,7 @@ namespace projekat_2026
             objekatSistemService = new ObjekatSistemService(dbOptions);
             adresarService = new AdresarService(dbOptions);
             pregledService = new PregledService(dbOptions);
+            opremaService = new OpremaService(dbOptions);
 
             this.Text = $"ZOP, {_loggedInAgent.ImePrezime}";
 
@@ -187,7 +189,6 @@ namespace projekat_2026
             dataGridViewPreglediAgenta.ContextMenuStrip = contextMenuStripObrisi;
         }
 
-
         private void SetupdataGridViewAdresar(int idFirmaObjekat)
         {
             var adresar = adresarService.GetAdresarFullForFirmaObjekat(idFirmaObjekat)
@@ -284,6 +285,34 @@ namespace projekat_2026
             dataGridViewFirmaObjekat.Columns["BrojZaposlenih"].Visible = false;
         }
 
+        private void SetupdatagridViewOprema(int idFirmaObjekat)
+        {
+            var oprema = opremaService.GetByFirmaObjekatId(idFirmaObjekat)
+                .Select(o => new
+                {
+                    o.IdBarcode,
+                    o.IdFirmaObjekat,
+                    o.Naziv,
+                    o.Napomena,
+                    //o.CreatedAt,
+                    //o.UpdatedAt
+                })
+                .ToList();
+
+            dataGridViewOprema.DataSource = oprema;
+            dataGridViewOprema.RowHeadersVisible = false;
+            dataGridViewOprema.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewOprema.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewOprema.Columns["IdFirmaObjekat"].Visible = false;
+
+            dataGridViewOprema.Columns["IdBarcode"].FillWeight = 20;
+            dataGridViewOprema.Columns["Naziv"].FillWeight = 50;
+            dataGridViewOprema.Columns["Napomena"].FillWeight = 30;
+
+            dataGridViewOprema.ContextMenuStrip = contextMenuStripObrisi;
+        }
+
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -344,6 +373,7 @@ namespace projekat_2026
                 SetupdataGridViewSistemi(_selectedFirmaObjekatId.Value);
                 SetupdataGridViewAdresar(_selectedFirmaObjekatId.Value);
                 SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+                SetupdatagridViewOprema(_selectedFirmaObjekatId.Value);
 
                 tabControlDetalji.Visible = true;
 
@@ -685,7 +715,7 @@ namespace projekat_2026
             }
         }
 
-
+        //ZA OBRISI TOOLSTRIP
         private void deleteMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -798,6 +828,16 @@ namespace projekat_2026
                         objekatSistemService.Delete(objekatSistemVeznaTabelaId);
                         MessageBox.Show("Sistem je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupdataGridViewSistemi(firmaObjekatId);
+                    }
+                }
+                else if (targetGrid == dataGridViewOprema)
+                {
+                    var cellValue = targetGrid.CurrentRow.Cells["IdBarcode"].Value;
+                    if (cellValue != null && int.TryParse(cellValue.ToString(), out int IdBarcode))
+                    {
+                        opremaService.Delete(IdBarcode);
+                        MessageBox.Show("Oprema je uspešno obrisana!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetupdatagridViewOprema(firmaObjekatId);
                     }
                 }
             }
@@ -937,6 +977,110 @@ namespace projekat_2026
             if (_selectedFirmaObjekatId.HasValue)
             {
                 SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //OPREMA
+
+        private void buttonDodajOpremu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_selectedFirmaObjekatId == null)
+                {
+                    MessageBox.Show("Molimo izaberite firmu/objekat.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(textBoxOpremaDodajNaziv.Text))
+                {
+                    MessageBox.Show("Popunite sva obavezna polja.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var novaOprema = new Oprema
+                {
+                    Naziv = textBoxOpremaDodajNaziv.Text.Trim(),
+                    Napomena = textBoxOpremaDodajNapomena.Text.Trim() ?? "",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    IdFirmaObjekat = _selectedFirmaObjekatId.Value
+                };
+
+                opremaService.Add(novaOprema);
+
+                MessageBox.Show("Oprema je dodata!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxOpremaDodajNaziv.Clear();
+                textBoxOpremaDodajNapomena.Clear();
+                SetupdatagridViewOprema(_selectedFirmaObjekatId.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void buttonOpremaAzuriraj_Click(object sender, EventArgs e)
+        {
+            if (_selectedOpremaIdBarcode == null)
+            {
+                MessageBox.Show("Molimo izaberite opremu.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(textBoxOpremaNaziv.Text))
+            {
+                MessageBox.Show("Popunite sva obavezna polja.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var oprema = opremaService.GetByIdbarcode(_selectedOpremaIdBarcode.Value);
+            if (oprema == null) return;
+
+            oprema.Naziv = textBoxOpremaNaziv.Text.Trim();
+            oprema.Napomena = textBoxOPremaNapomena.Text.Trim();
+            oprema.UpdatedAt = DateTime.Now;
+            opremaService.Update(oprema);
+
+            MessageBox.Show("Oprema je ažurirana!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SetupdatagridViewOprema(_selectedFirmaObjekatId.Value);
+        }
+
+        private void dataGridViewOprema_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0) return;
+
+
+                DataGridViewRow row = dataGridViewOprema.Rows[e.RowIndex];
+
+                if (row.Cells["IdBarcode"].Value == null ||
+                    !int.TryParse(row.Cells["IdBarcode"].Value.ToString(), out int selectedId))
+                    return;
+
+                _selectedOpremaIdBarcode = selectedId;
+                var oprema = opremaService.GetByIdbarcode(_selectedOpremaIdBarcode.Value);
+                if (oprema == null) return;
+
+                textBoxOpremaBarcode.Text = oprema.IdBarcode.ToString();
+                textBoxOpremaNaziv.Text = oprema.Naziv.ToString();
+                textBoxOPremaNapomena.Text = oprema.Napomena.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

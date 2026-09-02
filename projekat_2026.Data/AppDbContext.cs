@@ -222,10 +222,15 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("oprema");
 
+            entity.HasIndex(e => e.IdFirmaObjekat, "fk_oprema_firma_objekat");
+
             entity.Property(e => e.IdBarcode)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_barcode");
             entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+            entity.Property(e => e.IdFirmaObjekat)
+                .HasColumnType("int(11)")
+                .HasColumnName("id_firma_objekat");
             entity.Property(e => e.Napomena)
                 .HasMaxLength(100)
                 .HasColumnName("napomena");
@@ -233,6 +238,10 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("naziv");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+
+            entity.HasOne(d => d.IdFirmaObjekatNavigation).WithMany(p => p.Opremas)
+                .HasForeignKey(d => d.IdFirmaObjekat)
+                .HasConstraintName("fk_oprema_firma_objekat");
         });
 
         modelBuilder.Entity<PregledLog>(entity =>

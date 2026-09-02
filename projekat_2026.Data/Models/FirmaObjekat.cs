@@ -29,6 +29,8 @@ public partial class FirmaObjekat
 
     public virtual ICollection<ObjekatSistemVeznaTabela> ObjekatSistemVeznaTabelas { get; set; } = new List<ObjekatSistemVeznaTabela>();
 
+    public virtual ICollection<Oprema> Opremas { get; set; } = new List<Oprema>();
+
     public virtual ICollection<PregledLog> PregledLogs { get; set; } = new List<PregledLog>();
 
     public virtual ICollection<Adresar> IdAdresars { get; set; } = new List<Adresar>();
