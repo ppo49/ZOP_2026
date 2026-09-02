@@ -180,6 +180,8 @@ namespace projekat_2026
             tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             labelPreglediAgenta = new System.Windows.Forms.Label();
             dataGridViewPreglediAgenta = new System.Windows.Forms.DataGridView();
+            toolStripPreglediAgentaDetalji = new System.Windows.Forms.ToolStrip();
+            toolStripButtonIzvestajAgent = new System.Windows.Forms.ToolStripButton();
             tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             buttonLogOff = new System.Windows.Forms.Button();
             listViewObavestenja = new System.Windows.Forms.ListView();
@@ -243,6 +245,7 @@ namespace projekat_2026
             tableLayoutPanel11.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPreglediAgenta).BeginInit();
+            toolStripPreglediAgentaDetalji.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
             SuspendLayout();
             // 
@@ -962,6 +965,7 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.TabIndex = 0;
             dataGridViewPreglediObjekta.CellClick += dataGridViewPreglediObjekta_CellClick;
             dataGridViewPreglediObjekta.CellDoubleClick += dataGridViewPreglediObjekta_CellDoubleClick;
+            dataGridViewPreglediObjekta.MouseDown += DataGridView_MouseDown;
             // 
             // listViewObavestenjaZaObjekat
             // 
@@ -1152,6 +1156,7 @@ namespace projekat_2026
             dataGridViewSistemi.Size = new System.Drawing.Size(847, 180);
             dataGridViewSistemi.TabIndex = 0;
             dataGridViewSistemi.CellClick += dataGridViewSistemi_CellClick;
+            dataGridViewSistemi.MouseDown += DataGridView_MouseDown;
             // 
             // contextMenuStripObrisi
             // 
@@ -1385,6 +1390,7 @@ namespace projekat_2026
             dataGridViewAdresar.Size = new System.Drawing.Size(847, 167);
             dataGridViewAdresar.TabIndex = 0;
             dataGridViewAdresar.CellClick += dataGridViewAdresar_CellClick;
+            dataGridViewAdresar.MouseDown += DataGridView_MouseDown;
             // 
             // tableLayoutPanel34
             // 
@@ -1961,6 +1967,7 @@ namespace projekat_2026
             dataGridViewFirmaObjekat.Size = new System.Drawing.Size(250, 380);
             dataGridViewFirmaObjekat.TabIndex = 12;
             dataGridViewFirmaObjekat.CellClick += dataGridViewFirmaObjekat_CellClick;
+            dataGridViewFirmaObjekat.MouseDown += DataGridView_MouseDown;
             // 
             // tabPageAgent
             // 
@@ -2198,26 +2205,29 @@ namespace projekat_2026
             tableLayoutPanelAgent.SetColumnSpan(tableLayoutPanel7, 2);
             tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel7.Controls.Add(labelPreglediAgenta, 0, 0);
-            tableLayoutPanel7.Controls.Add(dataGridViewPreglediAgenta, 0, 1);
+            tableLayoutPanel7.Controls.Add(dataGridViewPreglediAgenta, 0, 2);
+            tableLayoutPanel7.Controls.Add(toolStripPreglediAgentaDetalji, 0, 1);
             tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel7.Location = new System.Drawing.Point(352, 3);
             tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
-            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowCount = 3;
             tableLayoutPanelAgent.SetRowSpan(tableLayoutPanel7, 6);
-            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 99.99999F));
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel7.Size = new System.Drawing.Size(777, 397);
             tableLayoutPanel7.TabIndex = 21;
             // 
             // labelPreglediAgenta
             // 
             labelPreglediAgenta.AutoSize = true;
+            labelPreglediAgenta.BackColor = System.Drawing.SystemColors.ControlLight;
             labelPreglediAgenta.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelPreglediAgenta.Location = new System.Drawing.Point(4, 0);
-            labelPreglediAgenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelPreglediAgenta.Location = new System.Drawing.Point(0, 0);
+            labelPreglediAgenta.Margin = new System.Windows.Forms.Padding(0);
             labelPreglediAgenta.Name = "labelPreglediAgenta";
-            labelPreglediAgenta.Size = new System.Drawing.Size(769, 31);
+            labelPreglediAgenta.Size = new System.Drawing.Size(777, 39);
             labelPreglediAgenta.TabIndex = 15;
             labelPreglediAgenta.Text = "Pregledi agenta";
             labelPreglediAgenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2226,12 +2236,34 @@ namespace projekat_2026
             // 
             dataGridViewPreglediAgenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPreglediAgenta.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridViewPreglediAgenta.Location = new System.Drawing.Point(4, 34);
+            dataGridViewPreglediAgenta.Location = new System.Drawing.Point(4, 77);
             dataGridViewPreglediAgenta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediAgenta.Name = "dataGridViewPreglediAgenta";
-            dataGridViewPreglediAgenta.Size = new System.Drawing.Size(769, 360);
+            dataGridViewPreglediAgenta.Size = new System.Drawing.Size(769, 317);
             dataGridViewPreglediAgenta.TabIndex = 16;
+            dataGridViewPreglediAgenta.CellClick += dataGridViewPreglediAgenta_CellClick;
+            dataGridViewPreglediAgenta.CellDoubleClick += dataGridViewPreglediAgenta_CellDoubleClick;
             dataGridViewPreglediAgenta.MouseDown += DataGridView_MouseDown;
+            // 
+            // toolStripPreglediAgentaDetalji
+            // 
+            toolStripPreglediAgentaDetalji.Dock = System.Windows.Forms.DockStyle.Fill;
+            toolStripPreglediAgentaDetalji.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIzvestajAgent });
+            toolStripPreglediAgentaDetalji.Location = new System.Drawing.Point(0, 39);
+            toolStripPreglediAgentaDetalji.Name = "toolStripPreglediAgentaDetalji";
+            toolStripPreglediAgentaDetalji.Size = new System.Drawing.Size(777, 35);
+            toolStripPreglediAgentaDetalji.TabIndex = 17;
+            toolStripPreglediAgentaDetalji.Text = "toolStrip1";
+            // 
+            // toolStripButtonIzvestajAgent
+            // 
+            toolStripButtonIzvestajAgent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonIzvestajAgent.Image = Properties.Resources.icons8_doc_24;
+            toolStripButtonIzvestajAgent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonIzvestajAgent.Name = "toolStripButtonIzvestajAgent";
+            toolStripButtonIzvestajAgent.Size = new System.Drawing.Size(23, 32);
+            toolStripButtonIzvestajAgent.Text = "Generiši izveštaj pregleda";
+            toolStripButtonIzvestajAgent.Click += toolStripButtonIzvestajAgent_Click;
             // 
             // tableLayoutPanel8
             // 
@@ -2390,6 +2422,8 @@ namespace projekat_2026
             tableLayoutPanel7.ResumeLayout(false);
             tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPreglediAgenta).EndInit();
+            toolStripPreglediAgentaDetalji.ResumeLayout(false);
+            toolStripPreglediAgentaDetalji.PerformLayout();
             tableLayoutPanel8.ResumeLayout(false);
             ResumeLayout(false);
 
@@ -2417,7 +2451,6 @@ namespace projekat_2026
         private System.Windows.Forms.Label labelAgentImePrezime;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label labelPreglediAgenta;
-        private System.Windows.Forms.DataGridView dataGridViewPreglediAgenta;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button buttonLogOff;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
@@ -2551,6 +2584,9 @@ namespace projekat_2026
         private System.Windows.Forms.Label labelDodatniTekst;
         private System.Windows.Forms.ToolStrip miniToolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonIzvestaj;
+        private System.Windows.Forms.DataGridView dataGridViewPreglediAgenta;
+        private System.Windows.Forms.ToolStrip toolStripPreglediAgentaDetalji;
+        private System.Windows.Forms.ToolStripButton toolStripButtonIzvestajAgent;
     }
 }
 

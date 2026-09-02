@@ -8,6 +8,7 @@ using projekat_2026.Data.Models;
 using System;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace projekat_2026.Core
 {
@@ -26,80 +27,90 @@ namespace projekat_2026.Core
 
         public string GenerisiIzvestaj(int idPregledLog, string outputFolder)
         {
-            using var db = new AppDbContext(_dbOptions);
 
-            var pregled = db.PregledLogs
-                .Include(p => p.IdFirmaObjekatNavigation)
-                .Include(p => p.IdAgentNavigation)
-                .Include(p => p.StavkaPregleda)
-                    .ThenInclude(s => s.IdObjekatSistemVeznaTabelaNavigation)
-                        .ThenInclude(o => o.IdSistemNavigation)
-                .FirstOrDefault(p => p.IdPregledLog == idPregledLog);
-
-            if (pregled == null)
-                throw new Exception("Pregled nije pronađen.");
-
-            string danas = DateTime.Now.ToString("ddMMyyHHmm");
-            string kod = $"PP{pregled.IdFirmaObjekat}{pregled.IdPregledLog}{pregled.IdAgent}{danas}";
-            string outputPath = Path.Combine(outputFolder, $"Izvestaj_{kod}.docx");
-
-            File.Copy(_templatePath, outputPath, true);
-
-            using (WordprocessingDocument doc = WordprocessingDocument.Open(outputPath, true))
+            try
             {
-                var body = doc.MainDocumentPart?.Document?.Body;
-                if (body == null)
-                    throw new InvalidOperationException("Izabrani šablon nema validno telo dokumenta.");
+                using var db = new AppDbContext(_dbOptions);
 
-                ReplacePlaceholder(body, "{{KOD}}", kod);
-                ReplacePlaceholder(body, "{{DATUM}}", pregled.DatumPregleda.ToString("dd.MM.yyyy"));
-                ReplacePlaceholder(body, "{{MESECGODINA}}", pregled.DatumPregleda.ToString("MM.yyyy"));
-                ReplacePlaceholder(body, "{{FIRMA}}", pregled.IdFirmaObjekatNavigation?.ImeFirmeObjekat ?? "");
-                ReplacePlaceholder(body, "{{ADRESA}}", $"{pregled.IdFirmaObjekatNavigation?.Adresa}, {pregled.IdFirmaObjekatNavigation?.Grad}");
-                ReplacePlaceholder(body, "{{AGENT}}", pregled.IdAgentNavigation?.ImePrezime ?? "");
-                ReplacePlaceholder(body, "{{NAPOMENA}}", pregled.Napomena ?? "Nema napomena.");
+                var pregled = db.PregledLogs
+                    .Include(p => p.IdFirmaObjekatNavigation)
+                    .Include(p => p.IdAgentNavigation)
+                    .Include(p => p.StavkaPregleda)
+                        .ThenInclude(s => s.IdObjekatSistemVeznaTabelaNavigation)
+                            .ThenInclude(o => o.IdSistemNavigation)
+                    .FirstOrDefault(p => p.IdPregledLog == idPregledLog);
 
-                var targetRow = body.Descendants<TableRow>()
-                    .FirstOrDefault(r => r.InnerText.Contains("{{Stavka}}"));
+                if (pregled == null)
+                    throw new Exception("Pregled nije pronađen.");
 
-                //NZM
+                string danas = DateTime.Now.ToString("ddMMyyHHmm");
+                string kod = $"PP{pregled.IdFirmaObjekat}{pregled.IdPregledLog}{pregled.IdAgent}{danas}";
+                string outputPath = Path.Combine(outputFolder, $"Izvestaj_{kod}.docx");
 
-                if (targetRow != null)
+                File.Copy(_templatePath, outputPath, true);
+
+                using (WordprocessingDocument doc = WordprocessingDocument.Open(outputPath, true))
                 {
-                    var table = targetRow.Parent as Table;
-                    if (table != null)
+
+                    var body = doc.MainDocumentPart?.Document?.Body;
+                    if (body == null)
+                        throw new InvalidOperationException("Izabrani šablon nema validno telo dokumenta.");
+
+                    ReplacePlaceholder(body, "{{KOD}}", kod);
+                    ReplacePlaceholder(body, "{{DATUM}}", pregled.DatumPregleda.ToString("dd.MM.yyyy"));
+                    ReplacePlaceholder(body, "{{MESECGODINA}}", pregled.DatumPregleda.ToString("MM.yyyy"));
+                    ReplacePlaceholder(body, "{{FIRMA}}", pregled.IdFirmaObjekatNavigation?.ImeFirmeObjekat ?? "");
+                    ReplacePlaceholder(body, "{{ADRESA}}", $"{pregled.IdFirmaObjekatNavigation?.Adresa}, {pregled.IdFirmaObjekatNavigation?.Grad}");
+                    ReplacePlaceholder(body, "{{AGENT}}", pregled.IdAgentNavigation?.ImePrezime ?? "");
+                    ReplacePlaceholder(body, "{{NAPOMENA}}", pregled.Napomena ?? "Nema napomena.");
+
+                    var targetRow = body.Descendants<TableRow>()
+                        .FirstOrDefault(r => r.InnerText.Contains("{{Stavka}}"));
+
+                    //NZM
+
+                    if (targetRow != null)
                     {
-                        var stavke = pregled.StavkaPregleda.ToList();
-
-                        foreach (var s in stavke)
+                        var table = targetRow.Parent as Table;
+                        if (table != null)
                         {
-                            var newRow = (TableRow)targetRow.CloneNode(true);
+                            var stavke = pregled.StavkaPregleda.ToList();
 
-                            string naziv = s.IdObjekatSistemVeznaTabelaNavigation?.IdSistemNavigation?.Naziv ?? "";
-                            string napomenaSist = s.IdObjekatSistemVeznaTabelaNavigation?.Napomena ?? "";
-                            string status = s.Zadovoljava ? "Zadovoljava" : "Ne zadovoljava";
-                            string napomenaStavke = s.NapomenaStavke ?? "";
+                            foreach (var s in stavke)
+                            {
+                                var newRow = (TableRow)targetRow.CloneNode(true);
 
-                            ReplacePlaceholder(newRow, "{{Stavka}}", naziv);
-                            ReplacePlaceholder(newRow, "{{NapomenaSistema}}", napomenaSist);
-                            ReplacePlaceholder(newRow, "{{Status}}", status);
-                            ReplacePlaceholder(newRow, "{{NapomenaStavke}}", napomenaStavke);
+                                string naziv = s.IdObjekatSistemVeznaTabelaNavigation?.IdSistemNavigation?.Naziv ?? "";
+                                string napomenaSist = s.IdObjekatSistemVeznaTabelaNavigation?.Napomena ?? "";
+                                string status = s.Zadovoljava ? "Zadovoljava" : "Ne zadovoljava";
+                                string napomenaStavke = s.NapomenaStavke ?? "";
 
-                            SetColumnWidths(newRow, new string[] { "3000", "2000", "1500", "2500" });
+                                ReplacePlaceholder(newRow, "{{Stavka}}", naziv);
+                                ReplacePlaceholder(newRow, "{{NapomenaSistema}}", napomenaSist);
+                                ReplacePlaceholder(newRow, "{{Status}}", status);
+                                ReplacePlaceholder(newRow, "{{NapomenaStavke}}", napomenaStavke);
 
-                            SetRowFontSize(newRow, "20");
+                                SetColumnWidths(newRow, new string[] { "3000", "2000", "1500", "2500" });
 
-                            table.AppendChild(newRow);
+                                SetRowFontSize(newRow, "20");
+
+                                table.AppendChild(newRow);
+                            }
+
+                            targetRow.Remove();
                         }
-
-                        targetRow.Remove();
                     }
+
+                    doc.MainDocumentPart?.Document?.Save();
                 }
 
-                doc.MainDocumentPart?.Document?.Save();
+                return outputPath;
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
             }
 
-            return outputPath;
         }
 
         //JA OVO NEMOM POJMA KAKO RADI NE DIRAJ NISTA, DOK RADI... RADI

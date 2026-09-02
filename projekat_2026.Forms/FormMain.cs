@@ -34,6 +34,7 @@ namespace projekat_2026
         private int? _selectedStavkaId;
         private int? _selectedKontaktId;
         private int? _selectedPregledLogId;
+        private int? _selectedPregledLogFromAgentTabId;
 
         private readonly FirmaObjekatService firmaObjekatService;
         private readonly SistemService sistemService;
@@ -156,7 +157,8 @@ namespace projekat_2026
         private void SetupdataGridViewPreglediAgenta(int idAgent)
         {
             var pregledi = pregledService.GetByAgentId(idAgent)
-                .Select(p => new {
+                .Select(p => new
+                {
                     p.IdAgent,
                     p.IdFirmaObjekat,
                     FirmaObjekat = p.IdFirmaObjekatNavigation.ImeFirmeObjekat,
@@ -658,6 +660,8 @@ namespace projekat_2026
             SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
         }
 
+
+        //provera da li je korisnik kliknuo na row i koji row
         private void DataGridView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -716,6 +720,7 @@ namespace projekat_2026
 
                                 ClearAndHideDetails();
                                 SetupdataGridViewFirmaObjekat();
+                                SetupdataGridViewPreglediAgenta(idAgent);
                             }
                         }
                     }
@@ -738,6 +743,11 @@ namespace projekat_2026
                         pregledService.DeletePregled(pregledLogId);
                         MessageBox.Show("Pregled je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupdataGridViewPreglediAgenta(idAgent);
+
+                        if (_selectedFirmaObjekatId.HasValue)
+                        {
+                            SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
+                        }
                     }
                     return;
                 }
@@ -767,6 +777,7 @@ namespace projekat_2026
                         pregledService.DeletePregled(pregledLogId);
                         MessageBox.Show("Pregled je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetupDatagridViewPregled(firmaObjekatId);
+                        SetupdataGridViewPreglediAgenta(idAgent);
                     }
                 }
                 else if (targetGrid == dataGridViewAdresar)
@@ -825,6 +836,7 @@ namespace projekat_2026
             tabControlDetalji.Visible = false;
         }
 
+        //iz dashboard tab
         private void toolStripButtonIzvestaj_Click(object sender, EventArgs e)
         {
             if (!_selectedPregledLogId.HasValue)
@@ -838,22 +850,23 @@ namespace projekat_2026
             {
                 string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-                string templatePath = Path.Combine(Path.Combine(Path.Combine(localAppData,"ZOP"),"Templates"), "Template_Izvestaj.docx");
+                string templatePath = Path.Combine(Path.Combine(Path.Combine(localAppData, "ZOP"), "Templates"), "Template_Izvestaj.docx");
                 string outputFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 var izvestajService = new IzvestajService(_dbOptions, templatePath);
                 string putanja = izvestajService.GenerisiIzvestaj(_selectedPregledLogId.Value, outputFolder);
 
-                MessageBox.Show("Izveštaj saèuvan!","Obaveštenje",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Izveštaj saèuvan!", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 System.Diagnostics.Process.Start(new ProcessStartInfo(putanja) { UseShellExecute = true });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Greška",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
+        //iz dashboard tab
         private void dataGridViewPreglediObjekta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -864,6 +877,66 @@ namespace projekat_2026
                 int.TryParse(row.Cells["IdPregledLog"].Value.ToString(), out int id))
             {
                 _selectedPregledLogId = id;
+            }
+        }
+
+        //iz agenta tab
+        private void toolStripButtonIzvestajAgent_Click(object sender, EventArgs e)
+        {
+            if (!_selectedPregledLogFromAgentTabId.HasValue)
+            {
+                MessageBox.Show("Molimo izaberite pregled iz tabele pre generisanja izveštaja.",
+                                "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+                string templatePath = Path.Combine(Path.Combine(Path.Combine(localAppData, "ZOP"), "Templates"), "Template_Izvestaj.docx");
+                string outputFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                var izvestajService = new IzvestajService(_dbOptions, templatePath);
+                string putanja = izvestajService.GenerisiIzvestaj(_selectedPregledLogFromAgentTabId.Value, outputFolder);
+
+                MessageBox.Show("Izveštaj saèuvan!", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start(new ProcessStartInfo(putanja) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Iz agenta tab
+        private void dataGridViewPreglediAgenta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewPreglediAgenta.Rows[e.RowIndex];
+
+            if (row.Cells["IdPregledLog"]?.Value != null &&
+                int.TryParse(row.Cells["IdPregledLog"].Value.ToString(), out int id))
+            {
+                _selectedPregledLogFromAgentTabId = id;
+            }
+        }
+
+        private void dataGridViewPreglediAgenta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dataGridViewPreglediAgenta.Rows[e.RowIndex];
+            int idPregledLog = (int)row.Cells["IdPregledLog"].Value;
+
+            using var formPregledLIsta = new FormPregledLista(_dbOptions, idPregledLog);
+            formPregledLIsta.ShowDialog();
+            SetupdataGridViewPreglediAgenta(idAgent);
+
+            if (_selectedFirmaObjekatId.HasValue)
+            {
+                SetupDatagridViewPregled(_selectedFirmaObjekatId.Value);
             }
         }
     }
