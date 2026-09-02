@@ -7,13 +7,11 @@ public partial class Oprema
 {
     public int IdBarcode { get; set; }
 
-    public int IdObjekatSistemVeznaTabela { get; set; }
+    public string Naziv { get; set; } = null!;
 
     public string? Napomena { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
-
-    public virtual ObjekatSistemVeznaTabela IdObjekatSistemVeznaTabelaNavigation { get; set; } = null!;
 }

@@ -17,7 +17,5 @@ public partial class ObjekatSistemVeznaTabela
 
     public virtual Sistem IdSistemNavigation { get; set; } = null!;
 
-    public virtual ICollection<Oprema> Opremas { get; set; } = new List<Oprema>();
-
     public virtual ICollection<StavkaPregledum> StavkaPregleda { get; set; } = new List<StavkaPregledum>();
 }
