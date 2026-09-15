@@ -94,6 +94,7 @@ namespace projekat_2026
             dataGridViewPregledStavke.Columns["NapomenaStavke"].FillWeight = 35;
         }
 
+        //FormPregled
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
             dataGridViewPregledStavke.EndEdit();
@@ -107,15 +108,19 @@ namespace projekat_2026
 
             try
             {
-                pregledService.SavePregled(_currentPregledLogId, textBoxNapomenaCitavogPregleda.Text, dateTimePickerDatumPregleda.Value, updateDtos);
+                pregledService.SavePregled(_currentPregledLogId, 
+                    textBoxNapomenaCitavogPregleda.Text, 
+                    dateTimePickerDatumPregleda.Value, updateDtos);
                 _isSaved = true;
                 this.DialogResult = DialogResult.OK;
-                MessageBox.Show("Pregled je saèuvan.", "Uspešno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pregled je saèuvan.", "Uspešno", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška prilikom snimanja: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Greška prilikom snimanja: {ex.Message}", 
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

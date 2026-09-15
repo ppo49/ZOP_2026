@@ -31,23 +31,24 @@ namespace projekat_2026.Core
                 .FirstOrDefault(a => a.IdAdresar == id);
         }
 
-        public void Add(Adresar novKontakt, int firmaObjekatId, List<string> emails, List<string> telefons)
+        //AdresarService
+        public void Add(Adresar novKontakt, int firmaObjekatId, 
+            List<string> emails, List<string> telefons)
         {
             using var db = new AppDbContext(_dbOptions);
 
-            var firma = db.FirmaObjekats.FirstOrDefault(f => f.IdFirmaObjekat == firmaObjekatId);
-            if (firma == null) throw new Exception("Firma/Objekat nije pronađen.");
+            var firma = db.FirmaObjekats
+                .FirstOrDefault(f => f.IdFirmaObjekat == firmaObjekatId);
+            if (firma == null) 
+                throw new Exception("Firma/Objekat nije pronađen.");
 
-            // Link to target Firma/Objekat
             novKontakt.IdFirmaObjekats.Add(firma);
 
-            // Create child Email objects
             novKontakt.Emails = emails
                 .Where(e => !string.IsNullOrWhiteSpace(e))
                 .Select(e => new Email { Email1 = e.Trim() })
                 .ToList();
 
-            // Create child Phone objects
             novKontakt.Telefons = telefons
                 .Where(t => !string.IsNullOrWhiteSpace(t))
                 .Select(t => new Telefon { Telefon1 = t.Trim() })
@@ -61,6 +62,7 @@ namespace projekat_2026.Core
 
 
         // REFACTORED: Replaces old Update method to eliminate duplicate child inserts
+        //AdresarService
         public void Update(Adresar updatedAdresar, List<string> emails, List<string> telefons)
         {
             using var db = new AppDbContext(_dbOptions);
@@ -95,6 +97,7 @@ namespace projekat_2026.Core
             db.SaveChanges();
         }
 
+        //AdresarService
         public void Delete(int id)
         {
             using var db = new AppDbContext(_dbOptions);

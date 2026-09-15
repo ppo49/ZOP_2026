@@ -43,6 +43,7 @@ namespace projekat_2026
         private readonly AdresarService adresarService;
         private readonly PregledService pregledService;
         private readonly OpremaService opremaService;
+        private readonly ObavestenjaService obavestenjaService;
 
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
@@ -56,6 +57,7 @@ namespace projekat_2026
             adresarService = new AdresarService(dbOptions);
             pregledService = new PregledService(dbOptions);
             opremaService = new OpremaService(dbOptions);
+            obavestenjaService = new ObavestenjaService(dbOptions);
 
             this.Text = $"ZOP, {_loggedInAgent.ImePrezime}";
 
@@ -82,6 +84,8 @@ namespace projekat_2026
 
             //listBoxEmails.DisplayMember = "Email1";
             //listBoxTelefoni.DisplayMember = "Telefon1";
+
+            SetupListViewObavestenja();
 
         }
 
@@ -850,6 +854,7 @@ namespace projekat_2026
         private void FormMain_Load(object sender, EventArgs e)
         {
             tabControlDetalji.Visible = false;
+            SetupListViewObavestenja();
         }
 
 
@@ -1083,5 +1088,81 @@ namespace projekat_2026
                 MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void toolStripButtonGenerisjiIvestajOpreme_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!_selectedFirmaObjekatId.HasValue)
+                {
+                    MessageBox.Show("Molimo izaberite firmu/objekat iz liste.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int idFirmaObjekat = _selectedFirmaObjekatId.Value;
+
+                using (var folderDialog = new FolderBrowserDialog())
+                {
+                    folderDialog.Description = "Izaberite folder za èuvanje izveštaja";
+
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string outputFolder = folderDialog.SelectedPath;
+
+                        var izvestajOpremaService = new IzvestajOpremaService(_dbOptions);
+                        string putanjaFajla = izvestajOpremaService.GenerisiIzvestajOpreme(idFirmaObjekat, outputFolder);
+
+                        MessageBox.Show($"Izveštaj je uspešno generisan!\n\nPutanja: {putanjaFajla}", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Došlo je do greške prilikom generisanja izveštaja: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //LISTVIEW funkcionalnost
+
+
+        private void SetupListViewObavestenja()
+        {
+            listViewObavestenja.Items.Clear();
+            listViewObavestenja.Columns.Clear();
+            listViewObavestenja.View = View.Details;
+            listViewObavestenja.FullRowSelect = true;
+
+            
+            listViewObavestenja.Columns.Add("Status pregleda komitenata", -2);
+            var obavestenja = obavestenjaService.ProveriRokove();
+
+            foreach (var o in obavestenja)
+            {
+                string datumTekst = o.DatumPoslednjegPregleda.HasValue
+                            ? o.DatumPoslednjegPregleda.Value.ToString("dd.MM.yyyy")
+                            : "nikada";
+
+                string tekst = o.PregledIzvrsenOvogMeseca
+                    ? $"{o.ImeFirmeObjekat} - pregled izvršen ({datumTekst})"
+                    : $"{o.ImeFirmeObjekat} - POTREBAN PREGLED (poslednji: {datumTekst})";
+
+                var item = new ListViewItem(tekst)
+                {
+                    Tag = o.IdFirmaObjekat,
+                    ForeColor = o.PregledIzvrsenOvogMeseca ? Color.Black : Color.Red
+                };
+
+                // ikonica preko ImageList (vidi ispod)
+                if (listViewObavestenja.SmallImageList != null)
+                {
+                    item.ImageKey = o.PregledIzvrsenOvogMeseca ? "zeleno" : "crveno";
+                }
+
+                listViewObavestenja.Items.Add(item);
+            }
+        }
+
+
     }
 }

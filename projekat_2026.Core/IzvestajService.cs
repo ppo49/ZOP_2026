@@ -1,6 +1,7 @@
 ﻿
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.EntityFrameworkCore;
 using projekat_2026.Data;
@@ -16,6 +17,7 @@ namespace projekat_2026.Core
     {
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly string _templatePath;
+
 
         public IzvestajService(DbContextOptions<AppDbContext> dbOptions, string templatePath)
         {
@@ -106,7 +108,7 @@ namespace projekat_2026.Core
 
                 return outputPath;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ex.Message;
             }
@@ -166,6 +168,7 @@ namespace projekat_2026.Core
                 paragraph.AppendChild(newRun);
             }
         }
+
     }
 }
 
