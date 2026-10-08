@@ -45,6 +45,8 @@ namespace projekat_2026
         private readonly OpremaService opremaService;
         private readonly ObavestenjaService obavestenjaService;
 
+        private object _sveFirmeObjekatOriginalnaLista;
+
         public FormMain(DbContextOptions<AppDbContext> dbOptions, Agent loggedInAgent)
         {
             InitializeComponent();
@@ -277,6 +279,9 @@ namespace projekat_2026
                 })
                 .ToList();
             dataGridViewFirmaObjekat.DataSource = firme;
+
+            _sveFirmeObjekatOriginalnaLista = firme;
+
             dataGridViewFirmaObjekat.RowHeadersVisible = false;
             dataGridViewFirmaObjekat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewFirmaObjekat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -421,7 +426,8 @@ namespace projekat_2026
 
                 firmaObjekatService.Update(firma);
                 MessageBox.Show("Podaci uspešno ažurirani.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //SetupdataGridViewFirmaObjekat();
+
+                SetupdataGridViewFirmaObjekat();
 
                 foreach (DataGridViewRow row in dataGridViewFirmaObjekat.Rows)
                 {
@@ -1133,7 +1139,7 @@ namespace projekat_2026
             listViewObavestenja.View = View.Details;
             listViewObavestenja.FullRowSelect = true;
 
-            
+
             listViewObavestenja.Columns.Add("Status pregleda komitenata", -2);
             var obavestenja = obavestenjaService.ProveriRokove();
 
@@ -1164,5 +1170,39 @@ namespace projekat_2026
         }
 
 
+
+        // TEXTCHANGED FILTER/PRETRAGA
+
+        private void textBoxFrimaOjekatFilter_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sveFirmeObjekatOriginalnaLista is IEnumerable<object> originalnaLista)
+                {
+                    string unetiTekst = textBoxFrimaOjekatFilter.Text.Trim();
+
+                    if (string.IsNullOrWhiteSpace(unetiTekst))
+                    {
+                        dataGridViewFirmaObjekat.DataSource = originalnaLista.ToList();
+                    }
+                    else
+                    {
+                        var filterResult = originalnaLista
+                            .Cast<dynamic>()
+                            .Where(f => f.ImeFirmeObjekat != null &&
+                                ((string)f.ImeFirmeObjekat)
+                                    .Contains(unetiTekst, StringComparison.OrdinalIgnoreCase))
+                            .ToList();
+
+                        dataGridViewFirmaObjekat.DataSource = filterResult;
+                        dataGridViewFirmaObjekat.AutoGenerateColumns = false;
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Došlo je do greške: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
