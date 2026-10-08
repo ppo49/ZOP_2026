@@ -872,10 +872,10 @@ namespace projekat_2026
             // tabPagePregledi
             // 
             tabPagePregledi.Controls.Add(tableLayoutPanelPregledLista);
-            tabPagePregledi.Location = new System.Drawing.Point(4, 27);
+            tabPagePregledi.Location = new System.Drawing.Point(4, 24);
             tabPagePregledi.Name = "tabPagePregledi";
             tabPagePregledi.Padding = new System.Windows.Forms.Padding(3);
-            tabPagePregledi.Size = new System.Drawing.Size(861, 403);
+            tabPagePregledi.Size = new System.Drawing.Size(861, 406);
             tabPagePregledi.TabIndex = 1;
             tabPagePregledi.Text = "Pregledi";
             tabPagePregledi.UseVisualStyleBackColor = true;
@@ -895,7 +895,7 @@ namespace projekat_2026
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.74258F));
             tableLayoutPanelPregledLista.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.25743F));
-            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanelPregledLista.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanelPregledLista.TabIndex = 1;
             // 
             // toolStripDetaljiPregled
@@ -963,7 +963,7 @@ namespace projekat_2026
             dataGridViewPreglediObjekta.Location = new System.Drawing.Point(4, 38);
             dataGridViewPreglediObjekta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewPreglediObjekta.Name = "dataGridViewPreglediObjekta";
-            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 268);
+            dataGridViewPreglediObjekta.Size = new System.Drawing.Size(847, 270);
             dataGridViewPreglediObjekta.TabIndex = 0;
             dataGridViewPreglediObjekta.CellClick += dataGridViewPreglediObjekta_CellClick;
             dataGridViewPreglediObjekta.CellDoubleClick += dataGridViewPreglediObjekta_CellDoubleClick;
@@ -972,20 +972,20 @@ namespace projekat_2026
             // listViewObavestenjaZaObjekat
             // 
             listViewObavestenjaZaObjekat.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 312);
+            listViewObavestenjaZaObjekat.Location = new System.Drawing.Point(4, 314);
             listViewObavestenjaZaObjekat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 23);
             listViewObavestenjaZaObjekat.Name = "listViewObavestenjaZaObjekat";
-            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 62);
+            listViewObavestenjaZaObjekat.Size = new System.Drawing.Size(847, 63);
             listViewObavestenjaZaObjekat.TabIndex = 1;
             listViewObavestenjaZaObjekat.UseCompatibleStateImageBehavior = false;
             // 
             // tabPageSistemi
             // 
             tabPageSistemi.Controls.Add(tableLayoutPanelSistem);
-            tabPageSistemi.Location = new System.Drawing.Point(4, 27);
+            tabPageSistemi.Location = new System.Drawing.Point(4, 24);
             tabPageSistemi.Name = "tabPageSistemi";
             tabPageSistemi.Padding = new System.Windows.Forms.Padding(3);
-            tabPageSistemi.Size = new System.Drawing.Size(861, 403);
+            tabPageSistemi.Size = new System.Drawing.Size(861, 406);
             tabPageSistemi.TabIndex = 2;
             tabPageSistemi.Text = "Sistemi";
             tabPageSistemi.UseVisualStyleBackColor = true;
@@ -1009,7 +1009,7 @@ namespace projekat_2026
             tableLayoutPanelSistem.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             tableLayoutPanelSistem.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanelSistem.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            tableLayoutPanelSistem.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanelSistem.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanelSistem.TabIndex = 2;
             // 
             // labelDodajSistem
@@ -1018,7 +1018,7 @@ namespace projekat_2026
             labelDodajSistem.BackColor = System.Drawing.SystemColors.ControlLight;
             labelDodajSistem.Dock = System.Windows.Forms.DockStyle.Fill;
             labelDodajSistem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            labelDodajSistem.Location = new System.Drawing.Point(4, 287);
+            labelDodajSistem.Location = new System.Drawing.Point(4, 290);
             labelDodajSistem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelDodajSistem.Name = "labelDodajSistem";
             labelDodajSistem.Size = new System.Drawing.Size(847, 35);
@@ -1040,7 +1040,7 @@ namespace projekat_2026
             tableLayoutPanel26.Controls.Add(buttonAzurirajStavku, 2, 1);
             tableLayoutPanel26.Controls.Add(textBoxSistemNaziv, 0, 1);
             tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel26.Location = new System.Drawing.Point(4, 221);
+            tableLayoutPanel26.Location = new System.Drawing.Point(4, 224);
             tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel26.Name = "tableLayoutPanel26";
             tableLayoutPanel26.RowCount = 2;
@@ -1155,7 +1155,7 @@ namespace projekat_2026
             dataGridViewSistemi.Location = new System.Drawing.Point(4, 38);
             dataGridViewSistemi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewSistemi.Name = "dataGridViewSistemi";
-            dataGridViewSistemi.Size = new System.Drawing.Size(847, 177);
+            dataGridViewSistemi.Size = new System.Drawing.Size(847, 180);
             dataGridViewSistemi.TabIndex = 0;
             dataGridViewSistemi.CellClick += dataGridViewSistemi_CellClick;
             dataGridViewSistemi.MouseDown += DataGridView_MouseDown;
@@ -1189,7 +1189,7 @@ namespace projekat_2026
             tableLayoutPanel2.Controls.Add(textBoxSistemNapomena, 2, 1);
             tableLayoutPanel2.Controls.Add(buttonDodajStavku, 3, 1);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel2.Location = new System.Drawing.Point(4, 325);
+            tableLayoutPanel2.Location = new System.Drawing.Point(4, 328);
             tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
@@ -1275,10 +1275,10 @@ namespace projekat_2026
             // tabPageAdresar
             // 
             tabPageAdresar.Controls.Add(tableLayoutPanelAdresar);
-            tabPageAdresar.Location = new System.Drawing.Point(4, 27);
+            tabPageAdresar.Location = new System.Drawing.Point(4, 24);
             tabPageAdresar.Name = "tabPageAdresar";
             tabPageAdresar.Padding = new System.Windows.Forms.Padding(3);
-            tabPageAdresar.Size = new System.Drawing.Size(861, 403);
+            tabPageAdresar.Size = new System.Drawing.Size(861, 406);
             tabPageAdresar.TabIndex = 3;
             tabPageAdresar.Text = "Adresar";
             tabPageAdresar.UseVisualStyleBackColor = true;
@@ -1299,7 +1299,7 @@ namespace projekat_2026
             tableLayoutPanelAdresar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelAdresar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             tableLayoutPanelAdresar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanelAdresar.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanelAdresar.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanelAdresar.TabIndex = 3;
             // 
             // toolStripAdresar
@@ -1351,7 +1351,7 @@ namespace projekat_2026
             dataGridViewAdresar.Location = new System.Drawing.Point(4, 38);
             dataGridViewAdresar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewAdresar.Name = "dataGridViewAdresar";
-            dataGridViewAdresar.Size = new System.Drawing.Size(847, 203);
+            dataGridViewAdresar.Size = new System.Drawing.Size(847, 206);
             dataGridViewAdresar.TabIndex = 0;
             dataGridViewAdresar.CellClick += dataGridViewAdresar_CellClick;
             dataGridViewAdresar.MouseDown += DataGridView_MouseDown;
@@ -1374,7 +1374,7 @@ namespace projekat_2026
             tableLayoutPanel34.Controls.Add(tableLayoutPanel46, 3, 0);
             tableLayoutPanel34.Controls.Add(comboBoxAdresarStatus, 2, 1);
             tableLayoutPanel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel34.Location = new System.Drawing.Point(4, 247);
+            tableLayoutPanel34.Location = new System.Drawing.Point(4, 250);
             tableLayoutPanel34.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel34.Name = "tableLayoutPanel34";
             tableLayoutPanel34.RowCount = 3;
@@ -1610,10 +1610,10 @@ namespace projekat_2026
             // tabPageOprema
             // 
             tabPageOprema.Controls.Add(tableLayoutPanel20);
-            tabPageOprema.Location = new System.Drawing.Point(4, 27);
+            tabPageOprema.Location = new System.Drawing.Point(4, 24);
             tabPageOprema.Name = "tabPageOprema";
             tabPageOprema.Padding = new System.Windows.Forms.Padding(3);
-            tabPageOprema.Size = new System.Drawing.Size(861, 403);
+            tabPageOprema.Size = new System.Drawing.Size(861, 406);
             tabPageOprema.TabIndex = 4;
             tabPageOprema.Text = "Oprema";
             tabPageOprema.UseVisualStyleBackColor = true;
@@ -1641,7 +1641,7 @@ namespace projekat_2026
             tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel20.Size = new System.Drawing.Size(855, 397);
+            tableLayoutPanel20.Size = new System.Drawing.Size(855, 400);
             tableLayoutPanel20.TabIndex = 3;
             // 
             // toolStripOprema
@@ -1688,7 +1688,7 @@ namespace projekat_2026
             tableLayoutPanel21.Controls.Add(buttonOpremaAzuriraj, 3, 1);
             tableLayoutPanel21.Controls.Add(labelOpremaNazivAzuriraj, 1, 0);
             tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel21.Location = new System.Drawing.Point(4, 160);
+            tableLayoutPanel21.Location = new System.Drawing.Point(4, 163);
             tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel21.Name = "tableLayoutPanel21";
             tableLayoutPanel21.RowCount = 2;
@@ -1787,7 +1787,7 @@ namespace projekat_2026
             labelDodajOpremu.BackColor = System.Drawing.SystemColors.ControlLight;
             labelDodajOpremu.Dock = System.Windows.Forms.DockStyle.Fill;
             labelDodajOpremu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            labelDodajOpremu.Location = new System.Drawing.Point(0, 238);
+            labelDodajOpremu.Location = new System.Drawing.Point(0, 241);
             labelDodajOpremu.Margin = new System.Windows.Forms.Padding(0);
             labelDodajOpremu.Name = "labelDodajOpremu";
             labelDodajOpremu.Size = new System.Drawing.Size(855, 39);
@@ -1807,7 +1807,7 @@ namespace projekat_2026
             tableLayoutPanel22.Controls.Add(textBoxOpremaDodajNaziv, 0, 1);
             tableLayoutPanel22.Controls.Add(buttonDodajOpremu, 2, 1);
             tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel22.Location = new System.Drawing.Point(4, 280);
+            tableLayoutPanel22.Location = new System.Drawing.Point(4, 283);
             tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel22.Name = "tableLayoutPanel22";
             tableLayoutPanel22.RowCount = 2;
@@ -1881,7 +1881,7 @@ namespace projekat_2026
             labelDodatniTekst.AutoSize = true;
             labelDodatniTekst.Dock = System.Windows.Forms.DockStyle.Fill;
             labelDodatniTekst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 238);
-            labelDodatniTekst.Location = new System.Drawing.Point(4, 358);
+            labelDodatniTekst.Location = new System.Drawing.Point(4, 361);
             labelDodatniTekst.Margin = new System.Windows.Forms.Padding(4, 0, 4, 17);
             labelDodatniTekst.Name = "labelDodatniTekst";
             labelDodatniTekst.Size = new System.Drawing.Size(847, 22);
@@ -1896,7 +1896,7 @@ namespace projekat_2026
             dataGridViewOprema.Location = new System.Drawing.Point(4, 42);
             dataGridViewOprema.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridViewOprema.Name = "dataGridViewOprema";
-            dataGridViewOprema.Size = new System.Drawing.Size(847, 112);
+            dataGridViewOprema.Size = new System.Drawing.Size(847, 115);
             dataGridViewOprema.TabIndex = 11;
             dataGridViewOprema.CellClick += dataGridViewOprema_CellClick;
             // 
