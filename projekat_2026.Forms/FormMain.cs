@@ -1129,7 +1129,7 @@ namespace projekat_2026
             }
         }
 
-        //LISTVIEW funkcionalnost
+        //LISTVIEW funkcionalnost OBAVESTENJA
 
 
         private void SetupListViewObavestenja()

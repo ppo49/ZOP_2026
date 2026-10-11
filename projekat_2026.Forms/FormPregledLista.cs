@@ -51,7 +51,7 @@ namespace projekat_2026
                 return;
             }
 
-            labelFirmaObjekat.Text = $"Firma/Objekat {pregled.IdFirmaObjekatNavigation.ImeFirmeObjekat}";
+            labelFirmaObjekat.Text = $"Firma/Objekat {pregled.NazivFirmeObjektaSnapshot}";
             labelAgent.Text = $"Agent: {pregled.IdAgentNavigation.ImePrezime}";
             dateTimePickerDatumPregleda.Value = pregled.DatumPregleda.ToDateTime(TimeOnly.MinValue);
             textBoxNapomenaCitavogPregleda.Text = pregled.Napomena;

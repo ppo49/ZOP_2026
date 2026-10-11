@@ -51,5 +51,6 @@
 		<None Update="Templates\Template_Izvestaj.docx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>	
+	</ItemGroup>
+    <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>	
 </Project>

@@ -283,6 +283,9 @@ public partial class AppDbContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("napomena");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+            entity.Property(e => e.NazivFirmeObjektaSnapshot)
+                .HasMaxLength(255)
+                .HasColumnName("naziv_firme_objekta_snapshot");
 
             entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.PregledLogs)
                 .HasForeignKey(d => d.IdAgent)

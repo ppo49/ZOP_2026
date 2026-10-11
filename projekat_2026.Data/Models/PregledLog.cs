@@ -19,6 +19,8 @@ public partial class PregledLog
 
     public DateTime UpdatedAt { get; set; }
 
+    public string? NazivFirmeObjektaSnapshot { get; set; }
+
     public virtual Agent IdAgentNavigation { get; set; } = null!;
 
     public virtual FirmaObjekat IdFirmaObjekatNavigation { get; set; } = null!;

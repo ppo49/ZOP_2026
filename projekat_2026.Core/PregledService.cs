@@ -115,18 +115,27 @@ namespace projekat_2026.Core
         {
             using var db = new AppDbContext(_dbOptions);
             using var transaction = db.Database.BeginTransaction();
+
             try
             {
+                var firmaObjekat = db.FirmaObjekats
+                    .FirstOrDefault(f => f.IdFirmaObjekat == idFirmaObjekat);
+
+                if (firmaObjekat == null)
+                    throw new InvalidOperationException("Firma/objekat ne postoji.");
+
                 var noviPregled = new PregledLog
                 {
                     IdFirmaObjekat = idFirmaObjekat,
                     IdAgent = idAgent,
+                    NazivFirmeObjektaSnapshot = firmaObjekat.ImeFirmeObjekat,
+
                     DatumPregleda = DateOnly.FromDateTime(DateTime.Now),
                     Napomena = napomena,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now
-
                 };
+
                 db.PregledLogs.Add(noviPregled);
                 db.SaveChanges();
 
@@ -140,13 +149,14 @@ namespace projekat_2026.Core
                     {
                         IdPregledLog = noviPregled.IdPregledLog,
                         IdObjekatSistemVeznaTabela = sistem.IdObjekatSistemVeznaTabela,
-                        Zadovoljava = false,      
-                        NapomenaStavke = null,
+                        Zadovoljava = false,
+                        NapomenaStavke = null
                     });
                 }
 
                 db.SaveChanges();
                 transaction.Commit();
+
                 return noviPregled.IdPregledLog;
             }
             catch

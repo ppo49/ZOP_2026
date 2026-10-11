@@ -24,6 +24,8 @@ namespace projekat_2026.Core
         {
             _dbOptions = dbOptions;
         }
+
+
         public List<KomitentObavestenje> ProveriRokove()
         {
             using var db = new AppDbContext(_dbOptions);
